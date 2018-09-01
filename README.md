@@ -26,7 +26,13 @@ Project development startup configuration item.
 - docs // 项目文档
   - jsdoc   // JSDOC 生成的 API 文档
 
+- .eslintrc.json  // eslint 代码规则检查配置
+
 ## Workflow
 
-- 利用 nginx 反向代理实现前后端的完全分离/部署解决方案
+- 利用 nginx 反向代理实现前后端的完全分离开发/部署解决方案
 - gulp 任务流实现自动化构建，webpack 则进行 js 文件模块化管理。
+
+## API Document
+
+项目的 API 文档由 JSDOC 自动生成。
