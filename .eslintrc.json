@@ -5,24 +5,20 @@
         "es6"    : true
     },
     "extends"      : [
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "eslint:recommended"
     ],
     "parser"       : "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx"                         : true
+            "experimentalObjectRestSpread": true
         },
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
+    "plugins": [],
+    "rules"  : {
         "no-console": [
             "error",
-            { 
+            {
                 "allow": [
                     "warn",
                     "error"
