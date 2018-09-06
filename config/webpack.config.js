@@ -35,11 +35,11 @@ module.exports = {
 					{
 						loader : 'babel-loader',
 						options: {
-							presets: ['env'/* , 'flow', 'react' */],
+							presets: ['@babel/preset-env'],
 							plugins: [
-								require('babel-plugin-syntax-dynamic-import'),
-								require('babel-plugin-transform-class-properties'),
-								require('babel-plugin-transform-object-rest-spread')
+								require('@babel/plugin-syntax-dynamic-import'),
+								require('@babel/plugin-proposal-class-properties'),
+								require('@babel/plugin-proposal-object-rest-spread')
 							],
 							sourceMaps: true
 						}

@@ -138,7 +138,12 @@ exports.js_concat_min = function (param) {
 		.pipe(order(param.order))
 		.pipe(gulpif(CONFIG.map, sourcemaps.init()))
 		.pipe(babel({
-			presets: ['env', 'react']
+			presets: ['@babel/preset-env'],
+			plugins: [
+				require('@babel/plugin-syntax-dynamic-import'),
+				require('@babel/plugin-proposal-class-properties'),
+				require('@babel/plugin-proposal-object-rest-spread')
+			],
 		}))
 		.pipe(concat(param.build_file))
 		.pipe(gulpif(!CONFIG.dev, js_uglify()))

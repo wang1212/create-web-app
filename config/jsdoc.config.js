@@ -16,12 +16,12 @@ module.exports = {
 	],
 	babel  : {
 		extensions: ['js', 'jsx'],
-		presets   : ['env'/* , 'flow', 'react' */],
+		presets   : ['@babel/preset-env'],
 		plugins   : [
-			'syntax-dynamic-import',
-			'transform-class-properties',
-			'transform-object-rest-spread'
-		]
+			require('@babel/plugin-syntax-dynamic-import'),
+			require('@babel/plugin-proposal-class-properties'),
+			require('@babel/plugin-proposal-object-rest-spread')
+		],
 	},
 	templates: {
 		cleverLinks   : true,
