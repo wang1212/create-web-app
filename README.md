@@ -18,14 +18,14 @@ Project development startup configuration item.
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   └── jsdoc.config.js       # JSDOC 配置
     |── src/      # 源代码
-    | 	├── components/    # 系统组件
-    | 	├── modules/       # 系统模块
-    | 	├── utils/         # 工具组件
-    | 	├── config/        # 开发配置
-    | 	├── vendors/       # 外部依赖
-    | 	├── app.html
-    | 	├── app.js
-    | 	└── app.scss
+    |   ├── components/    # 系统组件
+    |   ├── modules/       # 系统模块
+    |   ├── utils/         # 工具组件
+    |   ├── config/        # 开发配置
+    |   ├── vendors/       # 外部依赖
+    |   ├── app.html
+    |   ├── app.js
+    |   └── app.scss
     └── .eslintrc.json    # eslint 代码规则检查配置
 
 ## Workflow
