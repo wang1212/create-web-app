@@ -16,11 +16,11 @@ module.exports = {
 	],
 	babel  : {
 		extensions: ['js', 'jsx'],
-		presets   : ['env', 'flow', 'react'],
+		presets   : ['@babel/preset-env', '@babel/preset-flow', '@babel/preset-react'],
 		plugins   : [
-			'syntax-dynamic-import',
-			'transform-class-properties',
-			'transform-object-rest-spread'
+			'@babel/plugin-syntax-dynamic-import',
+			'@babel/plugin-proposal-class-properties',
+			'@babel/plugin-proposal-object-rest-spread'
 		]
 	},
 	templates: {

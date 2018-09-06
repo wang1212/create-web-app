@@ -24,10 +24,10 @@ Project development startup configuration item with React.js && redux.
     |   ├── config/        # 开发配置
     |   ├── vendors/       # 外部依赖
     |   ├── app.html
-    |   ├── app.js
+    |   ├── app.jss
     |   └── app.scss
     |── .eslintrc.json    # eslint 代码规则检查配置
-    └── .flowconfig      # flow 语法检查配置
+    └── .flowconfig       # flow 语法检查配置
 
 ## Workflow
 
