@@ -25,6 +25,7 @@
     "babel-loader"                             : "^8.0.2",
     "browser-sync"                             : "^2.24.7",
     "css-loader"                               : "^1.0.0",
+    "docdash"                                  : "^1.0.0",
     "eslint"                                   : "^5.5.0",
     "eslint-plugin-react"                      : "^7.11.1",
     "extract-text-webpack-plugin"              : "^4.0.0-beta.0",
