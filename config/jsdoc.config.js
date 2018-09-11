@@ -30,6 +30,7 @@ module.exports = {
 	opts: {
 		encoding   : 'utf8',
 		destination: './docs/jsdoc/',
-		recurse    : true
+		recurse    : true,
+		template   : 'node_modules/docdash'
 	}
 };
