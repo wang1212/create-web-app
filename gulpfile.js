@@ -83,7 +83,7 @@ gulp.task('copy:json', ['clean'], function () {
 });
 
 /* Minify */
-gulp.task('minify', [/* 'minify:js',  */'minify:sass2css', 'minify:img']);
+gulp.task('minify', [/* 'minify:js', 'minify:sass2css', */'minify:img']);
 
 gulp.task('minify:js', ['clean'], function () {
 

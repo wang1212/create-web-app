@@ -1,11 +1,15 @@
 /* App entry file */
 
+import './app.scss';
+
 import React from 'react';
 import { render } from 'react-dom';
+
+import App from 'components/App.jsx';
 
 
 /* Render to dom */
 render(
-	<h1>React App running ...</h1>,
-	document.getElementById('App-Container')
+	<App />,
+	document.getElementById('App')
 );

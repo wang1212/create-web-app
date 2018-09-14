@@ -112,11 +112,9 @@ module.exports = {
 	resolve: {
 		alias: {
 			components: PATH.resolve('./src/components/'),
-			modules   : PATH.resolve('./src/modules/'),
 			reduxs    : PATH.resolve('./src/reduxs/'),
 			utils     : PATH.resolve('./src/utils/'),
-			vendors   : PATH.resolve('./src/vendors/'),
-			config    : PATH.resolve('./src/config/')
+			vendors   : PATH.resolve('./src/vendors/')
 		}
 	},
 	optimization: {

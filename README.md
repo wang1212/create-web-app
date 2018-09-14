@@ -1,6 +1,6 @@
 # Dev-Starter-with-react
 
-Project development startup configuration item with React.js && redux.
+Project development startup configuration item with React.js && redux && react-router.
 
 ## Directory Structure
 
@@ -17,11 +17,10 @@ Project development startup configuration item with React.js && redux.
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   └── jsdoc.config.js       # JSDOC 配置
     |── src/      # 源代码
-    |   ├── components/    # 系统组件
-    |   ├── modules/       # 系统模块
-    |   ├── reduxs/        # redux
-    |   ├── utils/         # 工具组件
-    |   ├── config/        # 开发配置
+    |   ├── components/    # 组件
+    |   |   └── shared/    # 公共组件
+    |   ├── reduxs/        # redux 配置文件
+    |   ├── utils/         # 工具组件、常量
     |   ├── vendors/       # 外部依赖
     |   ├── app.html
     |   ├── app.jss
