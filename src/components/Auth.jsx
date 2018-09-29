@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Loading from 'components/shared/Loading.jsx';
-import SignIn from 'components/Auth/SignIn.jsx';
+import SignIn from 'components/auth/SignIn.jsx';
 
 import { get_user } from 'reduxs/Auth.js';
 
@@ -27,7 +27,7 @@ type Props = {
 
 /**
  * App Login authentication
- * 
+ *
  * @author wangyuan
  * @class Auth
  * @extends {React.Component<Props>}
@@ -44,7 +44,7 @@ class Auth extends React.Component<Props> {
 		return (
 			<Router>
 				{
-					auth.user ? 
+					auth.user ?
 						(
 							<LoadMain />
 						) :

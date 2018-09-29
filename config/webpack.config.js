@@ -5,8 +5,9 @@ const gulp_config = require('./gulpfile.config');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin'),
-	UglifyJsPlugin    = require('uglifyjs-webpack-plugin'),
-	ExtractTextPlugin = require('extract-text-webpack-plugin');
+	UglifyJsPlugin          = require('uglifyjs-webpack-plugin'),
+	MiniCssExtractPlugin    = require('mini-css-extract-plugin'),
+	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 module.exports = {
@@ -23,8 +24,8 @@ module.exports = {
 	},
 	output: {
 		path         : gulp_config.dist,
-		filename     : '[name].[chunkhash].js',
-		chunkFilename: '[name].[chunkhash].js'
+		filename     : gulp_config.dev ? '[name].js': '[name].[chunkhash].js',
+		chunkFilename: gulp_config.dev ? '[name].js': '[name].[chunkhash].js'
 	},
 	module : {
 		rules: [
@@ -47,37 +48,35 @@ module.exports = {
 				]
 			},
 			{
-				test   : /\.scss$/,
+				test   : /\.(sa|sc|c)ss$/,
 				exclude: /node_modules/,
-				use    : ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use     : [
-						{
-							loader : 'css-loader',
-							options: {
-								minimize    : true,
-								sourceMap   : true,
-								importLoader: 2
-							}
-						},
-						{
-							loader : 'postcss-loader',
-							options: {
-								sourceMap: true,
-								ident    : 'postcss',
-								plugins  : () => [
-									require('autoprefixer')({ browsers: ['last 2 versions'] })
-								]
-							}
-						},
-						{
-							loader : 'sass-loader',
-							options: {
-								sourceMap: true
-							}
+				use    : [
+					gulp_config.dev ? 'style-loader': MiniCssExtractPlugin.loader,
+					{
+						loader : 'css-loader',
+						options: {
+							minimize    : true,
+							sourceMap   : true,
+							importLoader: 2
 						}
-					]
-				})
+					},
+					{
+						loader : 'postcss-loader',
+						options: {
+							sourceMap: true,
+							ident    : 'postcss',
+							plugins  : () => [
+								require('autoprefixer')({ browsers: ['last 2 versions'] })
+							]
+						}
+					},
+					{
+						loader : 'sass-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				]
 			},
 			{
 				test: /\.(png|jpg|gif)$/,
@@ -102,11 +101,9 @@ module.exports = {
 			template: './src/app.html',
 			chunks  : ['app', 'commons']
 		}),
-		new UglifyJsPlugin({
-			sourceMap: true
-		}),
-		new ExtractTextPlugin({
-			filename: '[name].[chunkhash].css'
+		new MiniCssExtractPlugin({
+			filename     : gulp_config.dev ? '[name].css': '[name].[hash].css',
+			chunkFilename: gulp_config.dev ? '[id].css'  : '[id].[hash].css',
 		})
 	],
 	resolve: {
@@ -118,6 +115,14 @@ module.exports = {
 		}
 	},
 	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				cache    : true,
+				parallel : true,
+				sourceMap: true
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		],
 		splitChunks: {
 			cacheGroups: {
 				commons: {
