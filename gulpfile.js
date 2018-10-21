@@ -17,110 +17,15 @@ const DEV = require('./config/gulpfile.dev');
 /**
  *  Task
  */
-gulp.task('default', ['clean', 'copy', 'minify', 'webpack']);
+gulp.task('default', ['clean', 'minify', 'webpack']);
 
 /* Clean */
 gulp.task('clean', function () {
 	return DEV.clean(CONFIG.dist);
 });
 
-/* Copy */
-gulp.task('copy', ['copy:vendors', /* 'copy:html',  */'copy:json']);
-
-gulp.task('copy:vendors', ['clean'], function () {
-
-	DEV.mapping({
-		'src' : CONFIG.vendors.src,
-		'dist': CONFIG.vendors.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.vendors.src,
-		'dist'    : CONFIG.vendors.dist,
-		'callback': DEV.mapping,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.mapping_unlink
-		}
-	});
-
-});
-
-gulp.task('copy:html', ['clean'], function () {
-
-	DEV.mapping({
-		'src' : CONFIG.view.src,
-		'dist': CONFIG.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.view.src,
-		'dist'    : CONFIG.dist,
-		'callback': DEV.mapping,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.mapping_unlink
-		}
-	});
-});
-
-gulp.task('copy:json', ['clean'], function () {
-
-	DEV.mapping({
-		'src' : CONFIG.json.src,
-		'dist': CONFIG.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.json.src,
-		'dist'    : CONFIG.dist,
-		'callback': DEV.mapping,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.mapping_unlink
-		}
-	});
-});
-
 /* Minify */
-gulp.task('minify', [/* 'minify:js',  */'minify:sass2css', 'minify:img']);
-
-gulp.task('minify:js', ['clean'], function () {
-
-	DEV.js_min({
-		'src' : CONFIG.js.src,
-		'dist': CONFIG.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.js.src,
-		'dist'    : CONFIG.dist,
-		'callback': DEV.js_min,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.min_unlink
-		}
-	});
-});
-
-gulp.task('minify:sass2css', ['clean'], function () {
-
-	DEV.scss_2_css({
-		'src' : CONFIG.scss.src,
-		'dist': CONFIG.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.scss.src,
-		'dist'    : CONFIG.dist,
-		'callback': DEV.scss_2_css,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.sass_unlink
-		}
-	});
-
-});
+gulp.task('minify', ['minify:img']);
 
 gulp.task('minify:img', ['clean'], function () {
 

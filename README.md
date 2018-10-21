@@ -9,8 +9,7 @@ Project development startup configuration item.
     ├── docs/     # 项目文档
     |   └── jsdoc/      # JSDOC 生成的 API 文档
     |── config/   # 开发环境配置
-    |   |── nginx/ 
-    |   |   └── nginx.conf    # nginx 服务器配置
+    |   |── nginx.conf            # nginx 服务器配置
     |   ├── gulpfile.config.js    # gulp 路径配置
     |   ├── gulpfile.dev.js       # gulp 任务配置
     |   ├── webpack.config.js     # webpack 配置
