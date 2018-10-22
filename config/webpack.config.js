@@ -8,7 +8,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	HtmlWebpackPlugin       = require('html-webpack-plugin'),
 	UglifyJsPlugin          = require('uglifyjs-webpack-plugin'),
 	MiniCssExtractPlugin    = require('mini-css-extract-plugin'),
-	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+	ImageminPlugin          = require('imagemin-webpack-plugin').default,
+	ImageminJpeg            = require('imagemin-jpeg-recompress');
 
 
 module.exports = {
@@ -110,6 +112,27 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename     : gulp_config.dev ? '[name].css': '[name].[hash].css',
 			chunkFilename: gulp_config.dev ? '[id].css'  : '[id].[hash].css',
+		}),
+		new ImageminPlugin({
+			disable: gulp_config.dev,
+			optipng: {
+				optimizationLevel: 7
+			},
+			gifsicle: {
+				optimizationLevel: 3,
+				interlaced       : true
+			},
+			jpegtran: null,
+			svgo    : {
+				plugins: [
+					{ removeViewBox: true },
+					{ cleanupIDs: false }
+				]
+			},
+			pngquant: {},
+			plugins : [
+				ImageminJpeg()
+			]
 		})
 	],
 	resolve: {
@@ -149,9 +172,9 @@ module.exports = {
 		//runtimeChunk: true
 	},
 	performance: {
-		hints: 'warning',
-		/* assetFilter: assetFilename => {
+		hints      : 'warning',
+		assetFilter: assetFilename => {
 			return !(/vendor/.test(assetFilename));
-		} */
+		}
 	}
 };

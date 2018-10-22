@@ -1,52 +1,31 @@
 /* Base */
-const gulp         = require('gulp');
-const webpack      = require('webpack');
-const browser_sync = require('browser-sync').create();
+const gulp = require('gulp'),
+	gulp_clean   = require('gulp-clean'),
+	webpack      = require('webpack'),
+	browser_sync = require('browser-sync').create();
+
+/* path config */
+const CONFIG = require('./config/gulpfile.config');
+
 
 browser_sync.init({
 	open : false,
 	proxy: 'http://localhost:8181/App/'
 });
 
-/* path config */
-const CONFIG = require('./config/gulpfile.config');
-
-/* Dev */
-const DEV = require('./config/gulpfile.dev');
 
 /**
  *  Task
  */
-gulp.task('default', ['clean', 'minify', 'webpack']);
+gulp.task('default', ['clean', 'webpack']);
 
-/* Clean */
+// Clean
 gulp.task('clean', function () {
-	return DEV.clean(CONFIG.dist);
+	return gulp.src(CONFIG.dist, { read: false })
+		.pipe(gulp_clean({ force: true }));
 });
 
-/* Minify */
-gulp.task('minify', ['minify:img']);
-
-gulp.task('minify:img', ['clean'], function () {
-
-	DEV.img_min({
-		'src' : CONFIG.img.src,
-		'dist': CONFIG.dist
-	});
-
-	return DEV.watch({
-		'src'     : CONFIG.img.src,
-		'dist'    : CONFIG.dist,
-		'callback': DEV.img_min,
-		'events'  : {
-			'change': browser_sync.reload,
-			'unlink': DEV.mapping_unlink
-		}
-	});
-
-});
-
-/* Webpack */
+// Webpack
 gulp.task('webpack', ['clean'], function () {
 
 	new Promise((resolve, reject) => {

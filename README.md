@@ -1,6 +1,6 @@
 # Dev-Starter
 
-Project development startup configuration item.
+Project development launch configuration using webpack. Suitable for any project that does not use a framework.
 
 ## Directory Structure
 
@@ -11,15 +11,12 @@ Project development startup configuration item.
     |── config/   # 开发环境配置
     |   |── nginx.conf            # nginx 服务器配置
     |   ├── gulpfile.config.js    # gulp 路径配置
-    |   ├── gulpfile.dev.js       # gulp 任务配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   └── jsdoc.config.js       # JSDOC 配置
     |── src/      # 源代码
     |   ├── components/    # 系统组件
-    |   ├── modules/       # 系统模块
     |   ├── utils/         # 工具组件
-    |   ├── config/        # 开发配置
     |   ├── vendors/       # 外部依赖
     |   ├── app.html
     |   ├── app.js
@@ -43,7 +40,7 @@ Project development startup configuration item.
 
 2. 服务器
 
-    若使用反向代理，需安装好 nginx，配置文件在 **config/nginx/** 中，启动 nginx ：
+    若使用反向代理，需安装好 nginx，配置文件在 **config/** 中，启动 nginx ：
 
 		start nginx
 
