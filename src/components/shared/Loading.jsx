@@ -6,7 +6,6 @@ import React from 'react';
 /**
  * React-loadable Loading Component
  *
- * @author wangyuan
  * @export
  * @class Loading
  * @extends {React.Component}
@@ -20,7 +19,7 @@ export default class Loading extends React.Component {
 			return <div>Loading...</div>;
 		} else {
 			return null;
-		}		
+		}
 	}
 
 }

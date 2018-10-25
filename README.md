@@ -1,6 +1,6 @@
 # Dev-Starter-with-react
 
-Project development startup configuration item with React.js && redux && react-router.
+Project development launch configuration using webpack. Suitable for applications that rely on react.js and redux && react-router development.
 
 ## Directory Structure
 
@@ -9,10 +9,8 @@ Project development startup configuration item with React.js && redux && react-r
     ├── docs/     # 项目文档
     |   └── jsdoc/      # JSDOC 生成的 API 文档
     |── config/   # 开发环境配置
-    |   |── nginx/ 
-    |   |   └── nginx.conf    # nginx 服务器配置
+    |   |── nginx.conf            # nginx 服务器配置
     |   ├── gulpfile.config.js    # gulp 路径配置
-    |   ├── gulpfile.dev.js       # gulp 任务配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   └── jsdoc.config.js       # JSDOC 配置

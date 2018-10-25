@@ -10,7 +10,7 @@ module.exports = {
 		exclude       : ['src/vendors/'],
 		includePattern: '.+\\.(js|jsx)$',
 		excludePattern: '(^|\\/|\\\\)_'
-	},	
+	},
 	plugins: [
 		'node_modules/jsdoc-babel'
 	],

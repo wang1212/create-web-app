@@ -28,7 +28,6 @@ type Props = {
 /**
  * App Login authentication
  *
- * @author wangyuan
  * @class Auth
  * @extends {React.Component<Props>}
  */
