@@ -3,11 +3,11 @@
  */
 
 /* 公共样式表（全局）  */
-html, body { 
+html, body {
 	/* 适配移动端  */
 	font-size: 12px;
 	/* 保证字体安全  */
-	font-family: 
+	font-family:
 		// Safari for OS X and iOS (San Francisco)
 		-apple-system,
 		// Chrome < 56 for OS X (San Francisco)
@@ -21,7 +21,7 @@ html, body {
 		// Emoji fonts
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	/* 统一行高  */
-	line-height: 1.4;
+	line-height: 1.5;
 	/* 页面占满  */
 	width: 100%;
 	height: 100%;
@@ -37,19 +37,19 @@ html, body {
 	background-color: white;
 }
 * {
-	/* 盒子模型统一   */ 
+	/* 盒子模型统一   */
 	box-sizing: border-box;
-	/* 去除边距 */	
+	/* 去除边距 */
 	padding: 0;
 	margin: 0;
 }
 :focus {
-	outline: none;	
+	outline: none;
 }
 a{
 	text-decoration: none;
 }
-ul, li{ 
+ul, li{
 	list-style: none;
 }
 
@@ -107,7 +107,7 @@ ul, li{
 	background-color: auto;
 }
 
-/** 
+/**
  * 清除浮动 ----------------------------------------
  */
 .clear-float:before, .clear-float:after {
@@ -121,10 +121,10 @@ ul, li{
     zoom: 1;
 }
 
-/* 响应式工具 
+/* 响应式工具
 
-	.responsive-container ： 自适应模块的包裹元素，提供一个自适应容器，全页面自适应应先加在 body html 上 
-	
+	.responsive-container ： 自适应模块的包裹元素，提供一个自适应容器，全页面自适应应先加在 body html 上
+
 	.responsive-abs : 页面浮动上层元素，width、height 自己设置（例如导航，页头，页尾）
 
 	.responsive-rel ：  页面主要内容元素，width、height 自动占满整个容器，可利用 padding 来将 .responsive-abs 元素覆盖的部分隔开

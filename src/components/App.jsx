@@ -27,9 +27,8 @@ window._store = store;
 
 /**
  * App Container with Redux
- * 
+ *
  * @export
- * @author wangyuan
  * @class App
  * @extends {React.Component<Props>}
  */

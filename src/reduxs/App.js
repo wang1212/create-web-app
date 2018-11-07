@@ -2,13 +2,13 @@
 
 // init state
 const initialState = (state = {}) => ({
-	name   : 'React App',
-	version: '1.0.0',
+	name   : 'App develop with react.js',
+	version: '0.1.2',
 	...state
 });
 
 
-/** 
+/**
  * @name Action
  * @type {Object}
  */
