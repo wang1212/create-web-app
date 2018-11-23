@@ -10,7 +10,7 @@ Project development launch configuration using webpack. Suitable for any project
     |   └── jsdoc/      # JSDOC 生成的 API 文档
     |── config/   # 开发环境配置
     |   |── nginx.conf            # nginx 服务器配置
-    |   ├── gulpfile.config.js    # gulp 路径配置
+    |   ├── path.config.js        # 路径配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   └── jsdoc.config.js       # JSDOC 配置
@@ -21,12 +21,12 @@ Project development launch configuration using webpack. Suitable for any project
     |   ├── app.html
     |   ├── app.js
     |   └── app.scss
-    └── .eslintrc.json    # eslint 代码规则检查配置
+    └── .eslintrc.json     # eslint 代码规则检查配置
 
 ## Workflow
 
 - 利用 nginx 反向代理实现前后端的完全分离开发/部署解决方案
-- gulp 任务流实现自动化构建，webpack 则进行 js 文件模块化管理。
+- 利用 webpack 进行模块化管理，打包、压缩、优化
 
 ## API Document
 
