@@ -3,7 +3,7 @@
 // init state
 const initialState = (state = {}) => ({
 	name   : 'App develop with react.js',
-	version: '0.1.2',
+	version: '0.1.3',
 	...state
 });
 

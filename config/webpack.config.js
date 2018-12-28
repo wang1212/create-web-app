@@ -10,7 +10,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	MiniCssExtractPlugin    = require('mini-css-extract-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
-	ImageminJpeg            = require('imagemin-jpeg-recompress');
+	ImageminJpeg            = require('imagemin-jpeg-recompress'),
+	BundleAnalyzerPlugin    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -58,9 +59,8 @@ module.exports = {
 					{
 						loader : 'css-loader',
 						options: {
-							minimize    : true,
-							sourceMap   : true,
-							importLoader: 2
+							sourceMap    : true,
+							importLoaders: 2
 						}
 					},
 					{
@@ -82,8 +82,21 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(png|jpg|gif)$/,
-				use : [
+				test   : /\.(html)$/,
+				exclude: /node_modules/,
+				use    : [
+					{
+						loader : 'html-loader',
+						options: {
+							attrs: ['img:src', 'img:data-src']
+						}
+					}
+				]
+			},
+			{
+				test   : /\.(png|jpg|gif)$/,
+				exclude: /node_modules/,
+				use    : [
 					{
 						loader : 'url-loader',
 						options: {
@@ -133,7 +146,8 @@ module.exports = {
 			plugins : [
 				ImageminJpeg()
 			]
-		})
+		}),
+		new BundleAnalyzerPlugin()
 	],
 	resolve: {
 		alias: {
