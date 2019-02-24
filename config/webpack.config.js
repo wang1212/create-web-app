@@ -83,6 +83,18 @@ module.exports = {
 				]
 			},
 			{
+				test   : /\.(html)$/,
+				exclude: /node_modules/,
+				use    : [
+					{
+						loader : 'html-loader',
+						options: {
+							attrs: ['img:src', 'img:data-src']
+						}
+					}
+				]
+			},
+			{
 				test: /\.(png|jpg|gif)$/,
 				use : [
 					{

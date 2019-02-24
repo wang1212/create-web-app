@@ -5,7 +5,7 @@ Project development launch configuration using webpack. Suitable for any project
 ## Directory Structure
 
     App/
-    ├── dist/     # 压缩、编译后的代码，用于生产环境
+    ├── build/    # 压缩、编译后的代码，用于生产环境
     ├── docs/     # 项目文档
     |   └── jsdoc/      # JSDOC 生成的 API 文档
     |── config/   # 开发环境配置
