@@ -11,7 +11,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
 	ImageminJpeg            = require('imagemin-jpeg-recompress'),
-	BundleAnalyzerPlugin    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+	BundleAnalyzerPlugin    = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+	OfflinePlugin           = require( 'offline-plugin' );
 
 
 module.exports = {
@@ -112,14 +113,21 @@ module.exports = {
 			context : '.',
 			manifest: PATH.join(path_config.dist, './vendor-manifest.json')
 		}),
-		new CopyWebpackPlugin([{
-			from : './src/vendors',
-			to   : './vendors',
-			cache: true
-		}]),
+		new CopyWebpackPlugin( [
+			{
+				from : './public',
+				to   : '.',
+				cache: true
+			},
+			{
+				from : './src/vendors',
+				to   : './vendors',
+				cache: true
+			}
+		] ),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: './src/app.html',
+			template: './public/tmp_index.html',
 			chunks  : ['app', 'commons']
 		}),
 		new MiniCssExtractPlugin({
@@ -147,7 +155,13 @@ module.exports = {
 				ImageminJpeg()
 			]
 		}),
-		new BundleAnalyzerPlugin()
+		new BundleAnalyzerPlugin(),
+		new OfflinePlugin( {
+			appShell : '/',
+			externals: [
+				'vendor.js'
+			]
+		} )
 	],
 	resolve: {
 		alias: {
