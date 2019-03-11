@@ -40,6 +40,10 @@ Project development launch configuration using webpack. Suitable for application
 
 使用 flow.js 来做静态语法校验。
 
+## PWA
+
+PWA（Progressive Web App），利用谷歌的 WorkBox 工具提供的 `workbox-webpack-plugin` 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+
 ## Usage
 
 1. 首先，安装开发环境所有的依赖

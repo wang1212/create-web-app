@@ -12,7 +12,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
 	ImageminJpeg            = require('imagemin-jpeg-recompress'),
 	BundleAnalyzerPlugin    = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
-	OfflinePlugin           = require( 'offline-plugin' );
+	OfflinePlugin           = require( 'offline-plugin' ),
+	WorkboxPlugin           = require('workbox-webpack-plugin');
 
 
 module.exports = {
@@ -156,12 +157,13 @@ module.exports = {
 			]
 		}),
 		new BundleAnalyzerPlugin(),
-		new OfflinePlugin( {
-			appShell : '/',
-			externals: [
-				'vendor.js'
-			]
-		} )
+		new WorkboxPlugin.GenerateSW( {
+			importWorkboxFrom            : 'local',
+			importsDirectory             : 'wb-assets',
+			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+			globDirectory                : path_config.dist,
+			globPatterns                 : [ 'vendor-manifest.json', 'vendor.js' ],
+		})
 	],
 	resolve: {
 		alias: {

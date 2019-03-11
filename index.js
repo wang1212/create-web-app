@@ -19,7 +19,7 @@ browser_sync.init({
 
 del([Path.dist], { force: true }).then(() => {
 
-	console.log('--------- clean dir is completed ! -----------');
+	console.log('--------- clean dir is completed ! -----------\n');
 
 	// webpack
 	return new Promise((resolve, reject) => {
