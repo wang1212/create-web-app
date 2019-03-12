@@ -12,7 +12,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
 	ImageminJpeg            = require('imagemin-jpeg-recompress'),
 	BundleAnalyzerPlugin    = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
-	OfflinePlugin           = require( 'offline-plugin' ),
 	WorkboxPlugin           = require('workbox-webpack-plugin');
 
 
@@ -162,7 +161,29 @@ module.exports = {
 			importsDirectory             : 'wb-assets',
 			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
 			globDirectory                : path_config.dist,
-			globPatterns                 : [ 'vendor-manifest.json', 'vendor.js' ],
+			globPatterns: [ 'vendor-manifest.json', 'vendor.js' ],
+			runtimeCaching: [
+				{
+					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+					handler: 'StaleWhileRevalidate',
+					options: {
+						cacheName: 'google-fonts-stylesheets'
+					}
+				},
+				{
+					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+					handler: 'CacheFirst',
+					options: {
+						cacheName: 'google-fonts-webfonts',
+						cacheableResponse: {
+							statuses: [ 0, 200 ]
+						},
+						expiration: {
+							maxAgeSeconds: 60 * 60 * 24 * 365
+						}
+					}
+				}
+			]
 		})
 	],
 	resolve: {
