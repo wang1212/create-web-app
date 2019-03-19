@@ -13,7 +13,8 @@ Project development launch configuration using webpack. Suitable for application
     |   ├── path.config.js        # 项目路径配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
-    |   └── jsdoc.config.js       # JSDOC 配置
+    |   ├── jest.config.js        # jest  代码测试配置
+    |   └── jsdoc.config.js       # jsdoc 文档配置
     |── src/      # 源代码
     |   ├── components/    # 组件
     |   |   └── shared/    # 公共组件
@@ -23,6 +24,7 @@ Project development launch configuration using webpack. Suitable for application
     |   ├── app.html
     |   ├── app.jss
     |   └── app.scss
+    |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
     |── .flowconfig       # flow 语法检查配置
     └── index.js          # 启动脚本
@@ -63,10 +65,14 @@ PWA（Progressive Web App），利用谷歌的 WorkBox 工具提供的 `workbox-
 
 		npm run start
 
-4. 生成 jsdoc 文档
+4. 执行代码测试
+
+        npm run test
+
+5. 生成 jsdoc 文档
 
 		npm run jsdoc
 
-4. 构建生产环境代码，将会在 **dist/** 目录中生成部署代码
+6. 构建生产环境代码，将会在 **dist/** 目录中生成部署代码
 
 		npm run build

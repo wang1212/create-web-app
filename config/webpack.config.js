@@ -11,83 +11,82 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
 	ImageminJpeg            = require('imagemin-jpeg-recompress'),
-	BundleAnalyzerPlugin    = require( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+	BundleAnalyzerPlugin    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
 	WorkboxPlugin           = require('workbox-webpack-plugin');
 
 
 module.exports = {
-	mode        : path_config.dev ? 'development'                 : 'production',
-	target      : 'web',
-	devtool     : path_config.map ? 'cheap-module-eval-source-map': 'none',
-	watch       : true,
+	mode: path_config.dev ? 'development' : 'production',
+	target: 'web',
+	devtool: path_config.map ? 'cheap-module-eval-source-map' : 'none',
+	watch: true,
 	watchOptions: {
 		ignored: /node_modules/
 	},
 	context: PATH.resolve(__dirname, '../'),
-	entry  : {
+	entry: {
 		app: './src/app.js'
 	},
 	output: {
-		path         : path_config.dist,
-		filename     : path_config.dev ? '[name].js': '[name].[chunkhash].js',
-		chunkFilename: path_config.dev ? '[name].js': '[name].[chunkhash].js'
+		path: path_config.dist,
+		filename: path_config.dev ? '[name].js' : '[name].[chunkhash].js',
+		chunkFilename: path_config.dev ? '[name].js' : '[name].[chunkhash].js'
 	},
-	module : {
+	module: {
 		rules: [
 			{
-				test   : /\.(js|jsx)$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use    : [
+				use: [
 					{
-						loader : 'babel-loader',
+						loader: 'babel-loader',
 						options: {
-							presets: ['@babel/preset-env', '@babel/preset-flow', '@babel/preset-react'],
-							plugins: [
-								require('@babel/plugin-syntax-dynamic-import'),
-								require('@babel/plugin-proposal-class-properties'),
-								require('@babel/plugin-proposal-object-rest-spread')
-							],
-							sourceMaps: true
+							cacheDirectory: true,
+							sourceMaps: path_config.dev
 						}
 					}
 				]
 			},
 			{
-				test   : /\.(sa|sc|c)ss$/,
+				test: /\.(sa|sc|c)ss$/,
 				exclude: /node_modules/,
-				use    : [
-					path_config.dev ? 'style-loader': MiniCssExtractPlugin.loader,
+				use: [
+					path_config.dev
+						? 'style-loader'
+						: MiniCssExtractPlugin.loader,
 					{
-						loader : 'css-loader',
+						loader: 'css-loader',
 						options: {
-							sourceMap    : true,
+							sourceMap: path_config.dev,
 							importLoaders: 2
 						}
 					},
 					{
-						loader : 'postcss-loader',
+						loader: 'postcss-loader',
 						options: {
-							sourceMap: true,
-							ident    : 'postcss',
-							plugins  : () => [
-								require('autoprefixer')({ browsers: ['last 2 versions'] })
+							sourceMap: path_config.dev,
+							ident: 'postcss',
+							plugins: () => [
+								require('autoprefixer')({
+									browsers: ['last 2 versions']
+								})
 							]
 						}
 					},
 					{
-						loader : 'sass-loader',
+						loader: 'sass-loader',
 						options: {
-							sourceMap: true
+							sourceMap: path_config.dev
 						}
 					}
 				]
 			},
 			{
-				test   : /\.(html)$/,
+				test: /\.(html)$/,
 				exclude: /node_modules/,
-				use    : [
+				use: [
 					{
-						loader : 'html-loader',
+						loader: 'html-loader',
 						options: {
 							attrs: ['img:src', 'img:data-src']
 						}
@@ -95,11 +94,11 @@ module.exports = {
 				]
 			},
 			{
-				test   : /\.(png|jpg|gif)$/,
+				test: /\.(png|jpg|gif)$/,
 				exclude: /node_modules/,
-				use    : [
+				use: [
 					{
-						loader : 'url-loader',
+						loader: 'url-loader',
 						options: {
 							limit: 8192
 						}
@@ -110,29 +109,29 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.DllReferencePlugin({
-			context : '.',
+			context: '.',
 			manifest: PATH.join(path_config.dist, './vendor-manifest.json')
 		}),
-		new CopyWebpackPlugin( [
+		new CopyWebpackPlugin([
 			{
-				from : './public',
-				to   : '.',
+				from: './public',
+				to: '.',
 				cache: true
 			},
 			{
-				from : './src/vendors',
-				to   : './vendors',
+				from: './src/vendors',
+				to: './vendors',
 				cache: true
 			}
-		] ),
+		]),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './public/tmp_index.html',
-			chunks  : ['app', 'commons']
+			chunks: ['app', 'commons']
 		}),
 		new MiniCssExtractPlugin({
-			filename     : path_config.dev ? '[name].css': '[name].[hash].css',
-			chunkFilename: path_config.dev ? '[id].css'  : '[id].[hash].css',
+			filename: path_config.dev ? '[name].css' : '[name].[hash].css',
+			chunkFilename: path_config.dev ? '[id].css' : '[id].[hash].css'
 		}),
 		new ImageminPlugin({
 			disable: path_config.dev,
@@ -141,27 +140,22 @@ module.exports = {
 			},
 			gifsicle: {
 				optimizationLevel: 3,
-				interlaced       : true
+				interlaced: true
 			},
 			jpegtran: null,
-			svgo    : {
-				plugins: [
-					{ removeViewBox: true },
-					{ cleanupIDs: false }
-				]
+			svgo: {
+				plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
 			},
 			pngquant: {},
-			plugins : [
-				ImageminJpeg()
-			]
+			plugins: [ImageminJpeg()]
 		}),
 		new BundleAnalyzerPlugin(),
-		new WorkboxPlugin.GenerateSW( {
-			importWorkboxFrom            : 'local',
-			importsDirectory             : 'wb-assets',
+		new WorkboxPlugin.GenerateSW({
+			importWorkboxFrom: 'local',
+			importsDirectory: 'wb-assets',
 			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-			globDirectory                : path_config.dist,
-			globPatterns: [ 'vendor-manifest.json', 'vendor.js' ],
+			globDirectory: path_config.dist,
+			globPatterns: ['vendor-manifest.json', 'vendor.js'],
 			runtimeCaching: [
 				{
 					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
@@ -176,7 +170,7 @@ module.exports = {
 					options: {
 						cacheName: 'google-fonts-webfonts',
 						cacheableResponse: {
-							statuses: [ 0, 200 ]
+							statuses: [0, 200]
 						},
 						expiration: {
 							maxAgeSeconds: 60 * 60 * 24 * 365
@@ -189,29 +183,29 @@ module.exports = {
 	resolve: {
 		alias: {
 			components: PATH.resolve('./src/components/'),
-			reduxs    : PATH.resolve('./src/reduxs/'),
-			utils     : PATH.resolve('./src/utils/'),
-			vendors   : PATH.resolve('./src/vendors/')
+			reduxs: PATH.resolve('./src/reduxs/'),
+			utils: PATH.resolve('./src/utils/'),
+			vendors: PATH.resolve('./src/vendors/')
 		}
 	},
 	optimization: {
 		minimizer: [
 			new UglifyJsPlugin({
-				cache    : true,
-				parallel : true,
-				sourceMap: true
+				cache: true,
+				parallel: true,
+				sourceMap: path_config.dev
 			}),
 			new OptimizeCSSAssetsPlugin({})
 		],
 		splitChunks: {
 			cacheGroups: {
 				commons: {
-					chunks            : 'initial',
-					minChunks         : 2,
+					chunks: 'initial',
+					minChunks: 2,
 					maxInitialRequests: 5,
-					minSize           : 30000,
-					reuseExistingChunk: true,
-				},
+					minSize: 30000,
+					reuseExistingChunk: true
+				}
 				/* 	vendor: {
 					test    : /node_modules/,
 					chunks  : 'initial',
@@ -220,13 +214,13 @@ module.exports = {
 					enforce : true
 				} */
 			}
-		},
+		}
 		//runtimeChunk: true
 	},
 	performance: {
-		hints      : 'warning',
+		hints: 'warning',
 		assetFilter: assetFilename => {
-			return path_config.dev ? false: !(/vendor/.test(assetFilename));
+			return path_config.dev ? false : !/vendor/.test(assetFilename);
 		}
 	}
 };

@@ -4,7 +4,6 @@
 
 import axios from 'axios';
 
-import { set_loading_status } from 'reduxs/Global.js';
 import { clear_data } from 'reduxs/Auth.js';
 
 
@@ -21,7 +20,6 @@ const A = axios.create({
 A.interceptors.request.use(
 	config => {
 		// add loading animation
-		window._store && _store.dispatch(set_loading_status(true));
 
 		return config;
 	},
@@ -32,7 +30,6 @@ A.interceptors.request.use(
 A.interceptors.response.use(
 	response => {
 		// clear loading animation
-		window._store && _store.dispatch(set_loading_status(false));
 
 		return response;
 	},
@@ -40,7 +37,6 @@ A.interceptors.response.use(
 		let status;
 
 		// clear loading animation
-		window._store && _store.dispatch(set_loading_status(false));
 
 		// check response status
 		if (error.response) {

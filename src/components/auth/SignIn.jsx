@@ -16,7 +16,7 @@ type Props = {
 
 /**
  * Sign In system
- * 
+ *
  * @author wangyuan
  * @class SignIn
  * @extends {React.Component<Props>}
@@ -35,7 +35,7 @@ class SignIn extends React.Component<Props> {
 		this.props.signIn({ name: 'mrwang' });
 	}
 
-	render() {
+	render () {
 		return (
 			<div>
 				<h1 onClick={this.login}>点击登录！</h1>

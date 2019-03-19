@@ -3,7 +3,7 @@
 // init state
 const initialState = (state = {}) => ({
 	name   : 'App develop with react.js',
-	version: '0.1.4',
+	version: '0.1.6',
 	...state
 });
 
@@ -21,7 +21,7 @@ type Action = {
 // redux reducer
 export default (state: Object = initialState(), action: Action) => {
 	switch (action.type) {
-	default: 
+	default:
 		return state;
 	}
 };

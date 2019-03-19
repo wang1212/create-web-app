@@ -10,7 +10,6 @@ import logger from 'redux-logger';
 import rootReducer from 'reduxs/index.js';
 
 import Auth from './Auth.jsx';
-import Global from './Global.jsx';
 
 
 // redux store
@@ -39,7 +38,6 @@ export default class App extends React.Component {
 			<Provider store={store}>
 				<React.Fragment>
 					<Auth />
-					<Global />
 				</React.Fragment>
 			</Provider>
 		);

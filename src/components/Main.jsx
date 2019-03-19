@@ -6,7 +6,7 @@ import './main.scss';
 
 import React from 'react';
 import Loadable from 'react-loadable';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
 import Loading from 'components/shared/Loading.jsx';
 
@@ -55,11 +55,13 @@ class Main extends React.Component<Props> {
 				<Link to='/more'>more</Link>
 				<hr /><br />
 				<main className="content">
-					<Route strict path='/home' render={() => <LoadHome auth={auth} />} />
-					<Route strict path='/about' render={() => <LoadAbout auth={auth} />} />
-					<Route strict path='/more' render={() => <LoadMore auth={auth} />} />
+					<Switch>
+						<Redirect exact from='/' to='/home' />
+						<Route strict path='/home' render={() => <LoadHome auth={auth} />} />
+						<Route strict path='/about' render={() => <LoadAbout auth={auth} />} />
+						<Route strict path='/more' render={() => <LoadMore auth={auth} />} />
+					</Switch>
 				</main>
-				<Redirect from='/' to='/home' />
 			</section>
 		);
 	}
