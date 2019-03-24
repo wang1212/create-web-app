@@ -56,8 +56,8 @@
     "workbox-webpack-plugin": "^4.1.1"
   },
   "scripts": {
-    "start": "set NODE_ENV=development && node index.js",
-    "build": "node index.js",
+    "start": "set NODE_ENV=development && node scripts/index.js",
+    "build": "node scripts/index.js",
     "test": "jest --config=./config/jest.config.js",
     "webpack": "npx webpack --config ./config/webpack.config.js",
     "flow": "flow",
