@@ -1,9 +1,14 @@
-const PATH = require('path');
+/*! webpack config */
 
-const path_config = require('./path.config.js');
+'use strict';
 
+// node tool
+const path = require('path');
+
+// webpack tool
 const webpack = require('webpack');
 
+// webpack plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	HtmlWebpackPlugin       = require('html-webpack-plugin'),
 	UglifyJsPlugin          = require('uglifyjs-webpack-plugin'),
@@ -15,58 +20,61 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	WorkboxPlugin           = require('workbox-webpack-plugin');
 
 
-module.exports = {
-	mode: path_config.dev ? 'development' : 'production',
-	target: 'web',
-	devtool: path_config.map ? 'cheap-module-eval-source-map' : 'none',
-	watch: true,
+module.exports = ({
+	NODE_ENV,
+	SRC_DIR,
+	BUILD_DIR,
+	is_dev = NODE_ENV === 'development'
+}) => ({
+	mode        : NODE_ENV,
+	target      : 'web',
+	devtool     : is_dev ? 'cheap-module-eval-source-map': 'none',
+	watch       : true,
 	watchOptions: {
 		ignored: /node_modules/
 	},
-	context: PATH.resolve(__dirname, '../'),
-	entry: {
-		app: './src/app.js'
+	context: path.resolve(__dirname, '../'),
+	entry  : {
+		app: SRC_DIR + 'app.js'
 	},
 	output: {
-		path: path_config.dist,
-		filename: path_config.dev ? '[name].js' : '[name].[chunkhash].js',
-		chunkFilename: path_config.dev ? '[name].js' : '[name].[chunkhash].js'
+		path         : BUILD_DIR,
+		filename     : is_dev ? '[name].js': '[name].[chunkhash].js',
+		chunkFilename: is_dev ? '[name].js': '[name].[chunkhash].js'
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test   : /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: [
+				use    : [
 					{
-						loader: 'babel-loader',
+						loader : 'babel-loader',
 						options: {
 							cacheDirectory: true,
-							sourceMaps: path_config.dev
+							sourceMaps    : is_dev
 						}
 					}
 				]
 			},
 			{
-				test: /\.(sa|sc|c)ss$/,
+				test   : /\.(sa|sc|c)ss$/,
 				exclude: /node_modules/,
-				use: [
-					path_config.dev
-						? 'style-loader'
-						: MiniCssExtractPlugin.loader,
+				use    : [
+					is_dev ? 'style-loader': MiniCssExtractPlugin.loader,
 					{
-						loader: 'css-loader',
+						loader : 'css-loader',
 						options: {
-							sourceMap: path_config.dev,
+							sourceMap    : is_dev,
 							importLoaders: 2
 						}
 					},
 					{
-						loader: 'postcss-loader',
+						loader : 'postcss-loader',
 						options: {
-							sourceMap: path_config.dev,
-							ident: 'postcss',
-							plugins: () => [
+							sourceMap: is_dev,
+							ident    : 'postcss',
+							plugins  : () => [
 								require('autoprefixer')({
 									browsers: ['last 2 versions']
 								})
@@ -74,19 +82,19 @@ module.exports = {
 						}
 					},
 					{
-						loader: 'sass-loader',
+						loader : 'sass-loader',
 						options: {
-							sourceMap: path_config.dev
+							sourceMap: is_dev
 						}
 					}
 				]
 			},
 			{
-				test: /\.(html)$/,
+				test   : /\.(html)$/,
 				exclude: /node_modules/,
-				use: [
+				use    : [
 					{
-						loader: 'html-loader',
+						loader : 'html-loader',
 						options: {
 							attrs: ['img:src', 'img:data-src']
 						}
@@ -94,11 +102,11 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(png|jpg|gif)$/,
+				test   : /\.(png|jpg|gif)$/,
 				exclude: /node_modules/,
-				use: [
+				use    : [
 					{
-						loader: 'url-loader',
+						loader : 'url-loader',
 						options: {
 							limit: 8192
 						}
@@ -109,66 +117,66 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.DllReferencePlugin({
-			context: '.',
-			manifest: PATH.join(path_config.dist, './vendor-manifest.json')
+			context : '.',
+			manifest: path.join(BUILD_DIR, './vendor-manifest.json')
 		}),
 		new CopyWebpackPlugin([
 			{
-				from: './public',
-				to: '.',
+				from : './public',
+				to   : '.',
 				cache: true
 			},
 			{
-				from: './src/vendors',
-				to: './vendors',
+				from : './src/vendors',
+				to   : './vendors',
 				cache: true
 			}
 		]),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './public/tmp_index.html',
-			chunks: ['app', 'commons']
+			chunks  : ['app', 'commons']
 		}),
 		new MiniCssExtractPlugin({
-			filename: path_config.dev ? '[name].css' : '[name].[hash].css',
-			chunkFilename: path_config.dev ? '[id].css' : '[id].[hash].css'
+			filename     : is_dev ? '[name].css': '[name].[hash].css',
+			chunkFilename: is_dev ? '[id].css'  : '[id].[hash].css'
 		}),
 		new ImageminPlugin({
-			disable: path_config.dev,
+			disable: is_dev,
 			optipng: {
 				optimizationLevel: 7
 			},
 			gifsicle: {
 				optimizationLevel: 3,
-				interlaced: true
+				interlaced       : true
 			},
 			jpegtran: null,
-			svgo: {
+			svgo    : {
 				plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
 			},
 			pngquant: {},
-			plugins: [ImageminJpeg()]
+			plugins : [ImageminJpeg()]
 		}),
 		new BundleAnalyzerPlugin(),
 		new WorkboxPlugin.GenerateSW({
-			importWorkboxFrom: 'local',
-			importsDirectory: 'wb-assets',
+			importWorkboxFrom            : 'local',
+			importsDirectory             : 'wb-assets',
 			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-			globDirectory: path_config.dist,
-			globPatterns: ['vendor-manifest.json', 'vendor.js'],
-			runtimeCaching: [
+			globDirectory                : BUILD_DIR,
+			globPatterns                 : ['vendor-manifest.json', 'vendor.js'],
+			runtimeCaching               : [
 				{
 					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-					handler: 'StaleWhileRevalidate',
-					options: {
+					handler   : 'StaleWhileRevalidate',
+					options   : {
 						cacheName: 'google-fonts-stylesheets'
 					}
 				},
 				{
 					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
-					handler: 'CacheFirst',
-					options: {
-						cacheName: 'google-fonts-webfonts',
+					handler   : 'CacheFirst',
+					options   : {
+						cacheName        : 'google-fonts-webfonts',
 						cacheableResponse: {
 							statuses: [0, 200]
 						},
@@ -182,28 +190,28 @@ module.exports = {
 	],
 	resolve: {
 		alias: {
-			components: PATH.resolve('./src/components/'),
-			reduxs: PATH.resolve('./src/reduxs/'),
-			utils: PATH.resolve('./src/utils/'),
-			vendors: PATH.resolve('./src/vendors/')
+			components: path.resolve('./src/components/'),
+			reduxs    : path.resolve('./src/reduxs/'),
+			utils     : path.resolve('./src/utils/'),
+			vendors   : path.resolve('./src/vendors/')
 		}
 	},
 	optimization: {
 		minimizer: [
 			new UglifyJsPlugin({
-				cache: true,
-				parallel: true,
-				sourceMap: path_config.dev
+				cache    : true,
+				parallel : true,
+				sourceMap: is_dev
 			}),
 			new OptimizeCSSAssetsPlugin({})
 		],
 		splitChunks: {
 			cacheGroups: {
 				commons: {
-					chunks: 'initial',
-					minChunks: 2,
+					chunks            : 'initial',
+					minChunks         : 2,
 					maxInitialRequests: 5,
-					minSize: 30000,
+					minSize           : 30000,
 					reuseExistingChunk: true
 				}
 				/* 	vendor: {
@@ -218,9 +226,9 @@ module.exports = {
 		//runtimeChunk: true
 	},
 	performance: {
-		hints: 'warning',
+		hints      : 'warning',
 		assetFilter: assetFilename => {
-			return path_config.dev ? false : !/vendor/.test(assetFilename);
+			return is_dev ? false: !/vendor/.test(assetFilename);
 		}
 	}
-};
+});

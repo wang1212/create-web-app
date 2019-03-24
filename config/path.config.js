@@ -1,14 +1,15 @@
-/*! Path config */
+/*! path config */
 
-const NODE_ENV = process.env.NODE_ENV || 'production';
+'use strict';
 
-const SRC_DIR = './src/',
-	DIST_DIR = NODE_ENV === 'production' ? require('path').resolve(__dirname, '../build/') : 'D:\\nginx-1.15.5\\webapps\\App\\';
 
-module.exports = {
-	dev: !(NODE_ENV === 'production'),
-	map: !(NODE_ENV === 'production'),
-
-	src : SRC_DIR,
-	dist: DIST_DIR
-};
+module.exports = (NODE_ENV, is_dev = NODE_ENV === 'development') => ({
+	/* app src directory */
+	src: './src/',
+	/* app build directory */
+	build: is_dev
+		? 'D:\\nginx-1.15.5\\webapps\\App\\'
+		: require('path').resolve(__dirname, '../build/'),
+	/* server proxy */
+	proxy: 'http://localhost:8181/App/'
+});

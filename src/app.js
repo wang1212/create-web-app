@@ -1,5 +1,7 @@
 /* App entry file */
 
+// @flow
+
 import './app.scss';
 
 import React from 'react';

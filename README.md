@@ -1,6 +1,6 @@
-# Dev-Starter-with-react
+# Dev-Starter-with-React
 
-Project development launch configuration using webpack. Suitable for applications that rely on react.js && redux && react-router development.
+:smile: 使用 webpack 进行项目构建配置。适用于依赖 React.js、Redux、React-Router 开发的应用程序。
 
 ## Directory Structure
 
@@ -15,6 +15,8 @@ Project development launch configuration using webpack. Suitable for application
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
     |   ├── jest.config.js        # jest  代码测试配置
     |   └── jsdoc.config.js       # jsdoc 文档配置
+    |── scripts/  # 脚本
+    |   └── index.js       # 启动脚本
     |── src/      # 源代码
     |   ├── components/    # 组件
     |   |   └── shared/    # 公共组件
@@ -26,27 +28,21 @@ Project development launch configuration using webpack. Suitable for application
     |   └── app.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
-    |── .flowconfig       # flow 语法检查配置
-    └── index.js          # 启动脚本
+    └── .flowconfig       # flow 语法检查配置
 
-## Workflow
+## Features
 
-- 利用 nginx 反向代理实现前后端的完全分离开发/部署解决方案
-- 利用 webpack 进行模块化管理，打包、压缩、优化
-
-## API Document
-
-利用 JSDOC 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
-
-## Grammar check
-
-使用 flow.js 来做静态语法校验。
-
-## PWA
-
-PWA（Progressive Web App），利用谷歌的 WorkBox 工具提供的 `workbox-webpack-plugin` 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+- SPA：项目以 [SPA 单页面应用](https://en.wikipedia.org/wiki/Single-page_application) 方式进行构建。
+- PWA：利用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+- Nginx：利用 [nginx](http://nginx.org/) 反向代理实现前后端的完全分离开发/部署解决方案。
+- Webpack：利用 [webpack](https://webpack.js.org/) 进行模块化管理，打包、压缩、优化。
+- Flow.js：使用 [flow](https://flow.org/) 来做静态语法校验。
+- Jest：使用 [jest](https://jestjs.io/) 来做单元测试。
+- JSDoc：利用 [jsdoc 3](http://usejsdoc.org/) 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
 
 ## Usage
+
+下载该项目的所有代码到本地。
 
 1. 首先，安装开发环境所有的依赖
 
@@ -55,11 +51,11 @@ PWA（Progressive Web App），利用谷歌的 WorkBox 工具提供的 `workbox-
 
 2. 服务器
 
-    若使用反向代理，需安装好 nginx，配置文件在 **config/nginx/** 中，启动 nginx ：
+    若使用反向代理，需在本地安装好 nginx，配置文件在 **config/nginx.conf** 中，启动 nginx ：
 
 		start nginx
 
-	若不使用反向代理，更改 **gulpfile.js** 中 browser_sync 插件的配置即可。
+	若不使用反向代理，更改 **scripts/index.js** 中 [BrowserSync](https://www.browsersync.io/) 插件的配置即可。
 
 3. 启动项目（开发环境）
 
@@ -73,6 +69,6 @@ PWA（Progressive Web App），利用谷歌的 WorkBox 工具提供的 `workbox-
 
 		npm run jsdoc
 
-6. 构建生产环境代码，将会在 **dist/** 目录中生成部署代码
+6. 构建生产环境代码，将会在 **build/** 目录中生成部署代码
 
 		npm run build
