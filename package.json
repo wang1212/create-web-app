@@ -1,6 +1,6 @@
 {
   "name": "dev-starter-with-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Project development launch configuration using webpack. Suitable for applications that rely on react.js && redux && react-router development.",
   "main": "index.js",
   "dependencies": {
