@@ -1,0 +1,21 @@
+{
+	"name"       : "App dev with Webpack",
+	"short_name" : "App",
+	"description": "Project development launch configuration using webpack. Suitable for any project that does not use a framework.",
+	"icons"      : [
+		{
+			"src"  : "favicon.png",
+			"type" : "image/png",
+			"sizes": "64x64"
+		},
+		{
+			"src"  : "favicon_512.png",
+			"type" : "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url"       : ".",
+	"display"         : "standalone",
+	"background_color": "#000000",
+	"theme_color"     : "#278fef"
+}

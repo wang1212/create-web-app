@@ -17,8 +17,10 @@
 	<meta name="keywords" content="keyword1,keyword2" />
 	<!-- 页面内容描述（搜索引擎抓取） -->
 	<meta name="description" content="This is my page" />
+	<meta name="theme-color" content="#278fef" />
+	<link rel="icon" href="favicon.ico">
+	<link rel="manifest" href="manifest.json">
 	<!-- 页面 css 初始化（保证各浏览器页面默认样式统一，应最先引入，bootstrap 框架已内置该文件） -->
-	<link rel="stylesheet" href="./app.min.css">
 	<!-- IE6-8  兼容解决方案
 		html5shiv ： 提供对 html5 新标签（例如 footer、nav）的支持;
 		respond ： 用来提供对 CSS3 @media媒体查询机制（min-width/max-width）的支持。
@@ -33,8 +35,18 @@
 		// 判断是不是 IE 8 以下
 		var _lte_IE_8 = !!(navigator.appName == 'Microsoft Internet Explorer' && +navigator.appVersion.split(';')[1].match(/\d+/)[0] < 9);
 	</script>
+	<script>
+		// Check that service workers are registered
+		if (location.protocol != 'file:' && 'serviceWorker' in navigator ) {
+			// Use the window load event to keep the page load performant
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register( 'service-worker.js' );
+			});
+		}
+	</script>
 </head>
 <body>
+	<div id="App" class="App"></div>
 
 	<!-- IE6-8  兼容解决方案
 		selectivizr ：提供对 CSS3 新选择器（例如 :nth-child、:last-child）的支持，style 标签内样式不解析，动态生成的 DOM 也不解析。（需要 jQuery、dojo 等库的支持）
@@ -44,6 +56,6 @@
 	<!--[if lte IE 8]>
 		<script type="text/javascript" src="./vendors/plugins/compatible-plugin/selectivizr.min.js"></script>
 	<![endif]-->
-	<script src="./vendor.js"></script>
+	<script src="vendor.js"></script>
 </body>
 </html>

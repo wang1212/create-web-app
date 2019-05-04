@@ -1,6 +1,6 @@
 # Dev-Starter
 
-Project development launch configuration using webpack. Suitable for any project that does not use a framework.
+:smile: 使用 webpack 进行项目自动化构建配置。
 
 ## Directory Structure
 
@@ -10,27 +10,37 @@ Project development launch configuration using webpack. Suitable for any project
     |   └── jsdoc/      # JSDOC 生成的 API 文档
     |── config/   # 开发环境配置
     |   |── nginx.conf            # nginx 服务器配置
-    |   ├── path.config.js        # 路径配置
+    |   ├── path.config.js        # 项目路径配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
-    |   └── jsdoc.config.js       # JSDOC 配置
+    |   ├── jest.config.js        # jest  代码测试配置
+    |   └── jsdoc.config.js       # jsdoc 文档配置
+    |── public/   # 公共静态资源
+    |   ├── manifest.json  # 应用图标，名称信息
+    |   └── tmp_index.html # 主页 html 模板
+    |── scripts/  # 脚本
+    |   └── index.js       # 启动脚本
     |── src/      # 源代码
-    |   ├── components/    # 系统组件
-    |   ├── utils/         # 工具组件
+    |   ├── components/    # 组件
+    |   |   └── shared/    # 公共组件
+    |   ├── utils/         # 工具组件、常量
     |   ├── vendors/       # 外部依赖
-    |   ├── app.html
     |   ├── app.js
     |   └── app.scss
-    └── .eslintrc.json     # eslint 代码规则检查配置
+    |── .babelrc.js       # babel  编译配置
+    |── .eslintrc.json    # eslint 代码规则检查配置
+    └── .flowconfig       # flow 语法检查配置
 
-## Workflow
+## Features
 
-- 利用 nginx 反向代理实现前后端的完全分离开发/部署解决方案
-- 利用 webpack 进行模块化管理，打包、压缩、优化
-
-## API Document
-
-利用 JSDOC 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
+- Webpack：使用 [webpack](https://webpack.js.org/) 进行模块化管理，打包、压缩、优化。
+- BrowserSync：使用 [Browser-Sync](https://www.browsersync.io/) 插件配合 Webpack 实现热重载（hot reload），提高开发效率。
+- SPA：项目以 [SPA 单页面应用](https://en.wikipedia.org/wiki/Single-page_application) 方式进行构建。
+- PWA：使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+- Nginx：使用 [nginx](http://nginx.org/) 反向代理实现前后端的完全分离开发/部署解决方案。
+- Flow.js：使用 [flow](https://flow.org/) 来做静态语法校验。
+- Jest：使用 [jest](https://jestjs.io/) 来做单元测试。
+- JSDoc：使用 [jsdoc 3](http://usejsdoc.org/) 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
 
 ## Usage
 
@@ -40,20 +50,24 @@ Project development launch configuration using webpack. Suitable for any project
 
 2. 服务器
 
-    若使用反向代理，需安装好 nginx，配置文件在 **config/** 中，启动 nginx ：
+    若使用反向代理，需安装好 nginx，配置文件在 **config/nginx.conf** 中，启动 nginx ：
 
 		start nginx
 
-	若不使用反向代理，更改 **gulpfile.js** 中 browser_sync 插件的配置即可。
+	若不使用反向代理，更改 **scripts/index.js** 中 [BrowserSync](https://www.browsersync.io/) 插件的配置即可。
 
 3. 启动项目（开发环境）
 
 		npm run start
 
-4. 生成 jsdoc 文档
+4. 执行代码测试
+
+        npm run test
+
+5. 生成 jsdoc 文档
 
 		npm run jsdoc
 
-4. 构建生产环境代码，将会在 **dist/** 目录中生成部署代码
+6. 构建生产环境代码，将会在 **build/** 目录中生成部署代码
 
 		npm run build

@@ -1,0 +1,34 @@
+[ignore]
+<PROJECT_ROOT>/.vscode/
+<PROJECT_ROOT>/config/
+<PROJECT_ROOT>/docs/
+<PROJECT_ROOT>/flow-typed/
+<PROJECT_ROOT>/node_modules/
+<PROJECT_ROOT>/src/vendors/
+.*/__tests__/.*
+.*\.\(spec\|test\)\.[tj]s(x)?
+
+[include]
+
+[libs]
+<PROJECT_ROOT>/flow-typed/npm/
+
+[lints]
+
+[options]
+esproposal.class_instance_fields=ignore
+esproposal.class_static_fields=ignore
+esproposal.decorators=ignore
+
+module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^utils\/\(.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
+module.name_mapper='^vendors\/\(.*\)$' -> '<PROJECT_ROOT>/src/vendors/\1'
+
+munge_underscores=true
+
+emoji=true
+
+[strict]
+
+[version]
+0.98.0
