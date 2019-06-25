@@ -8,7 +8,7 @@ module.exports = (NODE_ENV, is_dev = NODE_ENV === 'development') => ({
 	src: './src/',
 	/* app build directory */
 	build: is_dev
-		? 'D:\\nginx-1.15.5\\webapps\\App\\'
+		? 'D:\\nginx\\webapps\\App\\'
 		: require('path').resolve(__dirname, '../build/'),
 	/* server proxy */
 	proxy: 'http://localhost:8181/App/'

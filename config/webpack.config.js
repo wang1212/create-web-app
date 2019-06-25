@@ -121,9 +121,10 @@ module.exports = ({
 		}),
 		new CopyWebpackPlugin([
 			{
-				from : './public',
-				to   : '.',
-				cache: true
+				from   : './public/*.!(ejs)',
+				to     : '.',
+				flatten: true,
+				cache  : true
 			},
 			{
 				from : './src/vendors',
@@ -132,9 +133,14 @@ module.exports = ({
 			}
 		]),
 		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: './public/tmp_index.html',
-			chunks  : ['app', 'commons']
+			chunks            : ['app', 'commons'],
+			filename          : 'index.html',
+			template          : './public/index.ejs',
+			templateParameters: {
+				favicon : 'favicon.ico',
+				manifest: 'manifest.json',
+				vendor  : 'vendor.js'
+			}
 		}),
 		new MiniCssExtractPlugin({
 			filename     : is_dev ? '[name].css': '[name].[hash].css',
