@@ -17,7 +17,7 @@
     |   └── jsdoc.config.js       # jsdoc 文档配置
     |── public/   # 公共静态资源
     |   ├── manifest.json  # 应用图标，名称信息
-    |   └── tmp_index.html # 主页 html 模板
+    |   └── index.ejs      # 主页 html 模板
     |── scripts/  # 脚本
     |   └── index.js       # 启动脚本
     |── src/      # 源代码
@@ -29,7 +29,8 @@
     |   └── app.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
-    └── .flowconfig       # flow 语法检查配置
+    |── .flowconfig       # flow 语法检查配置
+    └── tsconfig.json     # typescript 配置文件
 
 ## Features
 
@@ -37,16 +38,24 @@
 - BrowserSync：使用 [Browser-Sync](https://www.browsersync.io/) 插件配合 Webpack 实现热重载（hot reload），提高开发效率。
 - SPA：项目以 [SPA 单页面应用](https://en.wikipedia.org/wiki/Single-page_application) 方式进行构建。
 - PWA：使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
-- Nginx：使用 [nginx](http://nginx.org/) 反向代理实现前后端的完全分离开发/部署解决方案。
-- Flow.js：使用 [flow](https://flow.org/) 来做静态语法校验。
+- Flow.js：支持使用 [flow](https://flow.org/) 来做静态语法校验。
+- TypeScript：支持使用 [TypeScript](http://www.typescriptlang.org/) 进行编码。
+- ESLint：使用 [ESLint](https://eslint.org/) 来做语法规则检查。
 - Jest：使用 [jest](https://jestjs.io/) 来做单元测试。
 - JSDoc：使用 [jsdoc 3](http://usejsdoc.org/) 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
+- Nginx：使用 [nginx](http://nginx.org/) 反向代理实现前后端的完全分离开发/部署解决方案。
 
 ## Usage
 
-1. 首先，安装开发环境所有的依赖
+1. 安装依赖
+
+    首先，安装开发环境所有的依赖
 
 		npm install
+
+    若使用 [Flow.js](https://flow.org/)，还需运行以下命令安装类型定义库：
+
+        npm run flow-typed
 
 2. 服务器
 

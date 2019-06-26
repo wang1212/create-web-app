@@ -45,14 +45,31 @@ module.exports = ({
 	module: {
 		rules: [
 			{
-				test   : /\.(js|jsx)$/,
+				test   : /\.tsx?$/,
+				exclude: /node_modules/,
+				use    : [
+					{
+						loader: 'ts-loader'
+					}
+				]
+			},
+			{
+				test   : /\.worker\.js$/,
+				exclude: /node_modules/,
+				use    : [
+					{
+						loader: 'worker-loader'
+					}
+				]
+			},
+			{
+				test   : /\.jsx?$/,
 				exclude: /node_modules/,
 				use    : [
 					{
 						loader : 'babel-loader',
 						options: {
 							cacheDirectory: true,
-							sourceMaps    : is_dev
 						}
 					}
 				]
@@ -90,7 +107,7 @@ module.exports = ({
 				]
 			},
 			{
-				test   : /\.(html)$/,
+				test   : /\.html$/,
 				exclude: /node_modules/,
 				use    : [
 					{
@@ -194,7 +211,7 @@ module.exports = ({
 		})
 	],
 	resolve: {
-		alias: {
+		alias     : {
 			components: path.resolve('./src/components/'),
 			utils     : path.resolve('./src/utils/'),
 			vendors   : path.resolve('./src/vendors/')
