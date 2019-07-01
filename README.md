@@ -26,4 +26,8 @@ npm install -g @wang1212/create-web-app
 create-web-app [project_name]
 ```
 
+Note: `create-web-app` has an alias `create-pwa`.
+
+## Information
+
 For more information, read `web-app/README.md` file contents.

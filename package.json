@@ -1,16 +1,32 @@
 {
-  "name"       : "@wang1212/create-web-app",
-  "version"    : "0.2.0",
-  "keywords"   : ["web-app", "SPA", "PWA", "webpack4", "babel7", "flow.js", "jest", "typescript", "eslint"],
+  "name"    : "@wang1212/create-web-app",
+  "version" : "0.2.1",
+  "keywords": [
+    "web-app",
+    "SPA",
+    "PWA",
+    "webpack4",
+    "babel7",
+    "flow.js",
+    "jest",
+    "typescript",
+    "eslint"
+  ],
   "description": "Create PWA（Progressive Web App） project development environment startup configuration.",
   "homepage"   : "https://github.com/wang1212/create-web-app",
   "repository" : {
     "type": "git",
     "url" : "https://github.com/wang1212/create-web-app.git"
   },
-  "license"     : "ISC",
-  "author"      : "wang1212",
-  "bin"         : "index.js",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8"
+  },
+  "author": "wang1212",
+  "bin"   : {
+    "create-web-app": "index.js",
+    "create-pwa"    : "index.js"
+  },
   "dependencies": {
     "chalk"   : "^2.4.2",
     "fs-extra": "^8.1.0"
