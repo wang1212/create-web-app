@@ -1,9 +1,7 @@
 /*! jsdoc config  */
 
-const babel_config = require('../.babelrc.js');
-
-
 module.exports = {
+	plugins: ['node_modules/jsdoc-babel'],
 	tags: {
 		allowUnknownTags: true,
 		dictionaries: ['jsdoc', 'closure']
@@ -11,14 +9,11 @@ module.exports = {
 	source: {
 		include: ['src'],
 		exclude: ['src/vendors/'],
-		includePattern: '.+\\.(js|jsx)$',
+		includePattern: '.+\\.[tj]sx?$',
 		excludePattern: '(^|\\/|\\\\)_'
 	},
-	plugins: ['node_modules/jsdoc-babel'],
 	babel: {
-		extensions: ['js', 'jsx'],
-		presets: babel_config.presets,
-		plugins: babel_config.plugins
+		extensions: ['js', 'jsx', 'ts', 'tsx']
 	},
 	templates: {
 		cleverLinks: true,

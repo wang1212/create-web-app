@@ -24,7 +24,7 @@ module.exports = ({
 	NODE_ENV,
 	SRC_DIR,
 	BUILD_DIR,
-	is_dev = NODE_ENV == = 'development'
+	is_dev = NODE_ENV = =  = 'development'
 }) => ({
 	mode        : NODE_ENV,
 	target      : 'web',
@@ -45,15 +45,6 @@ module.exports = ({
 	module: {
 		rules: [
 			{
-				test   : /\.tsx?$/,
-				exclude: /node_modules/,
-				use    : [
-					{
-						loader: 'ts-loader'
-					}
-				]
-			},
-			{
 				test   : /\.worker\.js$/,
 				exclude: /node_modules/,
 				use    : [
@@ -63,7 +54,7 @@ module.exports = ({
 				]
 			},
 			{
-				test   : /\.jsx?$/,
+				test   : /\.[tj]sx?$/,
 				exclude: /node_modules/,
 				use    : [
 					{

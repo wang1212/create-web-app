@@ -36,7 +36,7 @@
 ## Features
 
 - [SPA](https://en.wikipedia.org/wiki/Single-page_application) - 应用以 SPA 单页面方式进行构建。
-- [PWA](https://en.wikipedia.org/wiki/Single-page_application) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+- [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
 - [Webpack](https://webpack.js.org/) - 自动化项目构建，模块化管理、打包、压缩、优化。
 - [Browser-Sync](https://www.browsersync.io/) - 该插件配合 Webpack 实现热重载（hot reload）。
 - [Babel](https://babeljs.io/) - 支持使用 E6/7/8/9 进行编码。
@@ -71,14 +71,24 @@
 
 		npm run start
 
-4. 执行代码测试
+4. 执行代码类型检查
+
+    如果是写的 `.js, .jsx`，那么运行：
+
+        npm run flow
+
+    如果是写的 `.ts, .tsx`，那么运行：
+
+        npm run tsc
+
+5. 执行代码测试
 
         npm run test
 
-5. 生成 jsdoc 文档
+6. 生成 jsdoc 文档
 
 		npm run jsdoc
 
-6. 构建生产环境代码，将会在 **build/** 目录中生成部署代码
+7. 构建生产环境代码，将会在 **build/** 目录中生成部署代码
 
 		npm run build

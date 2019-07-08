@@ -1,6 +1,6 @@
 # Create Web App
 
-:smile: Create PWA（Progressive Web App） project development environment startup configuration.
+:coffee: Create PWA（Progressive Web App） project development environment startup configuration.
 
 Support the following two：
 
@@ -21,7 +21,7 @@ npx @wang1212/create-web-app [project_name]		// same as the previous line
 or
 
 ```
-npx @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
+npx -p|--package @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
 ```
 
 - You can also install the package on your computer, use it to run:

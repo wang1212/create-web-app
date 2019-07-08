@@ -24,7 +24,7 @@ module.exports = ({
 	NODE_ENV,
 	SRC_DIR,
 	BUILD_DIR,
-	is_dev = NODE_ENV === 'development'
+	is_dev = NODE_ENV == = 'development'
 }) => ({
 	mode        : NODE_ENV,
 	target      : 'web',
@@ -45,15 +45,6 @@ module.exports = ({
 	module: {
 		rules: [
 			{
-				test   : /\.tsx?$/,
-				exclude: /node_modules/,
-				use    : [
-					{
-						loader: 'ts-loader'
-					}
-				]
-			},
-			{
 				test   : /\.worker\.js$/,
 				exclude: /node_modules/,
 				use    : [
@@ -63,7 +54,7 @@ module.exports = ({
 				]
 			},
 			{
-				test   : /\.jsx?$/,
+				test   : /\.[tj]sx?$/,
 				exclude: /node_modules/,
 				use    : [
 					{
@@ -187,14 +178,14 @@ module.exports = ({
 			globPatterns                 : ['vendor-manifest.json', 'vendor.js'],
 			runtimeCaching               : [
 				{
-					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+					urlPattern: /^https               : \/\/fonts\.googleapis\.com/,
 					handler   : 'StaleWhileRevalidate',
 					options   : {
 						cacheName: 'google-fonts-stylesheets'
 					}
 				},
 				{
-					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+					urlPattern: /^https     : \/\/fonts\.gstatic\.com/,
 					handler   : 'CacheFirst',
 					options   : {
 						cacheName        : 'google-fonts-webfonts',

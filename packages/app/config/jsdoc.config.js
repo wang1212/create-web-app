@@ -1,33 +1,28 @@
 /*! jsdoc config  */
 
-const babel_config = require('../.babelrc.js');
-
-
 module.exports = {
+	plugins: ['node_modules/jsdoc-babel'],
 	tags: {
 		allowUnknownTags: true,
-		dictionaries    : ['jsdoc', 'closure']
+		dictionaries: ['jsdoc', 'closure']
 	},
 	source: {
-		include       : ['src'],
-		exclude       : ['src/vendors/'],
-		includePattern: '.+\\.(js|jsx)$',
+		include: ['src'],
+		exclude: ['src/vendors/'],
+		includePattern: '.+\\.[tj]sx?$',
 		excludePattern: '(^|\\/|\\\\)_'
 	},
-	plugins: ['node_modules/jsdoc-babel'],
-	babel  : {
-		extensions: ['js', 'jsx'],
-		presets   : babel_config.presets,
-		plugins   : babel_config.plugins
+	babel: {
+		extensions: ['js', 'jsx', 'ts', 'tsx']
 	},
 	templates: {
-		cleverLinks   : true,
+		cleverLinks: true,
 		monospaceLinks: true
 	},
 	opts: {
-		encoding   : 'utf8',
+		encoding: 'utf8',
 		destination: './docs/jsdoc/',
-		recurse    : true,
-		template   : 'node_modules/docdash'
+		recurse: true,
+		template: 'node_modules/docdash'
 	}
 };

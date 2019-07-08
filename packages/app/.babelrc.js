@@ -6,6 +6,13 @@ module.exports = {
 			{
 				"all": true
 			}
+		],
+		[
+			"@babel/preset-typescript",
+			{
+				isTSX: true,
+				allExtensions: true
+			}
 		]
 	],
 	"plugins": [
