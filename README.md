@@ -2,6 +2,8 @@
 
 :smile: 使用 webpack 进行项目构建配置。适用于依赖 React.js、Redux、React-Router 开发的应用程序。
 
+**注意：该孤立分支已停止维护，不再单独更新，已与 master 分支合并，并在之后同步更新。**
+
 ## Directory Structure
 
     App/
