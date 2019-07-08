@@ -24,7 +24,7 @@ module.exports = ({
 	NODE_ENV,
 	SRC_DIR,
 	BUILD_DIR,
-	is_dev = NODE_ENV == = 'development'
+	is_dev = NODE_ENV === 'development'
 }) => ({
 	mode        : NODE_ENV,
 	target      : 'web',
@@ -178,14 +178,14 @@ module.exports = ({
 			globPatterns                 : ['vendor-manifest.json', 'vendor.js'],
 			runtimeCaching               : [
 				{
-					urlPattern: /^https               : \/\/fonts\.googleapis\.com/,
+					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
 					handler   : 'StaleWhileRevalidate',
 					options   : {
 						cacheName: 'google-fonts-stylesheets'
 					}
 				},
 				{
-					urlPattern: /^https     : \/\/fonts\.gstatic\.com/,
+					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
 					handler   : 'CacheFirst',
 					options   : {
 						cacheName        : 'google-fonts-webfonts',
