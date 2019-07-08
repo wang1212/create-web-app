@@ -1,5 +1,4 @@
 [ignore]
-<PROJECT_ROOT>/.vscode/
 <PROJECT_ROOT>/config/
 <PROJECT_ROOT>/docs/
 <PROJECT_ROOT>/flow-typed/
@@ -20,9 +19,18 @@ esproposal.class_instance_fields=ignore
 esproposal.class_static_fields=ignore
 esproposal.decorators=ignore
 
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
+
 module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
 module.name_mapper='^utils\/\(.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
 module.name_mapper='^vendors\/\(.*\)$' -> '<PROJECT_ROOT>/src/vendors/\1'
+
+module.name_mapper.extension='css' -> 'empty/object'
+module.name_mapper.extension='scss' -> 'empty/object'
 
 munge_underscores=true
 
@@ -31,4 +39,4 @@ emoji=true
 [strict]
 
 [version]
-0.101.1
+0.102.0

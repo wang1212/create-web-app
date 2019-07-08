@@ -3,7 +3,7 @@
 /**
  * Create Web App
  *
- * The source code is the bin command of create-web-app | create-pwa.
+ * The source code is the bin command of create-react-app | create-rpwa.
  */
 
 'use strict';
@@ -12,9 +12,9 @@ const chalk = require('chalk'),
 	fse  = require('fs-extra'),
 	path = require('path');
 
-const app = path.resolve(__dirname, '../packages/app/'),
+const app = path.resolve(__dirname, '../packages/react-app/'),
 	args = process.argv.slice(2),
-	project_name = args[0] == null ? 'web-app' : args[0];
+	project_name = args[0] == null ? 'react-web-app' : args[0];
 
 function error_exit () {
 	fse.removeSync(path.resolve(process.cwd(), project_name));
@@ -65,7 +65,7 @@ try {
 	// update package name with project name
 	let file_str = fse.readFileSync(path.resolve(process.cwd(), project_name, 'package.json'), 'utf8');
 
-	file_str = file_str.replace(/"name"\s*:\s*"web-app"\s*,/, `"name": "${project_name}",`);
+	file_str = file_str.replace(/"name"\s*:\s*"web-app-with-react"\s*,/, `"name": "${project_name}",`);
 
 	fse.writeFileSync(path.resolve(process.cwd(), project_name, 'package.json'), file_str);
 } catch (err) {

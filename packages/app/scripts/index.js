@@ -19,10 +19,7 @@ const browser_sync = require('browser-sync').create();
 
 
 // server
-browser_sync.init({
-	open : false,
-	proxy: path_config.proxy
-});
+browser_sync.init(path_config.proxy);
 
 
 del([path_config.build], { force: true }).then(() => {

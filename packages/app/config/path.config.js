@@ -11,5 +11,9 @@ module.exports = (NODE_ENV, is_dev = NODE_ENV === 'development') => ({
 		? 'D:\\nginx\\webapps\\App\\'
 		: require('path').resolve(__dirname, '../build/'),
 	/* server proxy */
-	proxy: 'http://localhost:8181/App/'
+	proxy: {
+		open : false,
+		port : 3000,
+		proxy: 'http://localhost:8181/App/'
+	}
 });

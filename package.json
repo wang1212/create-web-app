@@ -1,6 +1,6 @@
 {
   "name"    : "@wang1212/create-web-app",
-  "version" : "0.2.1",
+  "version" : "0.2.2",
   "keywords": [
     "web-app",
     "SPA",
@@ -10,10 +10,12 @@
     "flow.js",
     "jest",
     "typescript",
-    "eslint"
+    "eslint",
+    "react.js",
+    "redux.js"
   ],
   "description": "Create PWA（Progressive Web App） project development environment startup configuration.",
-  "homepage"   : "https://github.com/wang1212/create-web-app",
+  "homepage"   : "https://github.com/wang1212/create-web-app#readme",
   "repository" : {
     "type": "git",
     "url" : "https://github.com/wang1212/create-web-app.git"
@@ -24,8 +26,10 @@
   },
   "author": "wang1212",
   "bin"   : {
-    "create-web-app": "index.js",
-    "create-pwa"    : "index.js"
+    "create-web-app"  : "index.js",
+    "create-pwa"      : "index.js",
+    "create-react-app": "index-react.js",
+    "create-rpwa"     : "index-react.js"
   },
   "dependencies": {
     "chalk"   : "^2.4.2",

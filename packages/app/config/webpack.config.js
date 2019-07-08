@@ -24,7 +24,7 @@ module.exports = ({
 	NODE_ENV,
 	SRC_DIR,
 	BUILD_DIR,
-	is_dev = NODE_ENV === 'development'
+	is_dev = NODE_ENV == = 'development'
 }) => ({
 	mode        : NODE_ENV,
 	target      : 'web',
@@ -77,7 +77,7 @@ module.exports = ({
 			{
 				test   : /\.(sa|sc|c)ss$/,
 				exclude: /node_modules/,
-				use: [
+				use    : [
 					is_dev ? 'style-loader': MiniCssExtractPlugin.loader,
 					{
 						loader : 'css-loader',
@@ -92,9 +92,7 @@ module.exports = ({
 							sourceMap: is_dev,
 							ident    : 'postcss',
 							plugins  : () => [
-								require('autoprefixer')({
-									browsers: ['last 2 versions']
-								})
+								require('postcss-preset-env')
 							]
 						}
 					},
@@ -119,8 +117,9 @@ module.exports = ({
 				]
 			},
 			{
-				test: /\.(png|jpg|gif)$/,
-				use : [
+				test   : /\.(png|jpg|gif)$/,
+				exclude: /node_modules/,
+				use    : [
 					{
 						loader : 'url-loader',
 						options: {
@@ -188,14 +187,14 @@ module.exports = ({
 			globPatterns                 : ['vendor-manifest.json', 'vendor.js'],
 			runtimeCaching               : [
 				{
-					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+					urlPattern: /^https               : \/\/fonts\.googleapis\.com/,
 					handler   : 'StaleWhileRevalidate',
 					options   : {
 						cacheName: 'google-fonts-stylesheets'
 					}
 				},
 				{
-					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+					urlPattern: /^https     : \/\/fonts\.gstatic\.com/,
 					handler   : 'CacheFirst',
 					options   : {
 						cacheName        : 'google-fonts-webfonts',
@@ -249,7 +248,7 @@ module.exports = ({
 	performance: {
 		hints      : 'warning',
 		assetFilter: assetFilename => {
-			return is_dev ? false : !/vendor/.test(assetFilename);
+			return is_dev ? false: !/vendor/.test(assetFilename);
 		}
 	}
 });

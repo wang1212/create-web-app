@@ -2,7 +2,20 @@
   "name"        : "web-app",
   "version"     : "1.0.0",
   "description" : "PWA（Progressive Web App）.",
-  "main"        : "scripts/index.js",
+  "author"      : "",
+  "license"     : "ISC",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "start"     : "set NODE_ENV=development && node scripts/index.js",
+    "build"     : "node scripts/index.js",
+    "test"      : "jest --config=./config/jest.config.js",
+    "webpack"   : "npx webpack --config ./config/webpack.config.js",
+    "flow"      : "flow",
+    "flow-typed": "flow-typed install",
+    "jsdoc"     : "jsdoc -P ./package.json -R ./README.md -c ./config/jsdoc.config.js"
+  },
   "dependencies": {
     "lodash": "^4.17.11"
   },
@@ -13,7 +26,6 @@
     "@babel/plugin-syntax-dynamic-import"      : "^7.2.0",
     "@babel/preset-env"                        : "^7.4.5",
     "@babel/preset-flow"                       : "^7.0.0",
-    "autoprefixer"                             : "^9.6.0",
     "babel-eslint"                             : "^10.0.2",
     "babel-jest"                               : "^24.8.0",
     "babel-loader"                             : "^8.0.6",
@@ -24,7 +36,7 @@
     "docdash"                                  : "^1.1.1",
     "eslint"                                   : "^6.0.1",
     "file-loader"                              : "^4.0.0",
-    "flow-bin"                                 : "^0.101.1",
+    "flow-bin"                                 : "^0.102.0",
     "flow-typed"                               : "^2.5.2",
     "html-loader"                              : "^0.5.5",
     "html-webpack-plugin"                      : "^3.2.0",
@@ -37,6 +49,7 @@
     "node-sass"                                : "^4.12.0",
     "optimize-css-assets-webpack-plugin"       : "^5.0.1",
     "postcss-loader"                           : "^3.0.0",
+    "postcss-preset-env"                       : "^6.6.0",
     "sass-loader"                              : "^7.1.0",
     "style-loader"                             : "^0.23.1",
     "ts-loader"                                : "^6.0.4",
@@ -47,16 +60,5 @@
     "webpack-bundle-analyzer"                  : "^3.3.2",
     "workbox-webpack-plugin"                   : "^4.3.1",
     "worker-loader"                            : "^2.0.0"
-  },
-  "scripts": {
-    "start"     : "set NODE_ENV=development && node scripts/index.js",
-    "build"     : "node scripts/index.js",
-    "test"      : "jest --config=./config/jest.config.js",
-    "webpack"   : "npx webpack --config ./config/webpack.config.js",
-    "flow"      : "flow",
-    "flow-typed": "flow-typed install",
-    "jsdoc"     : "jsdoc -P ./package.json -R ./README.md -c ./config/jsdoc.config.js"
-  },
-  "author" : "",
-  "license": "ISC"
+  }
 }
