@@ -1,4 +1,13 @@
-/*! Auth action && reducer */
+
+// @flow
+
+/**
+ * redux - Auth info
+ *
+ * @module reducers/Auth
+ */
+import { Action, AUTH } from './action-type';
+
 
 // init state
 const initialState = (state = {}) => ({
@@ -6,55 +15,53 @@ const initialState = (state = {}) => ({
 	...state
 });
 
+const reducers = {};
 
-/** 
- * @name Action
- * @type {Object}
+/**
+ * sign in app system
+ *
+ * @export
+ * @param {*} user
+ * @returns {Action}
  */
-type Action = {
-	type: string,
-	data: any
-}
-
-// define redux action
-const SIGN_IN = 'Auth/sign_in',
-	SIGN_OUT = 'Auth/sign_out',
-	GET_USER = 'Auth/get_user';
-
-
-export function sign_in(user) {
+export function auth_sign_in (user: any): Action {
 	return {
-		type: SIGN_IN,
+		type: AUTH.SIGN_IN,
 		data: user
 	};
 }
 
-export const sign_out = () => ({
-	type: SIGN_OUT
-});
+reducers[AUTH.SIGN_IN] = (state, action) => ({ ...state, user: action.data });
 
-export function get_user() {
+/**
+ * sign out from signed status
+ *
+ * @export
+ * @returns {Action}
+ */
+export function auth_sign_out (): Action {
 	return {
-		type: GET_USER,
+		type: AUTH.SIGN_OUT
+	};
+};
+
+reducers[AUTH.SIGN_OUT] = (state, action) => ({ ...state, user: null });
+
+/**
+ * get current signed user info
+ *
+ * @export
+ * @returns {Action}
+ */
+export function auth_get_signed_user (): Action {
+	return {
+		type: AUTH.GET_SIGNED_USER,
 		data: null
 	};
-}
-
-
-// redux reducer
-export default (state: Object = initialState(), action: Action) => {
-	switch (action.type) {
-
-	case SIGN_IN: 
-		return { ...state, user: action.data  };
-		
-	case SIGN_OUT: 
-		return { ...state, user: null };
-		
-	case GET_USER: 
-		return { ...state, user: action.data  };
-
-	default: 
-		return state;
-	}
 };
+
+reducers[AUTH.GET_SIGNED_USER] = (state, action) => ({ ...state, user: action.data });
+
+
+// export
+export default (state: Object = initialState(), action: Action) => reducers[action.type] && reducers[action.type](state, action) || state;

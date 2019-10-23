@@ -12,7 +12,7 @@ import theme_styles from 'utils/theme.style';
 import { Provider } from 'react-redux';
 import store from 'reducers/index';
 
-import Auth from './Auth.jsx';
+import AuthFilter from './AuthFilter';
 
 
 /* Component */
@@ -46,7 +46,7 @@ const App = () => {
 	return (
 		<Provider store={ store }>
 			<ThemeProvider theme={ theme_styles }>
-				<Auth />
+				<AuthFilter />
 			</ThemeProvider>
 		</Provider>
 	);

@@ -1,27 +1,21 @@
-/*! App action && reducer */
+
+// @flow
+
+/**
+ * redux - App info
+ *
+ * @module reducers/App
+ */
+import { Action } from './action-type';
+import appInfo from '../../public/manifest.json';
+
 
 // init state
-const initialState = (state = {}) => ({
-	name   : 'App develop with react.js',
-	version: '1.0.0',
-	...state
+const initialState = () => ({
+	name   : appInfo.name,
+	version: appInfo._version,
 });
 
 
-/**
- * @name Action
- * @type {Object}
- */
-type Action = {
-	type: string,
-	data: any
-}
-
-
 // redux reducer
-export default (state: Object = initialState(), action: Action) => {
-	switch (action.type) {
-	default:
-		return state;
-	}
-};
+export default (state: Object = initialState(), action: Action) => state;

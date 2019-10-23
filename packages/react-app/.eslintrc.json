@@ -18,7 +18,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "react-hooks"
     ],
     "rules"  : {
         "no-console": [
@@ -45,7 +46,9 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     },
     "globals": {}
 }

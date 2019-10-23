@@ -15,7 +15,6 @@ import App from 'components/App.jsx';
 
 const AppRootDOM = document.getElementById('App');
 
-
 /* Render to dom */
 if (AppRootDOM) {
 	render(
