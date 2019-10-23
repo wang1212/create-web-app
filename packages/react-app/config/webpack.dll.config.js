@@ -2,10 +2,8 @@
 
 'use strict';
 
-// node tool
+// tool
 const path = require('path');
-
-// webpack tool
 const webpack = require('webpack');
 
 

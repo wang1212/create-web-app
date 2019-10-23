@@ -1,7 +1,7 @@
 {
-	"name"       : "App dev with Webpack",
-	"short_name" : "App",
-	"description": "Project development launch configuration using webpack. Suitable for any project that does not use a framework.",
+	"name"       : "Web App",
+	"short_name" : "PWA",
+	"description": "Progressive web app.",
 	"icons"      : [
 		{
 			"src"  : "favicon.png",

@@ -1,12 +1,12 @@
 /*! webpack config */
 
-'use strict';
+'use strict'
 
-// node tool
-const path = require('path');
+const app_info = require('../public/manifest.json')
 
-// webpack tool
-const webpack = require('webpack');
+// tool
+const path = require('path')
+const webpack = require('webpack')
 
 // webpack plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin'),
@@ -17,7 +17,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	ImageminPlugin          = require('imagemin-webpack-plugin').default,
 	ImageminJpeg            = require('imagemin-jpeg-recompress'),
 	BundleAnalyzerPlugin    = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
-	WorkboxPlugin           = require('workbox-webpack-plugin');
+	WorkboxPlugin           = require('workbox-webpack-plugin')
 
 
 module.exports = ({
@@ -87,12 +87,7 @@ module.exports = ({
 							]
 						}
 					},
-					{
-						loader : 'sass-loader',
-						options: {
-							sourceMap: is_dev
-						}
-					}
+					'sass-loader'
 				]
 			},
 			{
@@ -144,9 +139,11 @@ module.exports = ({
 			filename          : 'index.html',
 			template          : './public/index.ejs',
 			templateParameters: {
-				favicon : 'favicon.ico',
-				manifest: 'manifest.json',
-				vendor  : 'vendor.js'
+				title      : app_info.name,
+				description: app_info.description,
+				favicon    : 'favicon.ico',
+				manifest   : 'manifest.json',
+				vendor     : 'vendor.js'
 			}
 		}),
 		new MiniCssExtractPlugin({
@@ -201,7 +198,8 @@ module.exports = ({
 		})
 	],
 	resolve: {
-		alias     : {
+		extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+		alias: {
 			components: path.resolve('./src/components/'),
 			utils     : path.resolve('./src/utils/'),
 			vendors   : path.resolve('./src/vendors/')
@@ -223,8 +221,8 @@ module.exports = ({
 					minChunks         : 2,
 					maxInitialRequests: 5,
 					minSize           : 30000,
-					reuseExistingChunk: true,
-				},
+					reuseExistingChunk: true
+				}
 				/* 	vendor: {
 					test    : /node_modules/,
 					chunks  : 'initial',
@@ -233,13 +231,13 @@ module.exports = ({
 					enforce : true
 				} */
 			}
-		},
+		}
 		//runtimeChunk: true
 	},
 	performance: {
 		hints      : 'warning',
 		assetFilter: assetFilename => {
-			return is_dev ? false: !/vendor/.test(assetFilename);
+			return is_dev ? false: !/vendor/.test(assetFilename)
 		}
 	}
-});
+})

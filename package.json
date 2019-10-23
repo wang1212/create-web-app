@@ -1,6 +1,6 @@
 {
-  "name"    : "@wang1212/create-web-app",
-  "version" : "0.2.3",
+  "name": "@wang1212/create-web-app",
+  "version": "0.2.4",
   "keywords": [
     "web-app",
     "SPA",
@@ -15,24 +15,24 @@
     "redux.js"
   ],
   "description": "Create PWA（Progressive Web App） project development environment startup configuration.",
-  "homepage"   : "https://github.com/wang1212/create-web-app#readme",
-  "repository" : {
+  "homepage": "https://github.com/wang1212/create-web-app#readme",
+  "repository": {
     "type": "git",
-    "url" : "https://github.com/wang1212/create-web-app.git"
+    "url": "https://github.com/wang1212/create-web-app.git"
   },
   "license": "ISC",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "author": "wang1212",
-  "bin"   : {
-    "create-web-app"  : "index.js",
-    "create-pwa"      : "index.js",
+  "bin": {
+    "create-web-app": "index.js",
+    "create-pwa": "index.js",
     "create-react-app": "index-react.js",
-    "create-rpwa"     : "index-react.js"
+    "create-rpwa": "index-react.js"
   },
   "dependencies": {
-    "chalk"   : "^2.4.2",
+    "chalk": "^2.4.2",
     "fs-extra": "^8.1.0"
   }
 }

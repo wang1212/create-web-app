@@ -2,10 +2,10 @@
 
 'use strict';
 
-// node tool
-const path = require('path');
+const app_info = require('../public/manifest.json')
 
-// webpack tool
+// tool
+const path = require('path');
 const webpack = require('webpack');
 
 // webpack plugins
@@ -87,12 +87,7 @@ module.exports = ({
 							]
 						}
 					},
-					{
-						loader : 'sass-loader',
-						options: {
-							sourceMap: is_dev
-						}
-					}
+					'sass-loader'
 				]
 			},
 			{
@@ -144,9 +139,11 @@ module.exports = ({
 			filename          : 'index.html',
 			template          : './public/index.ejs',
 			templateParameters: {
-				favicon : 'favicon.ico',
-				manifest: 'manifest.json',
-				vendor  : 'vendor.js'
+				title      : app_info.name,
+				description: app_info.description,
+				favicon    : 'favicon.ico',
+				manifest   : 'manifest.json',
+				vendor     : 'vendor.js'
 			}
 		}),
 		new MiniCssExtractPlugin({
@@ -201,9 +198,10 @@ module.exports = ({
 		})
 	],
 	resolve: {
+		extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
 		alias: {
 			components: path.resolve('./src/components/'),
-			reduxs    : path.resolve('./src/reduxs/'),
+			reducers  : path.resolve('./src/reducers/'),
 			utils     : path.resolve('./src/utils/'),
 			vendors   : path.resolve('./src/vendors/')
 		}

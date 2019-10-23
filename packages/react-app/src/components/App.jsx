@@ -1,52 +1,26 @@
-/*! App Container */
 
 // @flow
 
-import React from 'react';
+/**
+ * App root Component
+ */
+import React, { useEffect } from 'react';
 
 import { ThemeProvider } from 'react-jss';
-import theme_styles from 'utils/theme.style.js';
+import theme_styles from 'utils/theme.style';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-
-import rootReducer from 'reduxs/index.js';
+import store from 'reducers/index';
 
 import Auth from './Auth.jsx';
 
 
-// redux store
-const store = createStore(
-	rootReducer,
-	(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose)(
-		applyMiddleware(thunk),
-		applyMiddleware(logger)
-	)
-);
+/* Component */
+const App = () => {
 
 
-/**
- * App Container with Redux
- *
- * @export
- * @class App
- * @extends {React.Component<Props>}
- */
-export default class App extends React.Component {
-
-	render() {
-		return (
-			<Provider store={store}>
-				<ThemeProvider theme={ theme_styles }>
-					<Auth />
-				</ThemeProvider>
-			</Provider>
-		);
-	}
-
-	componentDidMount() {
+	// - life cycle
+	useEffect(() => {
 		/**
 		 * - 禁止全页面右键菜单
 		 */
@@ -65,6 +39,19 @@ export default class App extends React.Component {
 			// Chrome requires returnValue to be set.
 			event.returnValue = '';
 		};
-	}
 
-}
+	}, []);
+
+
+	return (
+		<Provider store={ store }>
+			<ThemeProvider theme={ theme_styles }>
+				<Auth />
+			</ThemeProvider>
+		</Provider>
+	);
+
+};
+
+
+export default App;

@@ -2,10 +2,8 @@
 
 'use strict';
 
-// node tool
+// tool
 const path = require('path');
-
-// webpack tool
 const webpack = require('webpack');
 
 
@@ -14,15 +12,15 @@ module.exports = ({
 	BUILD_DIR,
 	is_dev = NODE_ENV === 'development'
 }) => ({
-	mode: NODE_ENV,
+	mode   : NODE_ENV,
 	context: path.resolve(__dirname, '../'),
-	entry: {
+	entry  : {
 		vendor: Object.keys(require('../package.json').dependencies)
 	},
 	output: {
-		path: BUILD_DIR,
+		path    : BUILD_DIR,
 		filename: '[name].js',
-		library: '[name]_lib_[hash]'
+		library : '[name]_lib_[hash]'
 	},
 	plugins: [
 		new webpack.DllPlugin({
@@ -31,9 +29,9 @@ module.exports = ({
 		})
 	],
 	performance: {
-		hints: 'warning',
+		hints      : 'warning',
 		assetFilter: assetFilename => {
-			return is_dev ? false : !/vendor/.test(assetFilename);
+			return is_dev ? false: !/vendor/.test(assetFilename);
 		}
 	}
 });

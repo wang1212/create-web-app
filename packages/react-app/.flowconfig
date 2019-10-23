@@ -26,7 +26,7 @@ module.file_ext=.css
 module.file_ext=.scss
 
 module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
-module.name_mapper='^reduxs\/\(.*\)$' -> '<PROJECT_ROOT>/src/reduxs/\1'
+module.name_mapper='^reducers\/\(.*\)$' -> '<PROJECT_ROOT>/src/reducers/\1'
 module.name_mapper='^utils\/\(.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
 module.name_mapper='^vendors\/\(.*\)$' -> '<PROJECT_ROOT>/src/vendors/\1'
 
@@ -40,4 +40,4 @@ emoji=true
 [strict]
 
 [version]
-0.102.0
+0.110.0

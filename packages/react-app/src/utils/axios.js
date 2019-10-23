@@ -42,9 +42,6 @@ A.interceptors.response.use(
 
 				if (status === 403) {
 					alert(status + ' : 请登录！');
-
-					// sign out
-					//window._store && _store.dispatch(clear_data());
 				} else {
 					alert(status + ' : 系统异常，请尝试刷新页面！');
 				}

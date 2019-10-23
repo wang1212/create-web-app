@@ -2,6 +2,9 @@
 
 // @flow
 
+// enable global async functions
+import 'regenerator-runtime/runtime'
+
 import './app.scss';
 
 import React from 'react';

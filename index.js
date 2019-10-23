@@ -15,10 +15,10 @@ const currentNodeVersion = process.versions.node,
 	major = semver[0];
 
 
-if (major < 8) {
+if (major < 10) {
 	console.error(
 		chalk.red(
-			`You are running Node ${currentNodeVersion}. \nCreate React App requires Node 8 or higher. \nPlease update your version of Node.`
+			`You are running Node ${currentNodeVersion}. \nCreate React App requires Node 10.x or higher. \nPlease update your version of Node.`
 		)
 	);
 	process.exit(1);

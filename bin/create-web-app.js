@@ -26,23 +26,20 @@ function filter_file (src, dest) {
 }
 
 // start
-console.log(`\n> ${chalk.green('Create web app starting...')}`);
+console.log(`\n Current working directory: ${chalk.cyan(process.cwd())} \n`);
 
-console.log(`> Current working directory: ${chalk.cyan(process.cwd())} \n`);
-
-console.log('---------------------------------------------------------------------------- \n')
+console.log(chalk.blue('> Create web app starting...\n'));
 
 if (args[0] == null) {
-	console.log(`${chalk.red('Note:')} The project name is not explicitly specified, default is ${chalk.cyan(project_name)}. \n`);
+	console.log(`${chalk.red(' Note:')} The project name is not explicitly specified, default is ${chalk.cyan(project_name)}. \n`);
 } else {
-	console.log(`The specified project name is ${chalk.cyan(project_name)}. \n`);
+	console.log(` The specified project name is ${chalk.cyan(project_name)}. \n`);
 }
-
 
 /**
  * - Step: Create project dir
  */
-console.log(chalk.blue(`- Step: Create the project directory... \n`));
+console.log(chalk.blue(`> Step: Create the project directory... \n`));
 
 try {
 	fse.mkdirSync(project_name);
@@ -51,13 +48,13 @@ try {
 	process.exit();
 }
 
-console.log(`${chalk.green('Successful,')} project directory ${chalk.cyan(project_name)} has been created. \n`);
+console.log(`${chalk.green(' Successful,')} project directory ${chalk.cyan(project_name)} has been created. \n`);
 
 
 /**
  * - Step: Build project dir structure
  */
-console.log(chalk.blue(`- Step: Build project directory structure and configuration files... \n`));
+console.log(chalk.blue(`> Step: Build project directory structure and configuration files... \n`));
 
 try {
 	fse.copySync(app, project_name, { filter: filter_file });
@@ -73,13 +70,13 @@ try {
 	error_exit();
 }
 
-console.log(`${chalk.green('Successful,')} project directory structure and configuration files are ready. \n`);
+console.log(`${chalk.green(' Successful,')} project directory structure and configuration files are ready. \n`);
 
 /**
  * - Step: All ready
  */
-console.log(chalk.blue('- Step: Everything is ready. \n'));
+console.log(chalk.blue('> Step: Everything is ready. \n'));
 
-console.log(`For more information, read the ${chalk.cyan('README.md')} file in your project directory. \n`);
+console.log(` For more information, read the ${chalk.cyan('README.md')} file in your project directory. \n`);
 
-console.log(chalk.green('Now, start developing your PWA! Haha...'));
+console.log(chalk.green(' Now, start developing your PWA! Haha...'));
