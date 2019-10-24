@@ -1,11 +1,10 @@
-/*! App Main content Component */
 
 // @flow
 
 /**
- * App root router
+ * App root pages router
  *
- * @module components/Router
+ * @module components/PageRouter
  */
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -28,16 +27,13 @@ const useStyles = createUseStyles({
 });
 
 
-const AsyncPage = loadable(props => {
-	console.log(props);
-	return import(`./${props.page}`);
-}, {
+const AsyncPage = loadable(props => import(`./${props.page}`), {
 	fallback: <div>Loading...</div>
 });
 
 
 /* Component */
-const RootRouter = () => {
+const PageRouter = () => {
 
 	const classes = useStyles();
 	const app = useSelector(state => state.App);
@@ -64,4 +60,4 @@ const RootRouter = () => {
 
 }
 
-export default React.memo<any>(RootRouter);
+export default React.memo<any>(PageRouter);

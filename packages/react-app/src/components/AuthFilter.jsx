@@ -8,23 +8,25 @@
  */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import loadable from '@loadable/component';
 
 import { auth_get_signed_user } from 'reducers/Auth';
 
 
-const SignInPage = loadable(() => import('./auth/SignInPage'), {
+
+
+const PageRouter = loadable(() => import('./PageRouter'), {
 	fallback: <div>Loading...</div>
 });
 
-const RootRouter = loadable(() => import('./RootRouter'), {
-	fallback: <div>Loading...</div>
-});
 
+type Props = {
+	location: any
+};
 
 /* Component */
-const AuthFilter = () => {
+const AuthFilter = ({ location }: Props) => {
 
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.Auth.user);
@@ -38,16 +40,18 @@ const AuthFilter = () => {
 	}, []);
 
 
-	let Comp = SignInPage;
+	if (!user) {
+		return (
+			<Redirect
+				to={{
+					pathname: '/sign-in',
+					state: { from: location }
+				}}
+			/>
+		)
+	};
 
-	if (user) Comp = RootRouter;
-
-	return (
-		<Router>
-			<Route render={ props => <Comp { ...props } /> } />
-		</Router>
-	);
-
+	return <PageRouter />;
 }
 
-export default React.memo<any>(AuthFilter);
+export default React.memo<Props>(AuthFilter);

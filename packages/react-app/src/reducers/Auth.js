@@ -54,11 +54,16 @@ reducers[AUTH.SIGN_OUT] = (state, action) => ({ ...state, user: null });
  * @returns {Action}
  */
 export function auth_get_signed_user (): Action {
-	return {
-		type: AUTH.GET_SIGNED_USER,
-		data: null
+	return (dispatch: Function, getState: Function) => {
+
+		const user = getState().Auth.user;
+
+		return dispatch({
+			type: AUTH.GET_SIGNED_USER,
+			data: user
+		});
 	};
-};
+}
 
 reducers[AUTH.GET_SIGNED_USER] = (state, action) => ({ ...state, user: action.data });
 

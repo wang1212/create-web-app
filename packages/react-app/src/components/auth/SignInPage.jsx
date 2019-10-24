@@ -9,6 +9,7 @@
  */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { auth_sign_in } from 'reducers/Auth';
 
@@ -28,12 +29,17 @@ const useStyles = createUseStyles({
 });
 
 
+type Props = {
+	location: any
+};
+
 /* Component */
-const SignInPage = () => {
+const SignInPage = ({ location }: Props) => {
 
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const appName = useSelector(state => state.App.name);
+	const user = useSelector(state => state.Auth.user);
 
 
 	// - handles
@@ -53,6 +59,12 @@ const SignInPage = () => {
 	}, []);
 
 
+	if (user) {
+		const { from } = location.state || { from: { pathname: '/' } };
+
+		return <Redirect to={ from } />;
+	}
+
 	return (
 		<div className={ classes.root }>
 			<h1>{ appName }</h1>
@@ -62,4 +74,4 @@ const SignInPage = () => {
 
 }
 
-export default React.memo<any>(SignInPage);
+export default React.memo<Props>(SignInPage);

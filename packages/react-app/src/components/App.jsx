@@ -5,6 +5,7 @@
  * App root Component
  */
 import React, { useEffect } from 'react';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { ThemeProvider } from 'react-jss';
 import theme_styles from 'utils/theme.style';
@@ -12,7 +13,16 @@ import theme_styles from 'utils/theme.style';
 import { Provider } from 'react-redux';
 import store from 'reducers/index';
 
-import AuthFilter from './AuthFilter';
+import loadable from '@loadable/component';
+
+
+const SignInPage = loadable(() => import('./auth/SignInPage'), {
+	fallback: <div>Loading...</div>
+});
+
+const AuthFilter = loadable(() => import('./AuthFilter'), {
+	fallback: <div>Loading...</div>
+});
 
 
 /* Component */
@@ -46,7 +56,12 @@ const App = () => {
 	return (
 		<Provider store={ store }>
 			<ThemeProvider theme={ theme_styles }>
-				<AuthFilter />
+				<Router>
+					<Switch>
+						<Route exact strict path="/sign-in" render={ props => <SignInPage { ...props } /> } />
+						<Route path="/" render={ props => <AuthFilter { ...props } /> }  />
+					</Switch>
+				</Router>
 			</ThemeProvider>
 		</Provider>
 	);
