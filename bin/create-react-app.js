@@ -22,7 +22,7 @@ function error_exit () {
 }
 
 function filter_file (src, dest) {
-	return !src.match(/node_modules|\.gitkeep$/);
+	return !src.match(/\.gitkeep$/);
 }
 
 // start
