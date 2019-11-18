@@ -9,7 +9,7 @@ import './app.scss'
 import view from './components/test-ts/index.tsx'
 
 
-document.write(`
+window['App'].innerHTML = `
 	<h1>App running !</h1>
 	<p>${view}</p>
-`)
+`

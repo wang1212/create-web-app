@@ -1,6 +1,6 @@
 {
   "name": "@wang1212/create-web-app",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "keywords": [
     "web-app",
     "SPA",
@@ -32,7 +32,7 @@
     "create-rpwa": "index-react.js"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "fs-extra": "^8.1.0"
   }
 }
