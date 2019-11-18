@@ -31,13 +31,28 @@ const AsyncPage = loadable(props => import(`./${props.page}`), {
 	fallback: <div>Loading...</div>
 });
 
+type Props = {
+	location: any
+}
 
 /* Component */
-const PageRouter = () => {
+const PageRouter = ({ location }: Props) => {
 
 	const classes = useStyles();
 	const app = useSelector(state => state.App);
+	const user = useSelector(state => state.Auth.user);
 
+
+	if (!user) {
+		return (
+			<Redirect
+				to={ {
+					pathname: '/sign-in',
+					state: { from: location }
+				} }
+			/>
+		)
+	}
 
 	return (
 		<section className={ classes.root }>
@@ -60,4 +75,4 @@ const PageRouter = () => {
 
 }
 
-export default React.memo<any>(PageRouter);
+export default React.memo<Props>(PageRouter);

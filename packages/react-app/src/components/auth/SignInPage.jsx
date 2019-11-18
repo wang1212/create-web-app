@@ -9,9 +9,9 @@
  */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { auth_sign_in, auth_get_signed_user } from 'reducers/Auth'
 import { Redirect } from 'react-router-dom';
 
-import { auth_sign_in } from 'reducers/Auth';
 
 import { createUseStyles } from 'react-jss';
 
@@ -46,6 +46,10 @@ const SignInPage = ({ location }: Props) => {
 	const handle_sign_in = () => dispatch(auth_sign_in({ username: 'wang1212' }));
 
 	// - life cycle
+	useEffect(() => {
+		dispatch(auth_get_signed_user());
+	}, [])
+
 	useEffect(() => {
 		const handle_check_enter = event => {
 			if (event.keyCode === 13) handle_sign_in();

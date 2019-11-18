@@ -16,11 +16,11 @@ import store from 'reducers/index';
 import loadable from '@loadable/component';
 
 
-const SignInPage = loadable(() => import('./auth/SignInPage'), {
+const AsyncSignInPage = loadable(() => import('./auth/SignInPage'), {
 	fallback: <div>Loading...</div>
 });
 
-const AuthFilter = loadable(() => import('./AuthFilter'), {
+const AsyncPageRouter = loadable(() => import('./PageRouter'), {
 	fallback: <div>Loading...</div>
 });
 
@@ -32,7 +32,7 @@ const App = () => {
 	// - life cycle
 	useEffect(() => {
 		/**
-		 * - 禁止全页面右键菜单
+		 * - page context menu
 		 */
 		Array.from(document.querySelectorAll('body *')).forEach(el => {
 			el.oncontextmenu = function () {
@@ -41,7 +41,7 @@ const App = () => {
 		});
 
 		/**
-		 * - 刷新确认
+		 * - reload page
 		 */
 		window.onbeforeunload = event => {
 			// Cancel the event as stated by the standard.
@@ -58,8 +58,8 @@ const App = () => {
 			<ThemeProvider theme={ theme_styles }>
 				<Router>
 					<Switch>
-						<Route exact strict path="/sign-in" render={ props => <SignInPage { ...props } /> } />
-						<Route path="/" render={ props => <AuthFilter { ...props } /> }  />
+						<Route exact strict path="/sign-in" render={ props => <AsyncSignInPage { ...props } /> } />
+						<Route path="/" render={ props => <AsyncPageRouter { ...props } /> }  />
 					</Switch>
 				</Router>
 			</ThemeProvider>
