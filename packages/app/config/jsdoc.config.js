@@ -25,4 +25,4 @@ module.exports = {
 		recurse: true,
 		template: 'node_modules/docdash'
 	}
-};
+}

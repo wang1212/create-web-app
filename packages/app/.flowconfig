@@ -20,7 +20,6 @@ esproposal.class_static_fields=ignore
 esproposal.decorators=ignore
 
 module.file_ext=.js
-module.file_ext=.jsx
 module.file_ext=.json
 module.file_ext=.css
 module.file_ext=.scss
@@ -31,6 +30,9 @@ module.name_mapper='^vendors\/\(.*\)$' -> '<PROJECT_ROOT>/src/vendors/\1'
 
 module.name_mapper.extension='css' -> 'empty/object'
 module.name_mapper.extension='scss' -> 'empty/object'
+module.name_mapper.extension='jpg' -> 'empty/object'
+module.name_mapper.extension='png' -> 'empty/object'
+module.name_mapper.extension='gif' -> 'empty/object'
 
 munge_underscores=true
 
@@ -39,4 +41,4 @@ emoji=true
 [strict]
 
 [version]
-0.112.0
+0.114.0

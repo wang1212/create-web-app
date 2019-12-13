@@ -1,9 +1,7 @@
-
 /* app about page */
 
-import AboutPage from './AboutPage';
+import AboutPage from './AboutPage'
 
-export { default as AboutPage } from './AboutPage';
+export { default as AboutPage } from './AboutPage'
 
-
-export default AboutPage;
+export default AboutPage
