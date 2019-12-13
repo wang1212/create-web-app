@@ -1,4 +1,3 @@
-
 // @flow
 
 /**
@@ -6,13 +5,12 @@
  *
  * @module components/PageRouter
  */
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Switch, Route, Link, Redirect } from 'react-router-dom';
-import loadable from '@loadable/component';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Switch, Route, Link, Redirect } from 'react-router-dom'
+import loadable from '@loadable/component'
 
-import { createUseStyles } from 'react-jss';
-
+import { createUseStyles } from 'react-jss'
 
 /* styles */
 const useStyles = createUseStyles({
@@ -24,12 +22,11 @@ const useStyles = createUseStyles({
 		alignItems: 'center',
 		flexDirection: 'column'
 	}
-});
-
+})
 
 const AsyncPage = loadable(props => import(`./${props.page}`), {
 	fallback: <div>Loading...</div>
-});
+})
 
 type Props = {
 	location: any
@@ -37,23 +34,22 @@ type Props = {
 
 /* Component */
 const PageRouter = ({ location }: Props) => {
-
-	const classes = useStyles();
-	const app = useSelector(state => state.App);
-	const user = useSelector(state => state.Auth.user);
-
+	const classes = useStyles()
+	const app = useSelector(state => state.App)
+	const user = useSelector(state => state.Auth.user)
 
 	if (!user) {
 		return (
 			<Redirect
-				to={ {
+				to={{
 					pathname: '/sign-in',
 					state: { from: location }
-				} }
+				}}
 			/>
 		)
 	}
 
+	// prettier-ignore
 	return (
 		<section className={ classes.root }>
 			<h1>{ app.name + ` (${app.version}) `} is running ...</h1>
@@ -71,8 +67,7 @@ const PageRouter = ({ location }: Props) => {
 				</Switch>
 			</main>
 		</section>
-	);
-
+	)
 }
 
-export default React.memo<Props>(PageRouter);
+export default React.memo<Props>(PageRouter)

@@ -1,11 +1,12 @@
-
 // @flow
 
-import React from 'react';
-
+import React from 'react'
 
 /* Component */
-const MorePage = () => <p>this is <b>More</b> page！</p>;
+const MorePage = () => (
+	<p>
+		this is <b>More</b> page！
+	</p>
+)
 
-
-export default MorePage;
+export default MorePage

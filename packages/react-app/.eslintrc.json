@@ -1,4 +1,12 @@
 {
+    "settings": {
+        "react": {
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "version": "detect",
+            "flowVersion": "0.113.0"
+        }
+    },
     "env": {
         "node"   : true,
         "browser": true,
@@ -7,7 +15,9 @@
     },
     "extends"      : [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier/react"
     ],
     "parser"       : "babel-eslint",
     "parserOptions": {

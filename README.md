@@ -23,7 +23,7 @@ npx @wang1212/create-web-app [project_name]		// same as the previous line
 or
 
 ```
-npx -p|--package @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
+npx --package @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
 ```
 
 - You can also install the package on your computer, use it to run:
