@@ -17,6 +17,7 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:prettier/recommended",
+        "prettier/flowtype",
         "prettier/react"
     ],
     "parser"       : "babel-eslint",
