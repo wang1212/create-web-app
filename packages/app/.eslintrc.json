@@ -6,7 +6,9 @@
         "jest"   : true
     },
     "extends"      : [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:prettier/recommended",
+        "prettier/flowtype"
     ],
     "parser"       : "babel-eslint",
     "parserOptions": {

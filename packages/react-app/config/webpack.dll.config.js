@@ -1,17 +1,12 @@
 /*! External dependencies packaged individually */
 
-'use strict';
+'use strict'
 
 // tool
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
-
-module.exports = ({
-	NODE_ENV,
-	BUILD_DIR,
-	is_dev = NODE_ENV === 'development'
-}) => ({
+module.exports = ({ NODE_ENV, BUILD_DIR, is_dev = NODE_ENV === 'development' }) => ({
 	mode: NODE_ENV,
 	context: path.resolve(__dirname, '../'),
 	entry: {
@@ -31,7 +26,7 @@ module.exports = ({
 	performance: {
 		hints: 'warning',
 		assetFilter: assetFilename => {
-			return is_dev ? false : !/vendor/.test(assetFilename);
+			return is_dev ? false : !/vendor/.test(assetFilename)
 		}
 	}
-});
+})

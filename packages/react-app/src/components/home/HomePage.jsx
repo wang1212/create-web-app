@@ -1,11 +1,12 @@
-
 // @flow
 
-import React from 'react';
-
+import React from 'react'
 
 /* Component */
-const HomePage = () => <p>this is <b>Home</b> page！</p>;
+const HomePage = () => (
+	<p>
+		this is <b>Home</b> page！
+	</p>
+)
 
-
-export default HomePage;
+export default HomePage

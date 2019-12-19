@@ -29,8 +29,10 @@ PWA（Progressive Web App），渐进式 Web 应用。
     |   └── app.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
+    |── .prettierrc.yaml  # prettier 代码格式化配置
     |── .flowconfig       # flow 语法检查配置
-    └── tsconfig.json     # typescript 配置文件
+    |── tsconfig.json     # typescript 配置文件
+    └── CHANGELOG.md      # 项目迭代更新记录
 
 ## Features
 
@@ -42,6 +44,7 @@ PWA（Progressive Web App），渐进式 Web 应用。
 - [Flow.js](https://flow.org/) - 静态语法校验。
 - [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
 - [ESLint](https://eslint.org/) - 语法规则检查。
+- [Prettier](https://prettier.io/) - 代码格式化。
 - [Jest](https://jestjs.io/) - 单元测试。
 - [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
 - [Nginx](http://nginx.org/) - 反向代理实现前后端的完全分离开发/部署解决方案。
