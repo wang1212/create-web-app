@@ -160,11 +160,11 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 		}),
 		new BundleAnalyzerPlugin(),
 		new WorkboxPlugin.GenerateSW({
-			importWorkboxFrom: 'local',
-			importsDirectory: 'wb-assets',
-			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-			globDirectory: BUILD_DIR,
-			globPatterns: ['vendor-manifest.json', 'vendor.js'],
+			maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
+			additionalManifestEntries: [
+				{ url: 'vendor-manifest.json', revision: app_info._version },
+				{ url: 'vendor.js', revision: app_info._version }
+			],
 			runtimeCaching: [
 				{
 					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
