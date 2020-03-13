@@ -4,7 +4,7 @@
             "createClass": "createReactClass",
             "pragma": "React",
             "version": "detect",
-            "flowVersion": "0.114.0"
+            "flowVersion": "0.119.1"
         }
     },
     "env": {
