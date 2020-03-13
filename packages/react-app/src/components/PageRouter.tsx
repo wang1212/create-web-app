@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * App root pages router
  *

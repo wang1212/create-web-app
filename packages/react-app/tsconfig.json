@@ -1,13 +1,8 @@
 {
 	"compilerOptions": {
 		"sourceMap": true,
-		"jsx"      : "preserve"
+		"jsx": "preserve"
 	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"**/*.spec.ts"
-	]
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "src/vendors/**/*", "**/*.spec.ts"]
 }

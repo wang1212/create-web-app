@@ -30,8 +30,7 @@
     |   └── app.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
-    |── .prettierrc.yaml  # prettier 代码格式化配置
-    |── .flowconfig       # flow 语法检查配置
+    |── .prettierrc.yml   # prettier 代码格式化配置
     |── tsconfig.json     # typescript 配置文件
     └── CHANGELOG.md      # 项目迭代更新记录
 
@@ -45,7 +44,6 @@
 - [React.js](https://reactjs.org/) - 基于 React 开发。
 - [Redux.js](https://redux.js.org/) - 应用状态管理。
 - [React Router](https://reacttraining.com/react-router/) - 页面路由管理。
-- [Flow.js](https://flow.org/) - 静态语法校验。
 - [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
 - [ESLint](https://eslint.org/) - 语法规则检查。
 - [Prettier](https://prettier.io/) - 代码格式化。
@@ -60,7 +58,6 @@
 1. 首先，安装开发环境所有的依赖
 
 		npm install
-        npm run flow-typed
 
 2. 服务器
 
@@ -76,11 +73,7 @@
 
 4. 执行代码类型检查
 
-    如果是写的 `.js, .jsx`，那么运行：
-
-        npm run flow
-
-    如果是写的 `.ts, .tsx`，那么运行：
+    针对 `.ts, .tsx` 文件，运行：
 
         npm run tsc
 
