@@ -18,20 +18,15 @@ const AsyncPageRouter = loadable(() => import('./PageRouter'), {
 	fallback: <div>Loading...</div>
 })
 
-function a(aa: string): void {
-	console.log(aa)
-}
-a([123])
-
 /* Component */
-const App = () => {
+const App = (): React.FunctionComponentElement<{}> => {
 	// - life cycle
 	useEffect(() => {
 		/**
 		 * - page context menu
 		 */
 		Array.from(document.querySelectorAll('body *')).forEach((el: HTMLElement) => {
-			el.oncontextmenu = function(): void {
+			el.oncontextmenu = function(): boolean {
 				return false
 			}
 		})

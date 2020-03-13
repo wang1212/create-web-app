@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*! jsdoc config  */
 
 module.exports = {

@@ -9,7 +9,7 @@
  */
 import React, { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { auth_sign_in, auth_get_signed_user } from 'reducers/Auth'
+import { authSignIn, authSignedUser } from 'reducers/Auth'
 import { Redirect } from 'react-router-dom'
 
 import { createUseStyles } from 'react-jss'
@@ -38,11 +38,11 @@ const SignInPage = ({ location }: Props) => {
 	const user = useSelector(state => state.Auth.user)
 
 	// - handles
-	const handle_sign_in = useCallback(() => dispatch(auth_sign_in({ username: 'wang1212' })), [dispatch])
+	const handle_sign_in = useCallback(() => dispatch(authSignIn({ username: 'wang1212' })), [dispatch])
 
 	// - life cycle
 	useEffect(() => {
-		dispatch(auth_get_signed_user())
+		dispatch(authSignedUser())
 	}, [dispatch])
 
 	useEffect(() => {

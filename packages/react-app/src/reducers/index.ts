@@ -6,9 +6,8 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-
-import App from './App.js'
-import Auth from './Auth.js'
+import App from './App'
+import Auth from './Auth'
 
 // root
 const rootReducer = combineReducers({
