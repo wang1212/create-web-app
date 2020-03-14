@@ -1,6 +1,6 @@
 # Create Web App
 
-> **Starting with version `3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**
+> **Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**
 
 [0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
 [1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
