@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * App root pages router
  *
@@ -7,10 +5,10 @@
  */
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Switch, Route, Link, Redirect } from 'react-router-dom'
+import { Switch, Route, Link, Redirect, RouteComponentProps } from 'react-router-dom'
 import loadable from '@loadable/component'
-
 import { createUseStyles } from 'react-jss'
+import { CombinedState, AppState } from '../reducers/action-type'
 
 /* styles */
 const useStyles = createUseStyles({
@@ -24,19 +22,16 @@ const useStyles = createUseStyles({
 	}
 })
 
-const AsyncPage = loadable(props => import(`./${props.page}`), {
+const AsyncPage = loadable<{ page: string }>(props => import(`./${props.page}`), {
 	fallback: <div>Loading...</div>
 })
 
-type Props = {
-	location: any
-}
-
 /* Component */
-const PageRouter = ({ location }: Props) => {
+const PageRouter = ({ location }: RouteComponentProps): React.FunctionComponentElement<RouteComponentProps> => {
+	//
 	const classes = useStyles()
-	const app = useSelector(state => state.App)
-	const user = useSelector(state => state.Auth.user)
+	const app = useSelector<CombinedState, AppState>(state => state.App)
+	const user = useSelector<CombinedState>(state => state.Auth.user)
 
 	if (!user) {
 		return (
@@ -61,13 +56,13 @@ const PageRouter = ({ location }: Props) => {
 			<main className="content">
 				<Switch>
 					<Redirect exact from='/' to='/home' />
-					<Route strict path='/home' render={ () => <AsyncPage key="home" page="home" /> } />
-					<Route strict path='/about' render={ () => <AsyncPage key="about" page="about" /> } />
-					<Route strict path='/more' render={ () => <AsyncPage key="more" page="more" /> } />
+					<Route strict path='/home' render={ (): React.FunctionComponentElement<unknown> => <AsyncPage key="home" page="home" /> } />
+					<Route strict path='/about' render={ (): React.FunctionComponentElement<unknown> => <AsyncPage key="about" page="about" /> } />
+					<Route strict path='/more' render={ (): React.FunctionComponentElement<unknown> => <AsyncPage key="more" page="more" /> } />
 				</Switch>
 			</main>
 		</section>
 	)
 }
 
-export default React.memo<Props>(PageRouter)
+export default React.memo<RouteComponentProps>(PageRouter)

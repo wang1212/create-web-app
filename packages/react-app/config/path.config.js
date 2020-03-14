@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*! path config */
 
 'use strict'

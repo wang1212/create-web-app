@@ -1,9 +1,7 @@
-// @flow
-
 import React from 'react'
 
 /* Component */
-const MorePage = () => (
+const MorePage = (): React.FunctionComponentElement<{}> => (
 	<p>
 		this is <b>More</b> page！
 	</p>

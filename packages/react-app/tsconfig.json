@@ -1,13 +1,14 @@
 {
 	"compilerOptions": {
 		"sourceMap": true,
-		"jsx"      : "preserve"
+		"jsx": "preserve",
+		"rootDir": ".",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true
+		// "noImplicitAny": true
 	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"node_modules",
-		"**/*.spec.ts"
-	]
+	"include": ["src", "scripts", "config"],
+	"exclude": ["node_modules", "docs", "public", "src/vendors/**/*", "**/*.spec.ts"]
 }

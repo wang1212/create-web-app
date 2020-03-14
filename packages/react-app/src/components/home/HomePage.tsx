@@ -1,9 +1,7 @@
-// @flow
-
 import React from 'react'
 
 /* Component */
-const HomePage = () => (
+const HomePage = (): React.FunctionComponentElement<{}> => (
 	<p>
 		this is <b>Home</b> page！
 	</p>

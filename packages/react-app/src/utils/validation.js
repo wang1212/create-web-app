@@ -23,7 +23,7 @@ const DEFAULT_REGEXP = {
  * @param {RegExp} [regexp=Default_RegExp] Validation regexp
  * @returns {boolean}
  */
-export default function validation(input, type, regexp = DEFAULT_REGEXP[type]) {
+export default function validation(input, type, regexp = DEFAULT_REGEXP[type]): boolean {
 	if (input === undefined) {
 		return false
 	}

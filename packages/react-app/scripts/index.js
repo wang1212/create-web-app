@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*! starter && build */
 
 'use strict'
@@ -23,7 +25,7 @@ browser_sync.init(path_config.proxy)
 del([path_config.build], { force: true })
 	.then(() => {
 		// eslint-disable-next-line
-		console.log('--------- Clean up the build directory is complete ! -----------\n');
+		console.log('--------- Clean up the build directory is complete ! -----------\n')
 
 		// webpack
 		return new Promise((resolve, reject) => {

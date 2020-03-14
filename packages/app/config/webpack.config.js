@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*! webpack config */
 
 'use strict'
@@ -14,8 +16,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'),
 	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-	ImageminPlugin = require('imagemin-webpack-plugin').default,
-	ImageminJpeg = require('imagemin-jpeg-recompress'),
 	BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
 	WorkboxPlugin = require('workbox-webpack-plugin')
 
@@ -39,7 +39,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 	module: {
 		rules: [
 			{
-				test: /\.worker\.js$/,
+				test: /\.worker\.js$/i,
 				exclude: /node_modules/,
 				use: [
 					{
@@ -48,7 +48,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 				]
 			},
 			{
-				test: /\.[tj]sx?$/,
+				test: /\.[tj]sx?$/i,
 				exclude: /node_modules/,
 				use: [
 					{
@@ -60,7 +60,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 				]
 			},
 			{
-				test: /\.(sa|sc|c)ss$/,
+				test: /\.(sa|sc|c)ss$/i,
 				exclude: /node_modules/,
 				use: [
 					is_dev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -83,7 +83,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 				]
 			},
 			{
-				test: /\.html$/,
+				test: /\.html$/i,
 				exclude: /node_modules/,
 				use: [
 					{
@@ -95,13 +95,36 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 				]
 			},
 			{
-				test: /\.(png|jpg|gif)$/,
+				test: /\.(gif|png|jpe?g|svg)$/i,
 				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'url-loader',
 						options: {
 							limit: 8192
+						}
+					},
+					{
+						loader: 'image-webpack-loader',
+						options: {
+							disable: is_dev,
+							mozjpeg: {
+								progressive: true,
+								quality: 65
+							},
+							optipng: {
+								enabled: false
+							},
+							pngquant: {
+								quality: [0.65, 0.9],
+								speed: 4
+							},
+							gifsicle: {
+								interlaced: false
+							},
+							webp: {
+								quality: 75
+							}
 						}
 					}
 				]
@@ -142,25 +165,9 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 			filename: is_dev ? '[name].css' : '[name].[hash].css',
 			chunkFilename: is_dev ? '[id].css' : '[id].[hash].css'
 		}),
-		new ImageminPlugin({
-			disable: is_dev,
-			optipng: {
-				optimizationLevel: 7
-			},
-			gifsicle: {
-				optimizationLevel: 3,
-				interlaced: true
-			},
-			jpegtran: null,
-			svgo: {
-				plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
-			},
-			pngquant: {},
-			plugins: [ImageminJpeg()]
-		}),
 		new BundleAnalyzerPlugin(),
 		new WorkboxPlugin.GenerateSW({
-			maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+			maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
 			additionalManifestEntries: [
 				{ url: 'vendor-manifest.json', revision: app_info._version },
 				{ url: 'vendor.js', revision: app_info._version }
