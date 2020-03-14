@@ -4,7 +4,10 @@
 		"jsx": "preserve",
 		"rootDir": ".",
 		"resolveJsonModule": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true
+		// "noImplicitAny": true
 	},
 	"include": ["src", "scripts", "config"],
 	"exclude": ["node_modules", "docs", "public", "src/vendors/**/*", "**/*.spec.ts"]

@@ -7,7 +7,7 @@ import './app.scss'
 
 import React from 'react'
 import { render } from 'react-dom'
-import App from 'components/App'
+import App from './components/App'
 
 const AppRootDOM = document.getElementById('App')
 

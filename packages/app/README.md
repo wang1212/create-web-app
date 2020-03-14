@@ -23,74 +23,72 @@ PWA（Progressive Web App），渐进式 Web 应用。
     |── src/      # 源代码
     |   ├── components/    # 组件
     |   |   └── shared/    # 公共组件
+    |   ├── reduxs/        # redux 配置文件
     |   ├── utils/         # 工具组件、常量
     |   ├── vendors/       # 外部依赖
     |   ├── app.js
     |   └── app.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
-    |── .prettierrc.yaml  # prettier 代码格式化配置
-    |── .flowconfig       # flow 语法检查配置
+    |── .prettierrc.yml   # prettier 代码格式化配置
     |── tsconfig.json     # typescript 配置文件
     └── CHANGELOG.md      # 项目迭代更新记录
 
 ## Features
 
-- [SPA](https://en.wikipedia.org/wiki/Single-page_application) - 应用以 SPA 单页面方式进行构建。
-- [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
-- [Webpack](https://webpack.js.org/) - 自动化项目构建，模块化管理、打包、压缩、优化。
-- [Browser-Sync](https://www.browsersync.io/) - 该插件配合 Webpack 实现热重载（hot reload）。
-- [Babel](https://babeljs.io/) - 支持使用 E6/7/8/9 进行编码。
-- [Flow.js](https://flow.org/) - 静态语法校验。
-- [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
-- [ESLint](https://eslint.org/) - 语法规则检查。
-- [Prettier](https://prettier.io/) - 代码格式化。
-- [Jest](https://jestjs.io/) - 单元测试。
-- [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
-- [Nginx](http://nginx.org/) - 反向代理实现前后端的完全分离开发/部署解决方案。
+-   [SPA](https://en.wikipedia.org/wiki/Single-page_application) - 应用以 SPA 单页面方式进行构建。
+-   [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+-   [Webpack](https://webpack.js.org/) - 自动化项目构建，模块化管理、打包、压缩、优化。
+-   [Browser-Sync](https://www.browsersync.io/) - 该插件配合 Webpack 实现热重载（hot reload）。
+-   [Babel](https://babeljs.io/) - 支持使用 E6/7/8/9 进行编码。
+-   [React.js](https://reactjs.org/) - 基于 React 开发。
+-   [Redux.js](https://redux.js.org/) - 应用状态管理。
+-   [React Router](https://reacttraining.com/react-router/) - 页面路由管理。
+-   [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
+-   [ESLint](https://eslint.org/) - 语法规则检查。
+-   [Prettier](https://prettier.io/) - 代码格式化。
+-   [Jest](https://jestjs.io/) - 单元测试。
+-   [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
+-   [Nginx](http://nginx.org/) - 反向代理实现前后端的完全分离开发/部署解决方案。
 
 ## Usage
 
-1. 安装依赖
+下载该项目的所有代码到本地。
 
-    首先，安装开发环境所有的依赖
+1.  首先，安装开发环境所有的依赖
 
-		npm install
+        npm install
 
-    若使用 [Flow.js](https://flow.org/)，还需运行以下命令安装类型定义库：
+2.  服务器
 
-        npm run flow-typed
+    若使用反向代理，需在本地安装好 nginx，配置文件在 **config/nginx.conf** 中，启动 nginx ：
 
-2. 服务器
+        start nginx
 
-    若使用反向代理，需安装好 nginx，配置文件在 **config/nginx.conf** 中，启动 nginx ：
+    若不使用反向代理，更改 **scripts/index.js** 中 [BrowserSync](https://www.browsersync.io/) 插件的配置即可。
 
-		start nginx
+3.  启动项目（开发环境）
 
-	若不使用反向代理，更改 **scripts/index.js** 中 [BrowserSync](https://www.browsersync.io/) 插件的配置即可。
+        npm run start
 
-3. 启动项目（开发环境）
+4.  执行代码类型检查
 
-		npm run start
+    针对 `.ts, .tsx` 文件，运行：
 
-4. 执行代码类型检查
+        npm run type-check
 
-    如果是写的 `.js, .jsx`，那么运行：
+    针对所有文件，运行：
 
-        npm run flow
+        npm run lint
 
-    如果是写的 `.ts, .tsx`，那么运行：
+5.  执行代码测试
 
-        npm run tsc
+        npm run test
 
-5. 执行代码测试
+6.  生成 jsdoc 文档
 
-    	npm run test
+        npm run doc
 
-6. 生成 jsdoc 文档
+7.  构建生产环境代码，将会在 **build/** 目录中生成部署代码
 
-		npm run jsdoc
-
-7. 构建生产环境代码，将会在 **build/** 目录中生成部署代码
-
-		npm run build
+        npm run build

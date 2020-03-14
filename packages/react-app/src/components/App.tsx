@@ -48,8 +48,16 @@ const App = (): React.FunctionComponentElement<{}> => {
 			<ThemeProvider theme={themeStyles}>
 				<Router>
 					<Switch>
-						<Route exact strict path="/sign-in" render={props => <AsyncSignInPage {...props} />} />
-						<Route path="/" render={props => <AsyncPageRouter {...props} />} />
+						<Route
+							exact
+							strict
+							path="/sign-in"
+							render={ (props): React.FunctionComponentElement<unknown> => <AsyncSignInPage { ...props } /> }
+						/>
+						<Route
+							path="/"
+							render={ (props): React.FunctionComponentElement<unknown> => <AsyncPageRouter { ...props } /> }
+						/>
 					</Switch>
 				</Router>
 			</ThemeProvider>

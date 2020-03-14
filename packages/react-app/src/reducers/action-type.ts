@@ -25,7 +25,7 @@ export interface AppState {
 }
 
 export interface AuthState {
-	user: null | User
+	user: null | undefined | User
 }
 
 export interface User {
@@ -33,10 +33,10 @@ export interface User {
 }
 
 /**
- * AUTH action types
+ * action types - Auth
  */
-export const AUTH = {
-	SIGN_IN: 'auth/sign-in',
-	SIGN_OUT: 'auth/sign-out',
-	GET_SIGNED_USER: 'auth/get-signed-user'
+export enum AuthAction {
+	SIGN_IN = 'auth/sign-in',
+	SIGN_OUT = 'auth/sign-out',
+	GET_SIGNED_USER = 'auth/get-signed-user'
 }
