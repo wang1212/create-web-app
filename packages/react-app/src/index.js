@@ -3,7 +3,7 @@
 // enable global async functions
 import 'regenerator-runtime/runtime'
 
-import './app.scss'
+import './index.scss'
 
 import React from 'react'
 import { render } from 'react-dom'

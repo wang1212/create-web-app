@@ -4,37 +4,101 @@
 
 'use strict'
 
-const app_info = require('../public/manifest.json')
+const appInfo = require('../public/manifest.json')
 
 // tool
 const path = require('path')
 const webpack = require('webpack')
 
 // webpack plugins
-const CopyWebpackPlugin = require('copy-webpack-plugin'),
-	HtmlWebpackPlugin = require('html-webpack-plugin'),
-	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
-	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-	BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
-	WorkboxPlugin = require('workbox-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const safePostCssParser = require('postcss-safe-parser')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const WorkboxPlugin = require('workbox-webpack-plugin')
+const postcssNormalize = require('postcss-normalize')
 
-module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'development' }) => ({
-	mode: NODE_ENV,
+module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
+	mode: isEnvDevelopment ? 'development' : 'production',
+	// Stop compilation early in production
+	bail: isEnvProduction,
 	target: 'web',
-	devtool: is_dev ? 'cheap-module-eval-source-map' : 'none',
+	devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'none',
 	watch: true,
 	watchOptions: {
-		ignored: /node_modules/
+		ignored: /node_modules/,
 	},
 	context: path.resolve(__dirname, '../'),
 	entry: {
-		app: SRC_DIR + 'app.js'
+		app: SRC_DIR + 'index.js',
 	},
 	output: {
+		// The build folder.
 		path: BUILD_DIR,
-		filename: is_dev ? '[name].js' : '[name].[chunkhash].js',
-		chunkFilename: is_dev ? '[name].js' : '[name].[chunkhash].js'
+		filename: isEnvDevelopment ? '[name].js' : '[name].[contenthash:8].js',
+		// TODO: remove this when upgrading to webpack 5
+		futureEmitAssets: true,
+		// There are also additional JS chunk files if you use code splitting.
+		chunkFilename: isEnvDevelopment ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
+		// https://webpack.js.org/configuration/output/#outputpublicpath
+		// publicPath: ''
+		// Point sourcemap entries to original disk location (format as URL on Windows)
+		devtoolModuleFilenameTemplate: isEnvProduction
+			? (info) => path.relative(SRC_DIR, info.absoluteResourcePath).replace(/\\/g, '/')
+			: isEnvDevelopment && ((info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+		// this defaults to 'window', but by setting it to 'this' then
+		// module chunks which are built will work in web workers as well.
+		globalObject: 'this',
+	},
+	optimization: {
+		minimize: isEnvProduction,
+		minimizer: [
+			// This is only used in production mode
+			new TerserPlugin({
+				terserOptions: {
+					mangle: {
+						safari10: true,
+					},
+					output: {
+						comments: false,
+						// Turned on because emoji and regex is not minified properly using default
+						// https://github.com/facebook/create-react-app/issues/2488
+						ascii_only: true,
+					},
+				},
+			}),
+			// This is only used in production mode
+			new OptimizeCSSAssetsPlugin({
+				cssProcessorOptions: {
+					parser: safePostCssParser,
+				},
+				cssProcessorPluginOptions: {
+					preset: ['default', { minifyFontValues: { removeQuotes: false } }],
+				},
+			}),
+		],
+		// Automatically split vendor and commons
+		splitChunks: {
+			chunks: 'all',
+			name: false,
+		},
+		// Keep the runtime chunk separated to enable long term caching
+		// https://github.com/facebook/create-react-app/issues/5358
+		runtimeChunk: {
+			name: (entrypoint) => `runtime-${entrypoint.name}`,
+		},
+	},
+	resolve: {
+		extensions: ['.ts', '.js', '.mjs', '.json'],
+		alias: {
+			components: path.resolve('./src/components/'),
+			utils: path.resolve('./src/utils/'),
+			vendors: path.resolve('./src/vendors/'),
+		},
 	},
 	module: {
 		rules: [
@@ -43,44 +107,64 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 				exclude: /node_modules/,
 				use: [
 					{
-						loader: 'worker-loader'
-					}
-				]
+						loader: 'worker-loader',
+					},
+				],
 			},
 			{
-				test: /\.[tj]sx?$/i,
+				test: /\.([tj]s|mjs)$/i,
 				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'babel-loader',
 						options: {
-							cacheDirectory: true
-						}
-					}
-				]
+							// This is a feature of `babel-loader` for webpack (not Babel itself).
+							// It enables caching results in ./node_modules/.cache/babel-loader/
+							// directory for faster rebuilds.
+							cacheDirectory: true,
+							compact: isEnvProduction,
+						},
+					},
+				],
 			},
 			{
 				test: /\.(sa|sc|c)ss$/i,
 				exclude: /node_modules/,
 				use: [
-					is_dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+					isEnvDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: is_dev,
-							importLoaders: 2
-						}
+							sourceMap: isEnvDevelopment,
+							importLoaders: 2,
+						},
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
-							sourceMap: is_dev,
+							sourceMap: isEnvDevelopment,
+							// Necessary for external CSS imports to work
+							// https://github.com/facebook/create-react-app/issues/2677
 							ident: 'postcss',
-							plugins: () => [require('postcss-preset-env')]
-						}
+							plugins: () => [
+								require('postcss-flexbugs-fixes'),
+								require('postcss-preset-env')({
+									autoprefixer: {
+										flexbox: 'no-2009',
+									},
+									stage: 3,
+								}),
+								// Adds PostCSS Normalize as the reset css with default options,
+								// so that it honors browserslist config in package.json
+								// which in turn let's users customize the target behavior as per their needs.
+								postcssNormalize(),
+							],
+						},
 					},
-					'sass-loader'
-				]
+					'sass-loader',
+				],
+				// See https://github.com/webpack/webpack/issues/6571
+				sideEffects: true,
 			},
 			{
 				test: /\.html$/i,
@@ -89,154 +173,125 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, is_dev = NODE_ENV === 'develop
 					{
 						loader: 'html-loader',
 						options: {
-							attrs: ['img:src', 'img:data-src']
-						}
-					}
-				]
+							attributes: ['img:src', 'img:data-src'],
+						},
+					},
+				],
 			},
 			{
-				test: /\.(gif|png|jpe?g|svg)$/i,
+				test: /\.(bmp|gif|png|jpe?g|svg)$/i,
 				exclude: /node_modules/,
 				use: [
 					{
 						loader: 'url-loader',
 						options: {
-							limit: 8192
-						}
+							limit: 8192,
+						},
 					},
 					{
 						loader: 'image-webpack-loader',
 						options: {
-							disable: is_dev,
+							disable: isEnvDevelopment,
 							mozjpeg: {
 								progressive: true,
-								quality: 65
+								quality: 65,
 							},
 							optipng: {
-								enabled: false
+								enabled: false,
 							},
 							pngquant: {
 								quality: [0.65, 0.9],
-								speed: 4
+								speed: 4,
 							},
 							gifsicle: {
-								interlaced: false
+								interlaced: false,
 							},
 							webp: {
-								quality: 75
-							}
-						}
-					}
-				]
-			}
-		]
+								quality: 75,
+							},
+						},
+					},
+				],
+			},
+		],
 	},
 	plugins: [
 		new webpack.DllReferencePlugin({
 			context: '.',
-			manifest: path.join(BUILD_DIR, './vendor-manifest.json')
+			manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
 		}),
 		new CopyWebpackPlugin([
 			{
 				from: './public/*.!(ejs)',
 				to: '.',
 				flatten: true,
-				cache: true
+				cache: true,
 			},
 			{
 				from: './src/vendors',
 				to: './vendors',
-				cache: true
-			}
+				cache: true,
+			},
 		]),
 		new HtmlWebpackPlugin({
-			chunks: ['app', 'commons'],
+			chunks: ['app'],
 			filename: 'index.html',
 			template: './public/index.ejs',
 			templateParameters: {
-				title: app_info.name,
-				description: app_info.description,
+				title: appInfo.name,
+				description: appInfo.description,
 				favicon: 'favicon.ico',
 				manifest: 'manifest.json',
-				vendor: 'vendor.js'
-			}
+				vendor: 'vendor.js',
+			},
 		}),
-		new MiniCssExtractPlugin({
-			filename: is_dev ? '[name].css' : '[name].[hash].css',
-			chunkFilename: is_dev ? '[id].css' : '[id].[hash].css'
-		}),
-		new BundleAnalyzerPlugin(),
-		new WorkboxPlugin.GenerateSW({
-			maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
-			additionalManifestEntries: [
-				{ url: 'vendor-manifest.json', revision: app_info._version },
-				{ url: 'vendor.js', revision: app_info._version }
-			],
-			runtimeCaching: [
-				{
-					urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-					handler: 'StaleWhileRevalidate',
-					options: {
-						cacheName: 'google-fonts-stylesheets'
-					}
-				},
-				{
-					urlPattern: /^https:\/\/fonts\.gstatic\.com/,
-					handler: 'CacheFirst',
-					options: {
-						cacheName: 'google-fonts-webfonts',
-						cacheableResponse: {
-							statuses: [0, 200]
-						},
-						expiration: {
-							maxAgeSeconds: 60 * 60 * 24 * 365
-						}
-					}
-				}
-			]
-		})
-	],
-	resolve: {
-		extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
-		alias: {
-			components: path.resolve('./src/components/'),
-			utils: path.resolve('./src/utils/'),
-			vendors: path.resolve('./src/vendors/')
-		}
-	},
-	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				cache: true,
-				parallel: true,
-				sourceMap: is_dev
+		// This is necessary to emit hot updates (currently CSS only):
+		isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+		// File systems of different operating systems handle case differently, forcing case sensitivity
+		isEnvDevelopment && new CaseSensitivePathsPlugin(),
+		isEnvProduction &&
+			new MiniCssExtractPlugin({
+				filename: '[name].[contenthash:8].css',
+				chunkFilename: '[name].[contenthash:8].chunk.css',
 			}),
-			new OptimizeCSSAssetsPlugin({})
-		],
-		splitChunks: {
-			cacheGroups: {
-				commons: {
-					chunks: 'initial',
-					minChunks: 2,
-					maxInitialRequests: 5,
-					minSize: 30000,
-					reuseExistingChunk: true
-				}
-				/* 	vendor: {
-					test    : /node_modules/,
-					chunks  : 'initial',
-					name    : 'vendor',
-					priority: 10,
-					enforce : true
-				} */
-			}
-		}
-		//runtimeChunk: true
-	},
+		new BundleAnalyzerPlugin(),
+		isEnvProduction &&
+			new WorkboxPlugin.GenerateSW({
+				clientsClaim: true,
+				exclude: [/\.map$/, /asset-manifest\.json$/],
+				maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
+				additionalManifestEntries: [
+					{ url: 'vendor-manifest.json', revision: appInfo._version },
+					{ url: 'vendor.js', revision: appInfo._version },
+				],
+				runtimeCaching: [
+					{
+						urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+						handler: 'StaleWhileRevalidate',
+						options: {
+							cacheName: 'google-fonts-stylesheets',
+						},
+					},
+					{
+						urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+						handler: 'CacheFirst',
+						options: {
+							cacheName: 'google-fonts-webfonts',
+							cacheableResponse: {
+								statuses: [0, 200],
+							},
+							expiration: {
+								maxAgeSeconds: 60 * 60 * 24 * 365,
+							},
+						},
+					},
+				],
+			}),
+	].filter(Boolean),
 	performance: {
 		hints: 'warning',
-		assetFilter: assetFilename => {
-			return is_dev ? false : !/vendor/.test(assetFilename)
-		}
-	}
+		assetFilter: (assetFilename) => {
+			return isEnvDevelopment ? false : !/vendor/.test(assetFilename)
+		},
+	},
 })

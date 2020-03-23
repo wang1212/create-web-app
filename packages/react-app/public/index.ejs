@@ -1,128 +1,136 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<!-- 强制让 IE 使用最新内核渲染 -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<!-- 禁止用户缩放 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
-	<!-- 优先选择 chrome 内核渲染 -->
-	<meta name="renderer" content="webkit">
-	<!-- 禁止页面缓存 -->
-	<meta http-equiv="pragma" content="no-cache" />
-	<meta http-equiv="Cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="0" />
-	<title><%= title %></title>
-	<!-- 页面关键字（搜索引擎抓取） -->
-	<meta name="keywords" content="keyword1,keyword2" />
-	<!-- 页面内容描述（搜索引擎抓取） -->
-	<meta name="description" content="<%= description %>" />
-	<meta name="theme-color" content="#278fef" />
-	<link rel="icon" href="<%= favicon %>">
-	<link rel="manifest" href="<%= manifest %>">
-	<!-- 页面 css 初始化（保证各浏览器页面默认样式统一，应最先引入，bootstrap 框架已内置该文件） -->
-	<!-- page resources loading -->
-	<style>
-		.page-loading_container {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100vw;
-			height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background-color : #fefefe;
-		}
-		.page-loading_content {
-			box-sizing: border-box;
-			display: block;
-			position : relative;
-			height: 140px;
-			width: 150px;
-			padding: 20px 25px;
-		}
-		.page-loading_content > .page-loading_text {
-			color : orange;
-			width: 4rem;
-			line-height: 1;
-			position : absolute;
-			top: 50%;
-			left: 50%;
-			margin: -.5rem 0 0 -2rem;
-			text-align: center;
-		}
-		.page-loading_round {
-			height: 100%;
-			width: 100%;
-			border: 1px solid orange;
-			border-radius: 50%;
-			position: relative;
-			animation: page-loading_round 2s infinite;
-			-webkit-animation : page-loading_round 2s infinite;
-		}
-		.page-loading_round_circle {
-			position: absolute;
-			left: 10px;
-			top: 10px;
-			height: 10px;
-			width: 10px;
-			border-radius: 50%;
-			background-color: orange;
-		}
-		@keyframes page-loading_round {
-			0% {transform : rotate(0deg);}
-			100% {transform : rotate(360deg);}
-		}
-		@-webkit-keyframes page-loading_round {
-			0% {-webkit-transform : rotate(0deg);}
-			100% {-webkit-transform : rotate(360deg);}
-		}
-	</style>
-	<!-- IE6-8  兼容解决方案
-		html5shiv ： 提供对 html5 新标签（例如 footer、nav）的支持;
-		respond ： 用来提供对 CSS3 @media媒体查询机制（min-width/max-width）的支持。
+	<head>
+		<meta charset="utf-8" />
+		<!-- 强制让 IE 使用最新内核渲染 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- 禁止用户缩放 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
+		<!-- 优先选择 chrome 内核渲染 -->
+		<meta name="renderer" content="webkit" />
+		<!-- 禁止页面缓存 -->
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="Cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<title><%= title %></title>
+		<!-- 页面关键字（搜索引擎抓取） -->
+		<meta name="keywords" content="keyword1,keyword2" />
+		<!-- 页面内容描述（搜索引擎抓取） -->
+		<meta name="description" content="<%= description %>" />
+		<meta name="theme-color" content="#278fef" />
+		<link rel="icon" href="<%= favicon %>" />
+		<link rel="manifest" href="<%= manifest %>" />
+		<!-- 页面 css 初始化（保证各浏览器页面默认样式统一，应最先引入，bootstrap 框架已内置该文件） -->
+		<!-- page resources loading -->
+		<style>
+			.page-loading_container {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #fefefe;
+			}
+			.page-loading_content {
+				box-sizing: border-box;
+				display: block;
+				position: relative;
+				height: 140px;
+				width: 150px;
+				padding: 20px 25px;
+			}
+			.page-loading_content > .page-loading_text {
+				color: orange;
+				width: 4rem;
+				line-height: 1;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -0.5rem 0 0 -2rem;
+				text-align: center;
+			}
+			.page-loading_round {
+				height: 100%;
+				width: 100%;
+				border: 1px solid orange;
+				border-radius: 50%;
+				position: relative;
+				animation: page-loading_round 2s infinite;
+				-webkit-animation: page-loading_round 2s infinite;
+			}
+			.page-loading_round_circle {
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				height: 10px;
+				width: 10px;
+				border-radius: 50%;
+				background-color: orange;
+			}
+			@keyframes page-loading_round {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@-webkit-keyframes page-loading_round {
+				0% {
+					-webkit-transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+		</style>
+		<!-- IE6-8  兼容解决方案
+			html5shiv ： 提供对 html5 新标签（例如 footer、nav）的支持;
+			respond ： 用来提供对 CSS3 @media媒体查询机制（min-width/max-width）的支持。
 
-		if lte IE 8 ： 其中 lte 代表小于等于。
-	 -->
-	<!--[if lte IE 8]>
-		<script type="text/javascript" src="./vendors/plugins/compatible-plugin/html5shiv.min.js"></script>
-		<script type="text/javascript" src="./vendors/plugins/compatible-plugin/respond.min.js"></script>
-	<![endif]-->
-	<script>
-		// 判断是不是 IE 8 以下
-		var _lte_IE_8 = !!(navigator.appName == 'Microsoft Internet Explorer' && +navigator.appVersion.split(';')[1].match(/\d+/)[0] < 9);
-	</script>
-	<script>
-		// Check that service workers are registered
-		if (location.protocol != 'file:' && 'serviceWorker' in navigator ) {
-			// Use the window load event to keep the page load performant
-			window.addEventListener('load', function () {
-				navigator.serviceWorker.register( 'service-worker.js' );
-			});
-		}
-	</script>
-</head>
-<body>
-	<div id="App" class="App">
-		<div class="page-loading_container">
-			<div class="page-loading_content">
-				<div class="page-loading_round">
-					<div class="page-loading_round_circle"></div>
+			if lte IE 8 ： 其中 lte 代表小于等于。
+		-->
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="./vendors/plugins/compatible-plugin/html5shiv.min.js"></script>
+			<script type="text/javascript" src="./vendors/plugins/compatible-plugin/respond.min.js"></script>
+		<![endif]-->
+		<script>
+			// 判断是不是 IE 8 以下
+			var _lte_IE_8 = !!(navigator.appName == 'Microsoft Internet Explorer' && +navigator.appVersion.split(';')[1].match(/\d+/)[0] < 9)
+		</script>
+		<script>
+			// Check that service workers are registered
+			if (location.protocol != 'file:' && 'serviceWorker' in navigator) {
+				// Use the window load event to keep the page load performant
+				window.addEventListener('load', function () {
+					navigator.serviceWorker.register('service-worker.js')
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="App" class="App">
+			<div class="page-loading_container">
+				<div class="page-loading_content">
+					<div class="page-loading_round">
+						<div class="page-loading_round_circle"></div>
+					</div>
+					<div class="page-loading_text">loading...</div>
 				</div>
-				<div class="page-loading_text">loading...</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- IE6-8  兼容解决方案
-		selectivizr ：提供对 CSS3 新选择器（例如 :nth-child、:last-child）的支持，style 标签内样式不解析，动态生成的 DOM 也不解析。（需要 jQuery、dojo 等库的支持）
+		<!-- IE6-8  兼容解决方案
+			selectivizr ：提供对 CSS3 新选择器（例如 :nth-child、:last-child）的支持，style 标签内样式不解析，动态生成的 DOM 也不解析。（需要 jQuery、dojo 等库的支持）
 
-		if lte IE 8 ： 其中 lte 代表小于等于。
-	 -->
-	<!--[if lte IE 8]>
-		<script type="text/javascript" src="./vendors/plugins/compatible-plugin/selectivizr.min.js"></script>
-	<![endif]-->
-	<script src="<%= vendor %>"></script>
-</body>
+			if lte IE 8 ： 其中 lte 代表小于等于。
+		-->
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="./vendors/plugins/compatible-plugin/selectivizr.min.js"></script>
+		<![endif]-->
+		<script src="<%= vendor %>"></script>
+	</body>
 </html>

@@ -2,8 +2,8 @@
 
 > **Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**
 
-[0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
-[1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
+[0]: https://flow.org/ "Flow: A Static Type Checker for JavaScript"
+[1]: http://www.typescriptlang.org/ "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript"
 
 :coffee: Create PWA（Progressive Web App） project development environment startup configuration.
 
@@ -12,7 +12,7 @@
 Support the following two：
 
 -   create-web-app
--   create-react-app
+-   create-react-app（or [Official](https://create-react-app.dev/)）
 
 `create-web-app` builds a PWA that doesn't depend on any development framework, while `create-react-app` builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
 
