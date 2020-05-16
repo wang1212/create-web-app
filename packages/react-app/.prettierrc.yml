@@ -5,3 +5,4 @@ useTabs: true
 singleQuote: true
 semi: false
 jsxBracketSameLine: true
+endOfLine: 'auto'

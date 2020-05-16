@@ -23,8 +23,8 @@ PWA（Progressive Web App），渐进式 Web 应用。
     |── src/      # 源代码
     |   ├── components/    # 组件
     |   |   └── shared/    # 公共组件
-    |   ├── reduxs/        # redux 配置文件
     |   ├── utils/         # 工具组件、常量
+    |   ├── assets/        # 静态资源
     |   ├── vendors/       # 外部依赖
     |   ├── app.js
     |   └── app.scss

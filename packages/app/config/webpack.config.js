@@ -90,6 +90,8 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 		// https://github.com/facebook/create-react-app/issues/5358
 		runtimeChunk: {
 			name: (entrypoint) => `runtime-${entrypoint.name}`,
+			// multiple entry points
+			// name: 'single',
 		},
 	},
 	resolve: {
@@ -97,6 +99,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 		alias: {
 			components: path.resolve('./src/components/'),
 			utils: path.resolve('./src/utils/'),
+			assets: path.resolve('./src/assets/'),
 			vendors: path.resolve('./src/vendors/'),
 		},
 	},
@@ -173,7 +176,20 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 					{
 						loader: 'html-loader',
 						options: {
-							attributes: ['img:src', 'img:data-src'],
+							attributes: {
+								list: [
+									{
+										tag: 'img',
+										attribute: 'src',
+										type: 'src',
+									},
+									{
+										tag: 'img',
+										attribute: 'data-src',
+										type: 'src',
+									},
+								],
+							},
 						},
 					},
 				],
@@ -220,19 +236,26 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			context: '.',
 			manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
 		}),
-		new CopyWebpackPlugin([
-			{
-				from: './public/*.!(ejs)',
-				to: '.',
-				flatten: true,
-				cache: true,
-			},
-			{
-				from: './src/vendors',
-				to: './vendors',
-				cache: true,
-			},
-		]),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: './public/*.!(ejs)',
+					to: '.',
+					flatten: true,
+					cacheTransform: true,
+				},
+				{
+					from: './src/assets',
+					to: './assets',
+					cacheTransform: true,
+				},
+				{
+					from: './src/vendors',
+					to: './vendors',
+					cacheTransform: true,
+				},
+			],
+		}),
 		new HtmlWebpackPlugin({
 			chunks: ['app'],
 			filename: 'index.html',

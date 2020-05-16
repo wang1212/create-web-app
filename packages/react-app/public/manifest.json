@@ -1,5 +1,5 @@
 {
-	"_version": "1.0.0",
+	"_version": "0.1.0",
 	"short_name": "React App",
 	"name": "App dev with React",
 	"description": "Project development launch configuration using webpack. Suitable for applications that rely on react.js && redux && react-router development.",

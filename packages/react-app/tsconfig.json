@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"target": "ES5",
 		"sourceMap": true,
 		"jsx": "preserve",
 		"rootDir": ".",
@@ -10,5 +11,5 @@
 		// "noImplicitAny": true
 	},
 	"include": ["src", "scripts", "config"],
-	"exclude": ["node_modules", "docs", "public", "src/vendors/**/*", "**/*.spec.ts"]
+	"exclude": ["node_modules", "docs", "public", "src/assets/**/*", "src/vendors/**/*", "**/*.spec.ts"]
 }

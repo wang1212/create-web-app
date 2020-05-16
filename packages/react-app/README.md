@@ -23,11 +23,12 @@
     |── src/      # 源代码
     |   ├── components/    # 组件
     |   |   └── shared/    # 公共组件
-    |   ├── reduxs/        # redux 配置文件
+    |   ├── reducers/      # redux 配置文件
     |   ├── utils/         # 工具组件、常量
+    |   ├── assets/        # 静态资源
     |   ├── vendors/       # 外部依赖
-    |   ├── app.js
-    |   └── app.scss
+    |   ├── index.js
+    |   └── index.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
     |── .prettierrc.yml   # prettier 代码格式化配置

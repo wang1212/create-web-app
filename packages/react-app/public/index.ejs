@@ -101,15 +101,6 @@
 			// 判断是不是 IE 8 以下
 			var _lte_IE_8 = !!(navigator.appName == 'Microsoft Internet Explorer' && +navigator.appVersion.split(';')[1].match(/\d+/)[0] < 9)
 		</script>
-		<script>
-			// Check that service workers are registered
-			if (location.protocol != 'file:' && 'serviceWorker' in navigator) {
-				// Use the window load event to keep the page load performant
-				window.addEventListener('load', function () {
-					navigator.serviceWorker.register('service-worker.js')
-				})
-			}
-		</script>
 	</head>
 	<body>
 		<div id="App" class="App">
