@@ -8,18 +8,20 @@ import './index.scss'
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'
+import * as serviceWorker from './serviceWorker'
 
-const AppRootDOM = document.getElementById('App')
+const RootDOM = document.getElementById('root')
 
 /* Render to dom */
 if (AppRootDOM) {
-	render(<App />, AppRootDOM)
+	render(
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>,
+		RootDOM
+	)
 }
 
-// Check that service workers are registered
-if (location.protocol != 'file:' && 'serviceWorker' in navigator) {
-	// Use the window load event to keep the page load performant
-	window.addEventListener('load', function () {
-		navigator.serviceWorker.register('service-worker.js')
-	})
-}
+// app to work offline and load faster
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.register()

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<!-- 强制让 IE 使用最新内核渲染 -->
@@ -8,17 +8,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
 		<!-- 优先选择 chrome 内核渲染 -->
 		<meta name="renderer" content="webkit" />
-		<!-- 禁止页面缓存 -->
+		<!-- cache | 禁止页面缓存 -->
 		<meta http-equiv="pragma" content="no-cache" />
 		<meta http-equiv="Cache-control" content="no-cache" />
 		<meta http-equiv="expires" content="0" />
 		<title><%= title %></title>
-		<!-- 页面关键字（搜索引擎抓取） -->
+		<!-- Search engine crawl | 页面关键字（搜索引擎抓取） -->
 		<meta name="keywords" content="keyword1,keyword2" />
-		<!-- 页面内容描述（搜索引擎抓取） -->
+		<!-- Search engine crawl | 页面内容描述（搜索引擎抓取） -->
 		<meta name="description" content="<%= description %>" />
-		<meta name="theme-color" content="#278fef" />
+		<meta name="theme-color" content="#000000" />
 		<link rel="icon" href="<%= favicon %>" />
+		<link rel="apple-touch-icon" href="logo192.png" />
+		<!--
+			manifest.json provides metadata used when your web app is installed on a
+			user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+		-->
 		<link rel="manifest" href="<%= manifest %>" />
 		<!-- 页面 css 初始化（保证各浏览器页面默认样式统一，应最先引入，bootstrap 框架已内置该文件） -->
 		<!-- page resources loading -->
@@ -103,7 +108,7 @@
 		</script>
 	</head>
 	<body>
-		<div id="App" class="App">
+		<div id="root" class="root">
 			<div class="page-loading_container">
 				<div class="page-loading_content">
 					<div class="page-loading_round">

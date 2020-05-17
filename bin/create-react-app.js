@@ -22,7 +22,6 @@ function error_exit() {
 }
 
 function filter_file(src, dest) {
-	console.log(src)
 	return !src.match(/(\.gitkeep$)|node_modules|build/)
 }
 

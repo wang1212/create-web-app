@@ -3,23 +3,15 @@
  */
 
 /* 公共样式表（全局）  */
-html, body {
-	/* 适配移动端  */
-	font-size: 14px;
+html,
+body {
 	/* 保证字体安全  */
 	font-family:
-		// Safari for OS X and iOS (San Francisco)
-		-apple-system,
-		// Chrome < 56 for OS X (San Francisco)
-		BlinkMacSystemFont, "Helvetica Neue", Helvetica,
-		// Windows
-		Arial, "Segoe UI", "Microsoft Yahei",
-		// Android
-		"Roboto",
-		// Basic web fallback
-		"Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif,
-		// Emoji fonts
-		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		/* Safari for OS X and iOS (San Francisco) */ -apple-system, /* Chrome < 56 for OS X (San Francisco) */ BlinkMacSystemFont, 'Helvetica Neue',
+		Helvetica, /* Windows */ Arial, 'Segoe UI', 'Microsoft Yahei', /* Android */ 'Roboto', /* Basic web fallback */ 'Hiragino Sans GB', 'Heiti SC',
+		'WenQuanYi Micro Hei', sans-serif, /* Emoji fonts */ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	/* 统一行高  */
 	line-height: 1.5;
 	/* 页面占满  */
@@ -37,10 +29,8 @@ html, body {
 	background-color: white;
 }
 
-@media screen and (min-width: 1365px) {
-	html, body {
-		font-size: 16px;	// desktop
-	}
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 * {
@@ -53,10 +43,11 @@ html, body {
 :focus {
 	outline: none;
 }
-a{
+a {
 	text-decoration: none;
 }
-ul, li{
+ul,
+li {
 	list-style: none;
 }
 
@@ -96,7 +87,7 @@ ul, li{
 
 ::-webkit-scrollbar-thumb {
 	/* 拖动部分 */
-	background-color: rgba(22, 22, 22, .75);
+	background-color: rgba(22, 22, 22, 0.75);
 	border-radius: 4px;
 }
 
@@ -117,15 +108,16 @@ ul, li{
 /**
  * 清除浮动 ----------------------------------------
  */
-.clear-float:before, .clear-float:after {
-	content: "";
+.clear-float:before,
+.clear-float:after {
+	content: '';
 	display: table;
 }
 .clear-float:after {
-    clear: both;
+	clear: both;
 }
 .clear-float {
-    zoom: 1;
+	zoom: 1;
 }
 
 /* 响应式工具
@@ -144,7 +136,8 @@ ul, li{
 	top: 0;
 	z-index: 2;
 }
-.responsive-rel, .responsive-container {
+.responsive-rel,
+.responsive-container {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
