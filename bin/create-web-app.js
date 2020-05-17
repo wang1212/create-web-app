@@ -13,6 +13,7 @@ const chalk = require('chalk'),
 	path = require('path')
 
 const app = path.resolve(__dirname, '../packages/app/'),
+	shared = path.resolve(__dirname, '../packages/shared/'),
 	args = process.argv.slice(2),
 	project_name = args[0] == null ? 'web-app' : args[0]
 
@@ -22,7 +23,8 @@ function error_exit() {
 }
 
 function filter_file(src, dest) {
-	return !src.match(/(\.gitkeep$)|node_modules|build/)
+	// ! /node_modules/ - only use local test
+	return !src.match(/(\.gitkeep$)|build/)
 }
 
 // start
@@ -57,6 +59,7 @@ console.log(chalk.blue(`> Step: Build project directory structure and configurat
 
 try {
 	fse.copySync(app, project_name, { filter: filter_file })
+	fse.copySync(path.join(shared, '.gitignore.txt'), path.join(project_name, '.gitignore'))
 
 	// update package name with project name
 	let file_str = fse.readFileSync(path.resolve(process.cwd(), project_name, 'package.json'), 'utf8')
