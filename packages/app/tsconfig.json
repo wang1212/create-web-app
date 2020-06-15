@@ -2,13 +2,14 @@
 	"compilerOptions": {
 		"target": "ES5",
 		"sourceMap": true,
-		"rootDir": ".",
+		"jsx": "preserve",
+		"rootDir": "./src",
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
-		"strictNullChecks": true,
+		"strict": true,
 		"noImplicitThis": true
 		// "noImplicitAny": true
 	},
 	"include": ["src", "scripts", "config"],
-	"exclude": ["node_modules", "docs", "public", "src/assets/**/*", "src/vendors/**/*", "**/*.spec.ts"]
+	"exclude": ["node_modules", "docs", "public", "src/assets/**/*", "src/vendors/**/*", "**/*.spec.ts", "**/*.test.ts"]
 }

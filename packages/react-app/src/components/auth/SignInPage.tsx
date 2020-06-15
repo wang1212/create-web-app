@@ -1,14 +1,11 @@
-/*! Sign In page Component */
-
 /**
  * Sign in page
- *
- * @module components/auth/SignInPage
  */
 import React, { useEffect, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { CombinedState } from '../../reducers/action-type'
-import { authSignIn, authSignedUser } from '../../reducers/Auth'
+import { useSelector } from 'react-redux'
+import { RootState, dispatch } from '../../models/'
+import { AppState } from '../../models/App'
+import { AuthState } from '../../models/Auth'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
 
@@ -20,8 +17,8 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		flexDirection: 'column'
-	}
+		flexDirection: 'column',
+	},
 })
 
 interface RouteComponentPropsState {
@@ -32,17 +29,21 @@ interface RouteComponentPropsState {
 const SignInPage = ({ location }: RouteComponentProps): React.FunctionComponentElement<RouteComponentProps> => {
 	//
 	const classes = useStyles()
-	const dispatch = useDispatch()
-	const appName = useSelector<CombinedState, string>(state => state.App.name)
-	const user = useSelector<CombinedState>(state => state.Auth.user)
+
+	const { name: appName, version } = useSelector<RootState, AppState>((state) => state.App)
+	const { user } = useSelector<RootState, AuthState>((state) => state.Auth)
 
 	// - handles
-	const handleSignIn = useCallback(() => dispatch(authSignIn({ username: 'wang1212' })), [dispatch])
+	const handleSignIn = useCallback(() => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		dispatch.Auth.updateUser({ account: 'test' })
+	}, [])
 
 	// - life cycle
 	useEffect(() => {
-		dispatch(authSignedUser())
-	}, [dispatch])
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		// dispatch.Auth.getSigned()
+	}, [])
 
 	useEffect(() => {
 		const handleCheckEnter = (event: KeyboardEvent): void => {
@@ -60,16 +61,17 @@ const SignInPage = ({ location }: RouteComponentProps): React.FunctionComponentE
 	if (user) {
 		const { from = { pathname: '/' } } = (location.state || {}) as RouteComponentPropsState
 
-		return <Redirect to={from} />
+		// prettier-ignore
+		return <Redirect to={ from } />
 	}
 
 	// prettier-ignore
 	return (
-		<div className={classes.root}>
-			<h1>{appName}</h1>
-			<button onClick={handleSignIn}>点击登录！</button>
+		<div className={ classes.root }>
+			<h1>{ `${appName}-v${version}` }</h1>
+			<button onClick={ handleSignIn }>点击登录！</button>
 		</div>
 	)
 }
 
-export default React.memo<RouteComponentProps>(SignInPage)
+export default SignInPage

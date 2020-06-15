@@ -7,7 +7,6 @@
 		"PWA",
 		"webpack4",
 		"babel7",
-		"flow.js",
 		"jest",
 		"typescript",
 		"eslint",
@@ -31,8 +30,24 @@
 		"create-react-app": "index-react.js",
 		"create-rpwa": "index-react.js"
 	},
+	"scripts": {
+		"release": "np"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"files": [
+		"bin/",
+		"packages/",
+		"index.js",
+		"index-react.js"
+	],
 	"dependencies": {
 		"chalk": "^3.0.0",
 		"fs-extra": "^8.1.0"
+	},
+	"devDependencies": {
+		"np": "*"
 	}
 }

@@ -23,7 +23,7 @@ Build PWA (Progressive Web App) based on React.js, Redux, React-Router.
     |── src/
     |   ├── components/
     |   |   └── shared/
-    |   ├── reducers/
+    |   ├── models/
     |   ├── utils/
     |   ├── assets/
     |   ├── vendors/

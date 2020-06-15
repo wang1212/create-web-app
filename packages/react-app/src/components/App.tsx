@@ -6,27 +6,27 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'react-jss'
 import themeStyles from '../utils/theme.style'
 import { Provider } from 'react-redux'
-import store from '../reducers'
-
+import store from '../models'
 import loadable from '@loadable/component'
+import ErrorBoundary from './ErrorBoundary'
 
 const AsyncSignInPage = loadable(() => import('./auth/SignInPage'), {
-	fallback: <div>Loading...</div>
+	fallback: <div>Loading...</div>,
 })
 
-const AsyncPageRouter = loadable(() => import('./PageRouter'), {
-	fallback: <div>Loading...</div>
+const AsyncAuthPageRouter = loadable(() => import('./AuthPageRouter'), {
+	fallback: <div>Loading...</div>,
 })
 
-/* Component */
-const App = (): React.FunctionComponentElement<{}> => {
+// Component
+const App: React.FC = () => {
 	// - life cycle
 	useEffect(() => {
 		/**
 		 * - page context menu
 		 */
 		Array.from(document.querySelectorAll('body *')).forEach((el: HTMLElement) => {
-			el.oncontextmenu = function(): boolean {
+			el.oncontextmenu = function (): boolean {
 				return false
 			}
 		})
@@ -44,24 +44,26 @@ const App = (): React.FunctionComponentElement<{}> => {
 
 	// prettier-ignore
 	return (
-		<Provider store={store}>
-			<ThemeProvider theme={themeStyles}>
-				<Router>
-					<Switch>
-						<Route
-							exact
-							strict
-							path="/sign-in"
-							render={ (props): React.FunctionComponentElement<unknown> => <AsyncSignInPage { ...props } /> }
-						/>
-						<Route
-							path="/"
-							render={ (props): React.FunctionComponentElement<unknown> => <AsyncPageRouter { ...props } /> }
-						/>
-					</Switch>
-				</Router>
-			</ThemeProvider>
-		</Provider>
+		<ErrorBoundary>
+			<Provider store={ store }>
+				<ThemeProvider theme={ themeStyles }>
+					<Router>
+						<Switch>
+							<Route
+								exact
+								strict
+								path="/sign-in"
+								render={ (props): React.FunctionComponentElement<unknown> => <AsyncSignInPage { ...props } /> }
+							/>
+							<Route
+								path="/"
+								render={ (props): React.FunctionComponentElement<unknown> => <AsyncAuthPageRouter { ...props } /> }
+							/>
+						</Switch>
+					</Router>
+				</ThemeProvider>
+			</Provider>
+		</ErrorBoundary>
 	)
 }
 
