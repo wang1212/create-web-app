@@ -26,8 +26,8 @@ PWA, Progressive Web App.
     |   ├── utils/
     |   ├── assets/
     |   ├── vendors/
-    |   ├── app.js
-    |   └── app.scss
+    |   ├── index.js
+    |   └── index.scss
     |── .babelrc.js
     |── .eslintrc.json
     |── .prettierrc.yml

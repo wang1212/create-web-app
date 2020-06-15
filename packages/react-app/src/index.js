@@ -1,6 +1,6 @@
 /* App entry file */
 
-// enable global async functions
+// enable async functions support
 import 'regenerator-runtime/runtime'
 
 import './index.scss'
@@ -13,7 +13,8 @@ import * as serviceWorker from './serviceWorker'
 const RootDOM = document.getElementById('root')
 
 /* Render to dom */
-if (AppRootDOM) {
+if (RootDOM) {
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 	render(
 		<React.StrictMode>
 			<App />

@@ -13,7 +13,6 @@
 	"plugins": ["@typescript-eslint", "prettier"],
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking",
 		"plugin:prettier/recommended",
@@ -30,7 +29,11 @@
 		"indent": ["error", "tab"],
 		"linebreak-style": ["error", "windows"],
 		"quotes": ["error", "single"],
-		"semi": ["error", "never"]
+		"semi": ["error", "never"],
+		"@typescript-eslint/no-unsafe-assignment": "warn",
+		"@typescript-eslint/no-unsafe-member-access": "warn",
+		"@typescript-eslint/no-unsafe-call": "warn",
+		"@typescript-eslint/no-unsafe-return": "warn"
 	},
 	"globals": {}
 }

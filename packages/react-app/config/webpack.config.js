@@ -98,7 +98,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 		extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
 		alias: {
 			components: path.resolve('./src/components/'),
-			reducers: path.resolve('./src/reducers/'),
+			models: path.resolve('./src/models/'),
 			utils: path.resolve('./src/utils/'),
 			assets: path.resolve('./src/assets/'),
 			vendors: path.resolve('./src/vendors/'),
