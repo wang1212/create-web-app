@@ -1,11 +1,18 @@
 # Create Web App
 
-> **Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**
+![LICENSE](https://badgen.net/github/license/wang1212/create-web-app)
+[![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
+![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
+![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
 
-[0]: https://flow.org/ "Flow: A Static Type Checker for JavaScript"
-[1]: http://www.typescriptlang.org/ "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript"
+_**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**_
+
+[0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
+[1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
 
 :coffee: Create PWA（Progressive Web App） project development environment startup configuration.
+
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 ## Content
 
@@ -47,3 +54,9 @@ Note: `create-web-app` has an alias `create-pwa`, while `create-react-app` also 
 ## Information
 
 For more information, read `packages/*app/README.md` file contents.
+
+## More
+
+If you want to develop a node module package (library), maybe you can take a look:
+
+> [create-lib-starter](https://github.com/wang1212/create-lib-starter)

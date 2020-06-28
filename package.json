@@ -39,13 +39,13 @@
 	},
 	"files": [
 		"bin/",
-		"packages/",
+		"templates/",
 		"index.js",
 		"index-react.js"
 	],
 	"dependencies": {
-		"chalk": "^3.0.0",
-		"fs-extra": "^8.1.0"
+		"chalk": "^4.1.0",
+		"fs-extra": "^9.0.1"
 	},
 	"devDependencies": {
 		"np": "*"
