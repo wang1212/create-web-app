@@ -12,8 +12,8 @@ const chalk = require('chalk'),
 	fse = require('fs-extra'),
 	path = require('path')
 
-const app = path.resolve(__dirname, '../packages/app/'),
-	shared = path.resolve(__dirname, '../packages/shared/'),
+const app = path.resolve(__dirname, '../templates/app/'),
+	shared = path.resolve(__dirname, '../templates/shared/'),
 	args = process.argv.slice(2),
 	project_name = args[0] == null ? 'web-app' : args[0]
 

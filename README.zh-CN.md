@@ -1,11 +1,18 @@
 # 创建 Web App
 
-> **从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作为替代。**
+![LICENSE](https://badgen.net/github/license/wang1212/create-web-app)
+[![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
+![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
+![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
+
+_**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作为替代。**_
 
 [0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
 [1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
 
 :coffee: 创建 PWA（Progressive Web App，渐进式 Web 应用） 项目开发环境启动配置。
+
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 ## 内容
 
@@ -47,3 +54,9 @@ create-react-app [project_name]		// 或者, 基于 react.js 开发 Web 应用
 ## 信息
 
 更多信息, 阅读 `packages/*app/README.zh-CN.md` 文件的内容。
+
+## 更多
+
+如果你想开发一个 node 模块包（库），也许你可以看看：
+
+> [create-lib-starter](https://github.com/wang1212/create-lib-starter)
