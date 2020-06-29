@@ -12,7 +12,7 @@
 		"build": "node scripts/index.js",
 		"test": "jest --config=config/jest.config.js",
 		"type-check": "tsc --project tsconfig.json --noEmit",
-		"lint": "eslint --config .eslintrc.js --ext js,jsx,.ts,.tsx --ignore-pattern src/vendors/**/* --cache --quiet --fix src/",
+		"lint": "eslint --config .eslintrc.js --ext js,jsx,.ts,.tsx --ignore-pattern src/vendors/**/* --cache --cache-location node_modules/.cache/.eslintcache --quiet --fix src/",
 		"webpack": "npx webpack --config ./config/webpack.config.js",
 		"docs": "jsdoc -P ./package.json -R ./README.md -c ./config/jsdoc.config.js"
 	},
