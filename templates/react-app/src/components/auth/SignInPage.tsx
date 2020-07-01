@@ -4,8 +4,6 @@
 import React, { useEffect, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import store, { RootState } from '../../models/'
-import { AppState } from '../../models/App'
-import { AuthState } from '../../models/Auth'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
 
@@ -30,8 +28,8 @@ const SignInPage = ({ location }: RouteComponentProps): React.FunctionComponentE
 	//
 	const classes = useStyles()
 
-	const { name: appName, version } = useSelector<RootState, AppState>((state) => state.App)
-	const { user } = useSelector<RootState, AuthState>((state) => state.Auth)
+	const { name: appName, version } = useSelector<RootState, RootState['App']>((state) => state.App)
+	const { user } = useSelector<RootState, RootState['Auth']>((state) => state.Auth)
 
 	// - handles
 	const handleSignIn = useCallback(() => {
