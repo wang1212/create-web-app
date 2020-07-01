@@ -4,8 +4,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../models'
-import { AppState } from '../models/App'
-import { AuthState } from '../models/Auth'
 import { Route, Link, Switch, Redirect, RouteComponentProps } from 'react-router-dom'
 import loadable from '@loadable/component'
 import { createUseStyles } from 'react-jss'
@@ -37,8 +35,8 @@ const AuthPageRouter = ({ location }: RouteComponentProps): React.FunctionCompon
 	//
 	const classes = useStyles()
 
-	const app = useSelector<RootState, AppState>((state) => state.App)
-	const { user } = useSelector<RootState, AuthState>((state) => state.Auth)
+	const app = useSelector<RootState, RootState['App']>((state) => state.App)
+	const { user } = useSelector<RootState, RootState['Auth']>((state) => state.Auth)
 
 	if (!user) {
 		return (
