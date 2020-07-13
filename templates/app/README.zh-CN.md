@@ -13,6 +13,7 @@ PWA（Progressive Web App），渐进式 Web 应用。
     |   ├── path.config.js        # 项目路径配置
     |   ├── webpack.config.js     # webpack 配置
     |   ├── webpack.dll.config.js # webpack 外部依赖配置
+    |   ├── devServer.config.js   # 开发服务器配置
     |   ├── jest.config.js        # jest  代码测试配置
     |   └── jsdoc.config.js       # jsdoc 文档配置
     |── public/   # 公共静态资源
@@ -58,11 +59,7 @@ PWA（Progressive Web App），渐进式 Web 应用。
 
 2.  服务器
 
-    若使用反向代理，需在本地安装好 nginx，配置文件在 **config/nginx.conf** 中，启动 nginx ：
-
-        start nginx
-
-    若不使用反向代理，更改 **scripts/index.js** 中 [BrowserSync](https://www.browsersync.io/) 插件的配置即可。
+    服务器已默认配置好，若使用代理，在配置文件 **devServer.config.js** 中添加即可，具体查看文档。
 
 3.  启动项目（开发环境）
 

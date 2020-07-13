@@ -8,6 +8,12 @@ type Result<T> = {
 	data?: T
 }
 
+type ResponseData = {
+	code: typeof ResponseCode[keyof typeof ResponseCode]
+	message?: string
+	data?: unknown | Record<string, unknown>
+}
+
 /**
  * * Base name
  * @const
@@ -19,7 +25,7 @@ export const BASE_NAME = '/api'
  */
 export const ResponseCode = {
 	success: 200,
-}
+} as const
 
 /**
  * Creat a instance
@@ -87,7 +93,7 @@ export const apiPath_SignIn = `${BASE_NAME}/login`
  */
 export async function signIn(params: { account: string; password: string }, config?: AxiosRequestConfig | undefined): Promise<Result<unknown>> {
 	try {
-		const { data } = await http.post(apiPath_SignIn, params, config)
+		const { data } = await http.post<ResponseData>(apiPath_SignIn, params, config)
 
 		if (ResponseCode.success !== data.code) throw new Error(data.message)
 
@@ -116,7 +122,7 @@ export const apiPath_SignOut = `${BASE_NAME}/logout`
  */
 export async function signOut(config?: AxiosRequestConfig | undefined): Promise<Result<unknown>> {
 	try {
-		const { data } = await http.delete(apiPath_SignOut, config)
+		const { data } = await http.delete<ResponseData>(apiPath_SignOut, config)
 
 		// 判断响应码
 		if (ResponseCode.success !== data.code) throw new Error(data.message)
@@ -140,9 +146,10 @@ export const apiPath_SignedUser = `${BASE_NAME}/currentUser`
  *
  * @export
  * @async
+ * @param {AxiosRequestConfig} [config]
  * @returns {Promise<Result<unknown>>}
  */
-export async function getSignedUser(): Promise<Result<unknown>> {
+export async function getSignedUser(config?: AxiosRequestConfig): Promise<Result<unknown>> {
 	try {
 		const tk = sessionStorage.getItem('tk')
 
@@ -152,7 +159,7 @@ export async function getSignedUser(): Promise<Result<unknown>> {
 		http.defaults.headers.common['Authorization'] = tk
 
 		// TODO
-		const { data } = await http.get(apiPath_SignedUser, config)
+		const { data } = await http.get<ResponseData>(apiPath_SignedUser, config)
 
 		if (ResponseCode.success !== data.code) throw new Error(data.message)
 
