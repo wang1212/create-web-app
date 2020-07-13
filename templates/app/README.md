@@ -13,6 +13,7 @@ PWA, Progressive Web App.
     |   ├── path.config.js
     |   ├── webpack.config.js
     |   ├── webpack.dll.config.js
+    |   ├── devServer.config.js
     |   ├── jest.config.js
     |   └── jsdoc.config.js
     |── public/
@@ -58,11 +59,7 @@ Download all the code of the project to the local.
 
 2.  server
 
-    If you use a reverse proxy, you need to install nginx locally, the configuration file is in **config/nginx.conf**, start nginx:
-
-        start nginx
-
-    If you do not use a reverse proxy, you can change the configuration of the [BrowserSync](https://www.browsersync.io/) plugin in **scripts/index.js**.
+    The server has been configured by default. If you use a proxy, you can add it in the configuration file **devServer.config.js**. See the documentation for details.
 
 3.  Start the project (development environment)
 

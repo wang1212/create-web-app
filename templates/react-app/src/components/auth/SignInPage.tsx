@@ -24,7 +24,7 @@ interface RouteComponentPropsState {
 }
 
 /* Component */
-const SignInPage = ({ location }: RouteComponentProps): React.FunctionComponentElement<RouteComponentProps> => {
+const SignInPage: React.FC<RouteComponentProps> = ({ location }: RouteComponentProps) => {
 	//
 	const classes = useStyles()
 

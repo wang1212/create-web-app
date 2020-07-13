@@ -1,4 +1,5 @@
 /* eslint-disable */
+// https://webpack.js.org/configuration/
 
 /*! webpack config */
 
@@ -18,9 +19,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
 	mode: isEnvDevelopment ? 'development' : 'production',
@@ -28,7 +30,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	bail: isEnvProduction,
 	target: 'web',
 	devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'none',
-	watch: true,
+	watch: !!isEnvDevelopment,
 	watchOptions: {
 		ignored: /node_modules/,
 	},
@@ -269,6 +271,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 				vendor: 'vendor.js',
 			},
 		}),
+		isEnvDevelopment && new ReactRefreshWebpackPlugin(),
 		// This is necessary to emit hot updates (currently CSS only):
 		isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
 		// File systems of different operating systems handle case differently, forcing case sensitivity
@@ -278,7 +281,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 				filename: '[name].[contenthash:8].css',
 				chunkFilename: '[name].[contenthash:8].chunk.css',
 			}),
-		new BundleAnalyzerPlugin(),
 		isEnvProduction &&
 			new WorkboxPlugin.GenerateSW({
 				clientsClaim: true,
@@ -311,7 +313,20 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 					},
 				],
 			}),
+		new BundleAnalyzerPlugin(),
 	].filter(Boolean),
+	// Some libraries import Node modules but don't use them in the browser.
+	// Tell webpack to provide empty mocks for them so importing them works.
+	node: {
+		module: 'empty',
+		dgram: 'empty',
+		dns: 'mock',
+		fs: 'empty',
+		http2: 'empty',
+		net: 'empty',
+		tls: 'empty',
+		child_process: 'empty',
+	},
 	performance: {
 		hints: 'warning',
 		assetFilter: (assetFilename) => {
