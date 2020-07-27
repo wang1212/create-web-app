@@ -2,7 +2,7 @@
  * app auth state
  */
 import { RootState, Dispatch } from './index'
-import { signIn as apiSignIn, signOut as apiSignOut, getSignedUser as apiGetSignedUser } from '../utils/api'
+import { signIn as apiSignIn, signOut as apiSignOut, getSignedUser as apiGetSignedUser } from '../apis/auth'
 
 export interface AuthState {
 	user: null | undefined | unknown

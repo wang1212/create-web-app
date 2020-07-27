@@ -13,7 +13,7 @@ module.exports = ({ NODE_ENV, BUILD_DIR, is_dev = NODE_ENV === 'development' }) 
 	mode: NODE_ENV,
 	context: path.resolve(__dirname, '../'),
 	entry: {
-		vendor: Object.keys(require('../package.json').dependencies),
+		vendor: Object.keys(require('../package.json').dependencies).filter((name) => !~name.search(/\.css$/)),
 	},
 	output: {
 		path: BUILD_DIR,
