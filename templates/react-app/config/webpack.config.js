@@ -12,6 +12,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 // webpack plugins
+const WorkerPlugin = require('worker-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -30,13 +31,13 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	bail: isEnvProduction,
 	target: 'web',
 	devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'none',
-	watch: !!isEnvDevelopment,
+	watch: isEnvDevelopment,
 	watchOptions: {
 		ignored: /node_modules/,
 	},
 	context: path.resolve(__dirname, '../'),
 	entry: {
-		app: SRC_DIR + 'index.js',
+		app: path.join(SRC_DIR, '/index.js'),
 	},
 	output: {
 		// The build folder.
@@ -108,15 +109,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	},
 	module: {
 		rules: [
-			{
-				test: /\.worker\.js$/i,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'worker-loader',
-					},
-				],
-			},
 			{
 				test: /\.([tj]sx?|mjs)$/i,
 				exclude: /node_modules/,
@@ -239,6 +231,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			context: '.',
 			manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
 		}),
+		new WorkerPlugin(),
 		new CopyWebpackPlugin({
 			patterns: [
 				{

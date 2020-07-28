@@ -12,6 +12,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 // webpack plugins
+const WorkerPlugin = require('worker-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -21,7 +22,6 @@ const safePostCssParser = require('postcss-safe-parser')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
@@ -30,13 +30,13 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	bail: isEnvProduction,
 	target: 'web',
 	devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'none',
-	watch: !!isEnvDevelopment,
+	watch: isEnvDevelopment,
 	watchOptions: {
 		ignored: /node_modules/,
 	},
 	context: path.resolve(__dirname, '../'),
 	entry: {
-		app: SRC_DIR + 'index.js',
+		app: path.join(SRC_DIR, '/index.js'),
 	},
 	output: {
 		// The build folder.
@@ -107,15 +107,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	},
 	module: {
 		rules: [
-			{
-				test: /\.worker\.js$/i,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'worker-loader',
-					},
-				],
-			},
 			{
 				test: /\.([tj]s|mjs)$/i,
 				exclude: /node_modules/,
@@ -238,6 +229,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			context: '.',
 			manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
 		}),
+		new WorkerPlugin(),
 		new CopyWebpackPlugin({
 			patterns: [
 				{
@@ -270,7 +262,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 				vendor: 'vendor.js',
 			},
 		}),
-		isEnvDevelopment && new ReactRefreshWebpackPlugin(),
 		// This is necessary to emit hot updates (currently CSS only):
 		isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
 		// File systems of different operating systems handle case differently, forcing case sensitivity
