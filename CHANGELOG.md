@@ -1,29 +1,36 @@
 # Changelog
 
+## v0.4.0 (2020-09-08)
+
+-   Add
+    -   **stylelint**
+
+View all dependent version update information https://github.com/wang1212/create-web-app/compare/v0.3.18...v0.4.0
+
 ## v0.3.18 (2020-07-29)
 
-- Add
-  - **worker-plugin**
-- Remove
-  - worker-loader
-  
+-   Add
+    -   **worker-plugin**
+-   Remove
+    -   worker-loader
+
 View all dependent version update information https://github.com/wang1212/create-web-app/compare/v0.3.16...v0.3.18
 
 ## v0.3.16 (2020-07-13)
 
-- **create web app** - Builds PWA that doesn't depend on any development framework.
-- **create react app** - Builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
+-   **create web app** - Builds PWA that doesn't depend on any development framework.
+-   **create react app** - Builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
 
 ### Changelog
 
-- Add
-  - **webpack-dev-server**
-  - **react-refresh**
-  - **@pmmmwh/react-refresh-webpack-plugin**
-  - **sass**
-- Remove
-  - **browser-sync**
-  - **node-sass**
+-   Add
+    -   **webpack-dev-server**
+    -   **react-refresh**
+    -   **@pmmmwh/react-refresh-webpack-plugin**
+    -   **sass**
+-   Remove
+    -   **browser-sync**
+    -   **node-sass**
 
 View all dependent version update information https://github.com/wang1212/create-web-app/compare/v0.3.15...v0.3.16#diff-fec80d78410a2faa5a637f0d4ad97899
 
