@@ -5,40 +5,46 @@
 /* 公共样式表（全局）  */
 html,
 body {
+	/* 最小宽度   */
+	// min-width: 1280px;
+
+	/* 最小高度 */
+	// min-height: 768px;
+
+	/* relative 才能让  absolute 子元素的百分比宽度生效  */
+	position: relative;
+
+	/* 页面占满  */
+	width: 100%;
+	height: 100%;
+
+	/* 字颜色  */
+	color: black;
+
 	/* 保证字体安全  */
 	font-family:
 		/* Safari for OS X and iOS (San Francisco) */ -apple-system, /* Chrome < 56 for OS X (San Francisco) */ BlinkMacSystemFont, 'Helvetica Neue',
 		Helvetica, /* Windows */ Arial, 'Segoe UI', 'Microsoft Yahei', /* Android */ 'Roboto', /* Basic web fallback */ 'Hiragino Sans GB', 'Heiti SC',
 		'WenQuanYi Micro Hei', sans-serif, /* Emoji fonts */ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+
 	/* 统一行高  */
 	line-height: 1.5;
-	/* 页面占满  */
-	width: 100%;
-	height: 100%;
-	/* 最小宽度   */
-	// min-width: 1280px;
-	/* 最小高度 */
-	// min-height: 768px;
-	/* relative 才能让  absolute 子元素的百分比宽度生效  */
-	position: relative;
-	/* 字颜色  */
-	color: black;
+
 	/* 背景色  */
 	background-color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 * {
 	/* 盒子模型统一   */
 	box-sizing: border-box;
+	margin: 0;
+
 	/* 去除边距 */
 	padding: 0;
-	margin: 0;
 }
 :focus {
 	outline: none;
@@ -54,12 +60,11 @@ li {
 /**
  * 滚动条样式 -----------------------------------------------
  */
-
 ::-webkit-scrollbar {
 	/* 整体 */
 	width: 8px;
 	height: 8px;
-	background-color: #ccc;
+	background-color: rgb(204, 204, 204);
 	border-radius: 4px;
 }
 
@@ -68,23 +73,19 @@ li {
 	height: 16px;
 	border-radius: 8px;
 } */
-
 ::-webkit-scrollbar-button {
 	/* 上下按钮 */
 	display: none;
 	background-color: auto;
 }
-
 ::-webkit-scrollbar-track {
 	/* 外层轨道 */
 	background-color: transparent;
 }
-
 ::-webkit-scrollbar-track-piece {
 	/* 内层轨道 */
 	background-color: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
 	/* 拖动部分 */
 	background-color: rgba(22, 22, 22, 0.75);
@@ -94,12 +95,10 @@ li {
 /* ::-webkit-scrollbar-thumb:hover {
 	border-radius: 8px;
 } */
-
 ::-webkit-scrollbar-corner {
 	/* 边角 */
 	background-color: auto;
 }
-
 ::-webkit-resizer {
 	/* 缩放 */
 	background-color: auto;
@@ -108,12 +107,12 @@ li {
 /**
  * 清除浮动 ----------------------------------------
  */
-.clear-float:before,
-.clear-float:after {
-	content: '';
+.clear-float::before,
+.clear-float::after {
 	display: table;
+	content: '';
 }
-.clear-float:after {
+.clear-float::after {
 	clear: both;
 }
 .clear-float {
@@ -130,19 +129,19 @@ li {
 
  */
 .responsive-abs {
-	box-sizing: border-box;
 	position: absolute;
-	left: 0;
 	top: 0;
+	left: 0;
 	z-index: 2;
+	box-sizing: border-box;
 }
 .responsive-rel,
 .responsive-container {
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 1;
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	position: relative;
-	left: 0;
-	top: 0;
-	z-index: 1;
 }
