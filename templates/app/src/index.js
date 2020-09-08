@@ -2,7 +2,6 @@
 
 // enable global async functions
 import 'regenerator-runtime/runtime'
-
 import './index.scss'
 import view from './components/test-ts/index'
 import * as serviceWorker from './serviceWorker'

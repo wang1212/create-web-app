@@ -30,7 +30,8 @@ PWA, Progressive Web App.
     |   ├── index.js
     |   └── index.scss
     |── .babelrc.js
-    |── .eslintrc.json
+    |── .eslintrc.js
+    |── .stylelintrc.js
     |── .prettierrc.yml
     |── tsconfig.json
     └── CHANGELOG.md
@@ -44,6 +45,7 @@ PWA, Progressive Web App.
 -   [Babel](https://babeljs.io/)
 -   [TypeScript](http://www.typescriptlang.org/)
 -   [ESLint](https://eslint.org/)
+-   [stylelint](https://stylelint.io/)
 -   [Prettier](https://prettier.io/)
 -   [Jest](https://jestjs.io/)
 -   [JSDoc 3](http://usejsdoc.org/)
@@ -71,9 +73,13 @@ Download all the code of the project to the local.
 
         npm run type-check
 
-    For all files, run:
+    For `.js, .jsx, .ts, .tsx` files, run:
 
-        npm run lint
+        npm run lint-js
+
+    For `.css, .sass, .scss` files, run:
+
+        npm run lint-css
 
 5.  Perform code testing
 
