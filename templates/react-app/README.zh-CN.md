@@ -32,6 +32,7 @@
     |   └── index.scss
     |── .babelrc.js       # babel  编译配置
     |── .eslintrc.json    # eslint 代码规则检查配置
+    |── .stylelintrc.js   # stylelint 代码规则检查配置
     |── .prettierrc.yml   # prettier 代码格式化配置
     |── tsconfig.json     # typescript 配置文件
     └── CHANGELOG.md      # 项目迭代更新记录
@@ -47,7 +48,8 @@
 -   [Redux.js](https://redux.js.org/) - 应用状态管理。
 -   [React Router](https://reacttraining.com/react-router/) - 页面路由管理。
 -   [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
--   [ESLint](https://eslint.org/) - 语法规则检查。
+-   [ESLint](https://eslint.org/) - JS 语法规则检查。
+-   [stylelint](https://stylelint.io/) - CSS 语法规则检查。
 -   [Prettier](https://prettier.io/) - 代码格式化。
 -   [Jest](https://jestjs.io/) - 单元测试。
 -   [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
@@ -75,9 +77,13 @@
 
         npm run type-check
 
-    针对所有文件，运行：
+    针对 `.js, .jsx, .ts, .tsx` 文件，运行：
 
-        npm run lint
+        npm run lint-js
+
+    针对 `.css, .sass, .scss` 文件，运行：
+
+        npm run lint-css
 
 5.  执行代码测试
 

@@ -2,9 +2,7 @@
 
 // enable async functions support
 import 'regenerator-runtime/runtime'
-
 import './index.scss'
-
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'

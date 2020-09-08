@@ -1,4 +1,4 @@
-// See https://babeljs.io/docs/en/configuration
+// see docs: https://babeljs.io/docs/en/configuration
 
 module.exports = (api) => {
 	// This caches the Babel config by environment.
