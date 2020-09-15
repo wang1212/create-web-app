@@ -145,7 +145,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 								// Necessary for external CSS imports to work
 								// https://github.com/facebook/create-react-app/issues/2677
 								ident: 'postcss',
-								plugins: () => [
+								plugins: [
 									require('postcss-flexbugs-fixes'),
 									require('postcss-preset-env')({
 										autoprefixer: {
