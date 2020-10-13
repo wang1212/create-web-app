@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.4 (2020-10-13)
+
+-   Add
+    -   **cssnano**
+
+View all dependent version update information https://github.com/wang1212/create-web-app/compare/v0.4.0...v0.4.4
+
 ## v0.4.0 (2020-09-08)
 
 -   Add
