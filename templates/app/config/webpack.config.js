@@ -16,12 +16,12 @@ const WorkerPlugin = require('worker-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WorkboxPlugin = require('workbox-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
@@ -144,6 +144,9 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 								// https://github.com/facebook/create-react-app/issues/2677
 								ident: 'postcss',
 								plugins: [
+									require('cssnano')({
+										preset: 'default',
+									}),
 									require('postcss-flexbugs-fixes'),
 									require('postcss-preset-env')({
 										autoprefixer: {
