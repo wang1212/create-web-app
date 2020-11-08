@@ -33,7 +33,26 @@ del([pathConfig.build], { force: true })
 					BUILD_DIR: pathConfig.build,
 				}),
 				(err, stats) => {
-					err && reject(err)
+					if (err) {
+						console.error(err.stack || err)
+						if (err.details) {
+							console.error(err.details)
+						}
+						reject(err)
+						return
+					}
+
+					const info = stats.toJson()
+
+					if (stats.hasErrors()) {
+						console.error(info.errors)
+						reject(info.errors)
+						return
+					}
+
+					if (stats.hasWarnings()) {
+						console.warn(info.warnings)
+					}
 
 					// eslint-disable-next-line
 					console.log(
@@ -82,9 +101,7 @@ del([pathConfig.build], { force: true })
 
 		// * '0.0.0.0' makes all ips accessible
 		devServer.listen(serverConfig.port, '0.0.0.0', (err) => {
-			if (err) {
-				return console.log(err)
-			}
+			if (err) throw err
 
 			console.log('Starting the development server...\n')
 		})
@@ -98,6 +115,5 @@ del([pathConfig.build], { force: true })
 		})
 	})
 	.catch((err) => {
-		// eslint-disable-next-line
-		console.log(err.message)
+		console.error(err)
 	})

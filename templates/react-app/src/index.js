@@ -6,7 +6,7 @@ import './index.scss'
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from './registerServiceWorker'
 
 const RootDOM = document.getElementById('root')
 

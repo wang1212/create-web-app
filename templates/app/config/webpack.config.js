@@ -29,7 +29,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	// Stop compilation early in production
 	bail: isEnvProduction,
 	target: 'web',
-	devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'none',
+	devtool: isEnvDevelopment ? 'eval-cheap-module-source-map' : false,
 	watch: isEnvDevelopment,
 	watchOptions: {
 		ignored: /node_modules/,
@@ -42,8 +42,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 		// The build folder.
 		path: BUILD_DIR,
 		filename: isEnvDevelopment ? '[name].js' : '[name].[contenthash:8].js',
-		// TODO: remove this when upgrading to webpack 5
-		futureEmitAssets: true,
 		// There are also additional JS chunk files if you use code splitting.
 		chunkFilename: isEnvDevelopment ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
 		// https://webpack.js.org/configuration/output/#outputpublicpath
@@ -231,7 +229,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	},
 	plugins: [
 		new webpack.DllReferencePlugin({
-			context: '.',
+			context: BUILD_DIR,
 			manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
 		}),
 		new WorkerPlugin(),
@@ -310,18 +308,6 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			}),
 		new BundleAnalyzerPlugin(),
 	].filter(Boolean),
-	// Some libraries import Node modules but don't use them in the browser.
-	// Tell webpack to provide empty mocks for them so importing them works.
-	node: {
-		module: 'empty',
-		dgram: 'empty',
-		dns: 'mock',
-		fs: 'empty',
-		http2: 'empty',
-		net: 'empty',
-		tls: 'empty',
-		child_process: 'empty',
-	},
 	performance: {
 		hints: 'warning',
 		assetFilter: (assetFilename) => {
