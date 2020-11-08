@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.0 (2020-11-09)
+
+-   Update
+    -   **webpack** (v4.x to v5.x)
+
+View all dependent version update information https://github.com/wang1212/create-web-app/compare/v0.4.4...v0.5.0
+
 ## v0.4.4 (2020-10-13)
 
 -   Add
