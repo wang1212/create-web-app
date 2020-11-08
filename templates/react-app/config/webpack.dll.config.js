@@ -9,7 +9,7 @@
 const path = require('path')
 const webpack = require('webpack')
 
-module.exports = ({ NODE_ENV, BUILD_DIR, is_dev = NODE_ENV === 'development' }) => ({
+module.exports = ({ NODE_ENV, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development' }) => ({
 	mode: NODE_ENV,
 	context: path.resolve(__dirname, '../'),
 	entry: {
@@ -18,7 +18,7 @@ module.exports = ({ NODE_ENV, BUILD_DIR, is_dev = NODE_ENV === 'development' }) 
 	output: {
 		path: BUILD_DIR,
 		filename: '[name].js',
-		library: '[name]_lib_[hash]',
+		library: '[name]_lib_[fullhash]',
 	},
 	plugins: [
 		// Moment.js is an extremely popular library that bundles large locale files
@@ -28,26 +28,15 @@ module.exports = ({ NODE_ENV, BUILD_DIR, is_dev = NODE_ENV === 'development' }) 
 		// You can remove this if you don't use Moment.js:
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		new webpack.DllPlugin({
-			name: '[name]_lib_[hash]',
+			context: BUILD_DIR,
+			name: '[name]_lib_[fullhash]',
 			path: path.join(BUILD_DIR, '[name]-manifest.json'),
 		}),
 	],
-	// Some libraries import Node modules but don't use them in the browser.
-	// Tell webpack to provide empty mocks for them so importing them works.
-	node: {
-		module: 'empty',
-		dgram: 'empty',
-		dns: 'mock',
-		fs: 'empty',
-		http2: 'empty',
-		net: 'empty',
-		tls: 'empty',
-		child_process: 'empty',
-	},
 	performance: {
 		hints: 'warning',
 		assetFilter: (assetFilename) => {
-			return is_dev ? false : !/vendor/.test(assetFilename)
+			return isEnvDevelopment ? false : !/vendor/.test(assetFilename)
 		},
 	},
 })

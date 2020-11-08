@@ -31,7 +31,26 @@ del([pathConfig.build], { force: true })
 					BUILD_DIR: pathConfig.build,
 				}),
 				(err, stats) => {
-					err && reject(err)
+					if (err) {
+						console.error(err.stack || err)
+						if (err.details) {
+							console.error(err.details)
+						}
+						reject(err)
+						return
+					}
+
+					const info = stats.toJson()
+
+					if (stats.hasErrors()) {
+						console.error(info.errors)
+						reject(info.errors)
+						return
+					}
+
+					if (stats.hasWarnings()) {
+						console.warn(info.warnings)
+					}
 
 					// eslint-disable-next-line
 					console.log(
@@ -58,7 +77,7 @@ del([pathConfig.build], { force: true })
 				BUILD_DIR: pathConfig.build,
 			}),
 			(err, stats) => {
-				if (err) throw new Error(data)
+				if (err) throw err
 
 				// eslint-disable-next-line
 				console.log(
@@ -79,13 +98,18 @@ del([pathConfig.build], { force: true })
 
 				console.log('\n')
 				console.log('Finished, build successful! :)')
-
-				// exit
-				process.exit()
+				console.log('\n')
+				console.log('(Press Ctrl+C to stop...)')
 			}
 		)
+
+		// exit
+		;[('SIGINT', 'SIGTERM')].forEach(function (sig) {
+			process.on(sig, function () {
+				process.exit()
+			})
+		})
 	})
 	.catch((err) => {
-		// eslint-disable-next-line
-		console.log(err.message)
+		console.error(err)
 	})

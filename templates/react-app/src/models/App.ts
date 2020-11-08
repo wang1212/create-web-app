@@ -1,7 +1,7 @@
 /**
  * app info state
  */
-import * as appInfo from '../../public/manifest.json'
+import appInfo from '../../public/manifest.json'
 
 export interface AppState {
 	name: string

@@ -4,7 +4,7 @@
 import 'regenerator-runtime/runtime'
 import './index.scss'
 import view from './components/test-ts/index'
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from './registerServiceWorker'
 
 window['root'].innerHTML = `
 	<h1>App running !</h1>
