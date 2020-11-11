@@ -53,7 +53,7 @@ create-react-app [project_name]		// 或者, 基于 react.js 开发 Web 应用
 
 ## 信息
 
-更多信息, 阅读 `packages/*app/README.zh-CN.md` 文件的内容。
+更多信息, 阅读 `templates/*app/README.zh-CN.md` 文件的内容。
 
 ## 更多
 
