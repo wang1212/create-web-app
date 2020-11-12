@@ -53,7 +53,7 @@ Note: `create-web-app` has an alias `create-pwa`, while `create-react-app` also 
 
 ## Information
 
-For more information, read `packages/*app/README.md` file contents.
+For more information, read `templates/*app/README.md` file contents.
 
 ## More
 
