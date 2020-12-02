@@ -59,6 +59,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 		minimizer: [
 			// This is only used in production mode
 			new TerserPlugin({
+				extractComments: false,
 				terserOptions: {
 					mangle: {
 						safari10: true,

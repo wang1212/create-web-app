@@ -24,7 +24,7 @@ function error_exit() {
 
 function filter_file(src, dest) {
 	// ! /node_modules/ - only use local test
-	return !src.match(/(\.gitkeep$)|build/)
+	return !src.match(/(\.gitkeep$)/)
 }
 
 // start

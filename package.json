@@ -19,7 +19,7 @@
 		"type": "git",
 		"url": "https://github.com/wang1212/create-web-app.git"
 	},
-	"license": "ISC",
+	"license": "MIT",
 	"engines": {
 		"node": ">=10"
 	},
