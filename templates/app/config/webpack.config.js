@@ -238,19 +238,18 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			patterns: [
 				{
 					from: './public/*.!(ejs)',
-					to: '.',
-					flatten: true,
-					cacheTransform: true,
+					to: '[name].[ext]',
+					transform: { cache: true },
 				},
 				{
-					from: './src/assets',
-					to: './assets',
-					cacheTransform: true,
+					from: './src/assets/',
+					to: './assets/',
+					transform: { cache: true },
 				},
 				{
-					from: './src/vendors',
-					to: './vendors',
-					cacheTransform: true,
+					from: './src/vendors/',
+					to: './vendors/',
+					transform: { cache: true },
 				},
 			],
 		}),
