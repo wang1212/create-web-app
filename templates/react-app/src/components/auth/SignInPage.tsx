@@ -10,12 +10,12 @@ import { createUseStyles } from 'react-jss'
 /* styles */
 const useStyles = createUseStyles({
 	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
 		width: '100%',
 		height: '100%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		flexDirection: 'column',
 	},
 })
 
