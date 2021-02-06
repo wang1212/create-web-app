@@ -29,6 +29,7 @@ export default {
 
 			if (error) {
 				alert(error.message)
+
 				return
 			}
 
@@ -44,6 +45,7 @@ export default {
 
 			if (error) {
 				alert(error.message)
+
 				return
 			}
 
@@ -52,6 +54,7 @@ export default {
 
 			if (userError) {
 				alert(userError.message)
+
 				return
 			}
 
@@ -67,6 +70,7 @@ export default {
 
 			if (error) {
 				alert(error.message)
+
 				return
 			}
 
