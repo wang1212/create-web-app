@@ -175,7 +175,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 					{
 						loader: 'html-loader',
 						options: {
-							attributes: {
+							sources: {
 								list: [
 									{
 										tag: 'img',
@@ -196,6 +196,8 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			{
 				test: /\.(bmp|gif|png|jpe?g|svg)$/i,
 				exclude: /node_modules/,
+				// More information here https://webpack.js.org/guides/asset-modules/
+				type: 'javascript/auto',
 				use: [
 					{
 						loader: 'url-loader',
@@ -240,7 +242,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			patterns: [
 				{
 					from: './public/*.!(ejs)',
-					to: '[name].[ext]',
+					to: '[name][ext]',
 					transform: { cache: true },
 				},
 				{

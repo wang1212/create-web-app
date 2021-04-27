@@ -30,6 +30,7 @@ export async function signIn(params: { account: string; password: string }, conf
 		return { data: data.data }
 	} catch (error) {
 		console.error(error)
+
 		return { error }
 	}
 }
@@ -59,6 +60,7 @@ export async function signOut(config?: AxiosRequestConfig | undefined): Promise<
 		return { data: data.data }
 	} catch (error) {
 		console.error(error)
+
 		return { error }
 	}
 }
@@ -90,6 +92,7 @@ export async function getSignedUser(config?: AxiosRequestConfig): Promise<Result
 		return { data: data.data }
 	} catch (error) {
 		console.error(error)
+
 		return { error }
 	}
 }

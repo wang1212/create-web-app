@@ -27,6 +27,7 @@ export default function validation(input, type, regexp = DEFAULT_REGEXP[type]): 
 	if (input === undefined) {
 		return false
 	}
+
 	input = String(input)
 
 	if (regexp) {
