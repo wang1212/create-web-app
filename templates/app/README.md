@@ -57,7 +57,7 @@ Download all the code of the project to the local.
 
 1.  First, install all the dependencies of the development environment
 
-        npm install
+        git init && npm install
 
 2.  server
 

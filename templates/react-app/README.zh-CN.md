@@ -61,7 +61,7 @@
 
 1.  首先，安装开发环境所有的依赖
 
-        npm install
+        git init && npm install
 
 2.  服务器
 
