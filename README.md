@@ -10,7 +10,7 @@ _**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [type
 [0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
 [1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
 
-:coffee: Create PWA（Progressive Web App） project development environment startup configuration.
+:coffee: Create [PWA（Progressive Web App）](https://web.dev/progressive-web-apps/) project development environment startup configuration.
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
