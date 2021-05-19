@@ -41,6 +41,8 @@
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-react": "^7.13.13",
 		"@babel/preset-typescript": "^7.13.0",
+		"@commitlint/cli": "^12.1.4",
+		"@commitlint/config-conventional": "^12.1.4",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
 		"@types/loadable__component": "^5.13.3",
 		"@types/react": "^17.0.5",
