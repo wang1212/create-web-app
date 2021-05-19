@@ -31,7 +31,8 @@
 		"create-rpwa": "index-react.js"
 	},
 	"scripts": {
-		"release": "np"
+		"prepare": "husky install",
+		"release": "np --message='v%s'"
 	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/",
@@ -48,6 +49,9 @@
 		"fs-extra": "^10.0.0"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^12.1.4",
+		"@commitlint/config-conventional": "^12.1.4",
+		"husky": "^6.0.0",
 		"np": "*"
 	}
 }
