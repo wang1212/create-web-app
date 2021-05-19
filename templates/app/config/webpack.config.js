@@ -97,12 +97,14 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 	},
 	resolve: {
 		extensions: ['.ts', '.js', '.mjs', '.json'],
-		alias: {
-			components: path.resolve('./src/components/'),
-			utils: path.resolve('./src/utils/'),
-			assets: path.resolve('./src/assets/'),
-			vendors: path.resolve('./src/vendors/'),
-		},
+		// Alias will cause IntelliSense to be invalid.
+		// Although it can be fixed, it will increase configuration complexity and cause a series of problems.
+		// alias: {
+		// 	components: path.resolve('./src/components/'),
+		// 	utils: path.resolve('./src/utils/'),
+		// 	assets: path.resolve('./src/assets/'),
+		// 	vendors: path.resolve('./src/vendors/'),
+		// },
 	},
 	module: {
 		rules: [
