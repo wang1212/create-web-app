@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.0 (2021-05-19)
+
+-   **build(templates): add commitlint to lint commit message 034087d**
+-   **build(templates): remove webpack file path alias 037f605**
+-   update dependences version
+
+View all changes https://github.com/wang1212/create-web-app/compare/v0.5.0...v0.6.0
+
 ## v0.5.0 (2020-11-09)
 
 -   Update
