@@ -17,7 +17,10 @@
 	"homepage": "https://github.com/wang1212/create-web-app#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wang1212/create-web-app.git"
+		"url": "git+https://github.com/wang1212/create-web-app.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wang1212/create-web-app/issues"
 	},
 	"license": "MIT",
 	"engines": {
