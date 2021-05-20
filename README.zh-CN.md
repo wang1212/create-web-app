@@ -4,6 +4,9 @@
 [![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
+![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=publish)
+
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作为替代。**_
 
@@ -11,8 +14,6 @@ _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作�
 [1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
 
 :coffee: 创建 [PWA（Progressive Web App，渐进式 Web 应用）](https://web.dev/progressive-web-apps/) 项目开发环境启动配置。
-
-[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 ## 内容
 
