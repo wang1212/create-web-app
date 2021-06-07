@@ -6,22 +6,19 @@
  * The source code is the main bin command of create-react-app.
  */
 
-'use strict';
+'use strict'
 
-const chalk = require('chalk');
+const chalk = require('chalk')
 
 const currentNodeVersion = process.versions.node,
 	semver = currentNodeVersion.split('.'),
-	major = semver[0];
+	major = semver[0]
 
-
-if (major < 10) {
+if (major < 12) {
 	console.error(
-		chalk.red(
-			`You are running Node ${currentNodeVersion}. \nCreate React App requires Node 10.x or higher. \nPlease update your version of Node.`
-		)
-	);
-	process.exit(1);
+		chalk.red(`You are running Node ${currentNodeVersion}. \nCreate React App requires Node 12.x or higher. \nPlease update your version of Node.`)
+	)
+	process.exit(1)
 }
 
-require('./bin/create-react-app');
+require('./bin/create-react-app')
