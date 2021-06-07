@@ -13,7 +13,7 @@ module.exports = {
 		es6: true,
 		jest: true,
 	},
-	plugins: ['@typescript-eslint', 'prettier'],
+	plugins: [],
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',

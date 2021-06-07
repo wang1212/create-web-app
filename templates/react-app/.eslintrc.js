@@ -6,9 +6,6 @@ module.exports = {
 	parserOptions: {
 		project: './tsconfig.json',
 		sourceType: 'module',
-		ecmaFeatures: {
-			jsx: true,
-		},
 	},
 	env: {
 		node: true,
@@ -16,10 +13,11 @@ module.exports = {
 		es6: true,
 		jest: true,
 	},
-	plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+	plugins: [],
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
+		'plugin:react-hooks/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:prettier/recommended',
@@ -67,8 +65,6 @@ module.exports = {
 			{ blankLine: 'always', prev: ['block', 'block-like'], next: '*' },
 		],
 		'linebreak-style': ['error', 'windows'],
-		'react-hooks/rules-of-hooks': 'error',
-		'react-hooks/exhaustive-deps': 'warn',
 		indent: 'off',
 		'@typescript-eslint/indent': ['error', 'tab'],
 		quotes: 'off',
