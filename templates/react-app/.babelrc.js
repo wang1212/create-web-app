@@ -18,7 +18,6 @@ module.exports = (api) => {
 			],
 		],
 		plugins: [
-			'@babel/plugin-syntax-dynamic-import',
 			// Applies the react-refresh Babel plugin on non-production modes only
 			!api.env('production') && 'react-refresh/babel',
 		].filter(Boolean),
