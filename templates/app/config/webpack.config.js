@@ -18,7 +18,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const postcssNormalize = require('postcss-normalize')
 const WorkboxPlugin = require('workbox-webpack-plugin')
@@ -73,14 +73,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 				},
 			}),
 			// This is only used in production mode
-			new OptimizeCSSAssetsPlugin({
-				cssProcessorOptions: {
-					parser: safePostCssParser,
-				},
-				cssProcessorPluginOptions: {
-					preset: ['default', { minifyFontValues: { removeQuotes: false } }],
-				},
-			}),
+			new CssMinimizerPlugin(),
 		],
 		// Automatically split vendor and commons
 		splitChunks: {
