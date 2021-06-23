@@ -1,7 +1,7 @@
 // see docs: https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-	ignorePatterns: ['src/vendors/**/*'],
+	ignorePatterns: ['node_modules', 'src/vendors/**/*'],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: './tsconfig.json',
