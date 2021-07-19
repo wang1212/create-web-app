@@ -4,7 +4,7 @@
 [![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
-![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=publish)
+![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=package%20publish)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
@@ -19,14 +19,14 @@ _**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [type
 
 Support the following two：
 
--   create-web-app
--   create-react-app（or [Official](https://create-react-app.dev/)）
+- create-web-app
+- create-react-app（or [Official](https://create-react-app.dev/)）
 
 `create-web-app` builds a PWA that doesn't depend on any development framework, while `create-react-app` builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
 
 ## Usage
 
--   You don't need to install the package on your computer, you can use it and run:
+- You don't need to install the package on your computer, you can use it and run:
 
 ```
 npm init @wang1212/web-app [project_name]
@@ -39,7 +39,7 @@ or
 npx --package @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
 ```
 
--   You can also install the package on your computer, use it to run:
+- You can also install the package on your computer, use it to run:
 
 ```
 // install this package

@@ -4,7 +4,7 @@
 [![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
-![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=publish)
+![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=package%20publish)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
@@ -19,14 +19,14 @@ _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作�
 
 支持以下两种：
 
--   create-web-app
--   create-react-app（或者 [官方的](https://create-react-app.dev/)）
+- create-web-app
+- create-react-app（或者 [官方的](https://create-react-app.dev/)）
 
 `create-web-app` 构建 PWA 不依赖于任何开发框架, 而 `create-react-app` 构建 PWA 则是基于 React.js 框架及其生态技术，例如 React.js, Redux.js, and React Router。
 
 ## 使用
 
--   您无需在计算机上安装该软件包就可以使用它，运行:
+- 您无需在计算机上安装该软件包就可以使用它，运行:
 
 ```
 npm init @wang1212/web-app [project_name]
@@ -39,7 +39,7 @@ npx @wang1212/create-web-app [project_name]		// 与上一行相同
 npx --package @wang1212/create-web-app create-react-app [project_name]	// 基于 react.js 构建 Web 应用
 ```
 
--   您也可以在计算机上安装该软件包，然后运行:
+- 您也可以在计算机上安装该软件包，然后运行:
 
 ```
 // 安装该软件包
