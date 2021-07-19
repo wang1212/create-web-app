@@ -2,6 +2,7 @@
 
 ![LICENSE](https://badgen.net/github/license/wang1212/create-web-app)
 [![NPM VERSION](https://badgen.net/npm/v/@wang1212/create-web-app)](https://www.npmjs.com/package/@wang1212/create-web-app)
+![MINZIPPED SIZE](https://badgen.net/bundlephobia/minzip/@wang1212/create-web-app)
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
 ![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=package%20publish)
