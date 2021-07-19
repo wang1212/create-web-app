@@ -5,7 +5,7 @@
 ![MINZIPPED SIZE](https://badgen.net/bundlephobia/minzip/@wang1212/create-web-app)
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
-![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=package%20publish)
+![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=ci/package%20publish)
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
