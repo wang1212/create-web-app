@@ -14,7 +14,7 @@
 		"build": "cross-env NODE_ENV=production node scripts/build.js",
 		"test": "jest --config=config/jest.config.js",
 		"type-check": "tsc --project tsconfig.json --noEmit",
-		"lint-js": "eslint src/ --config .eslintrc.js --ext js,jsx,ts,tsx --fix --quiet --cache --cache-location node_modules/.cache/.eslintcache",
+		"lint-js": "eslint src/ --config=.eslintrc.js --ext=js,jsx,ts,tsx --fix --quiet --cache --cache-location=node_modules/.cache/.eslintcache --format=pretty",
 		"lint-css": "stylelint src/**/*.{css,scss,sass} --fix --quiet --cache --cache-location node_modules/.cache/.stylelintcache",
 		"docs": "jsdoc -P ./package.json -R ./README.md -c ./config/jsdoc.config.js"
 	},
@@ -45,6 +45,7 @@
 		"docdash": "^1.2.0",
 		"eslint": "^7.28.0",
 		"eslint-config-prettier": "^8.3.0",
+		"eslint-formatter-pretty": "^4.1.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"file-loader": "^6.2.0",
 		"html-loader": "^2.1.2",
