@@ -62,3 +62,7 @@ For more information, read `templates/*app/README.md` file contents.
 If you want to develop a node module package (library), maybe you can take a look:
 
 > [create-lib-starter](https://github.com/wang1212/create-lib-starter)
+
+Or, other similar things:
+
+> [awesome-template](https://github.com/wang1212/awesome-template)

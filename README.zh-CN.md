@@ -62,3 +62,7 @@ create-react-app [project_name]		// 或者, 基于 react.js 开发 Web 应用
 如果你想开发一个 node 模块包（库），也许你可以看看：
 
 > [create-lib-starter](https://github.com/wang1212/create-lib-starter)
+
+或，其它类似的东西：
+
+> [awesome-template](https://github.com/wang1212/awesome-template)
