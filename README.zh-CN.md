@@ -7,7 +7,7 @@
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
 ![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=ci/package%20publish)
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
 _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作为替代。**_
 

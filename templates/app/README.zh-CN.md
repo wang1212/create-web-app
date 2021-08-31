@@ -38,18 +38,17 @@ PWA（Progressive Web App），渐进式 Web 应用。
 
 ## 项目特点
 
--   [SPA](https://en.wikipedia.org/wiki/Single-page_application) - 应用以 SPA 单页面方式进行构建。
--   [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
--   [Webpack](https://webpack.js.org/) - 自动化项目构建，模块化管理、打包、压缩、优化。
--   [Browser-Sync](https://www.browsersync.io/) - 该插件配合 Webpack 实现热重载（hot reload）。
--   [Babel](https://babeljs.io/) - 支持使用 E6/7/8/9 进行编码。
--   [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
--   [ESLint](https://eslint.org/) - 语法规则检查。
--   [stylelint](https://stylelint.io/) - CSS 语法规则检查。
--   [Prettier](https://prettier.io/) - 代码格式化。
--   [Jest](https://jestjs.io/) - 单元测试。
--   [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
--   [Nginx](http://nginx.org/) - 反向代理实现前后端的完全分离开发/部署解决方案。
+- [SPA](https://en.wikipedia.org/wiki/Single-page_application) - 应用以 SPA 单页面方式进行构建。
+- [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - 使用谷歌的 [WorkBox](https://developers.google.com/web/tools/workbox/) 工具提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin) 插件来生成 `service-work.js` 文件，对应用数据进行离线缓存。
+- [Webpack](https://webpack.js.org/) - 自动化项目构建，模块化管理、打包、压缩、优化。
+- [Babel](https://babeljs.io/) - 支持使用 E6/7/8/9 进行编码。
+- [TypeScript](http://www.typescriptlang.org/) - 支持使用 TypeScript 进行编码。
+- [ESLint](https://eslint.org/) - 语法规则检查。
+- [stylelint](https://stylelint.io/) - CSS 语法规则检查。
+- [Prettier](https://prettier.io/) - 代码格式化。
+- [Jest](https://jestjs.io/) - 单元测试。
+- [JSDoc 3](http://usejsdoc.org/) - 生成 API 文档，因此在开发时注释风格应符合 jsdoc 规则。
+- [Nginx](http://nginx.org/) - 反向代理实现前后端的完全分离开发/部署解决方案。
 
 ## 使用
 

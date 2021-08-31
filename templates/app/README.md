@@ -38,18 +38,17 @@ PWA, Progressive Web App.
 
 ## Features
 
--   [SPA](https://en.wikipedia.org/wiki/Single-page_application)
--   [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - use [WorkBox](https://developers.google.com/web/tools/workbox/), [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin).
--   [Webpack](https://webpack.js.org/)
--   [Browser-Sync](https://www.browsersync.io/)
--   [Babel](https://babeljs.io/)
--   [TypeScript](http://www.typescriptlang.org/)
--   [ESLint](https://eslint.org/)
--   [stylelint](https://stylelint.io/)
--   [Prettier](https://prettier.io/)
--   [Jest](https://jestjs.io/)
--   [JSDoc 3](http://usejsdoc.org/)
--   [Nginx](http://nginx.org/)
+- [SPA](https://en.wikipedia.org/wiki/Single-page_application)
+- [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) - use [WorkBox](https://developers.google.com/web/tools/workbox/), [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin).
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+- [TypeScript](http://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/)
+- [stylelint](https://stylelint.io/)
+- [Prettier](https://prettier.io/)
+- [Jest](https://jestjs.io/)
+- [JSDoc 3](http://usejsdoc.org/)
+- [Nginx](http://nginx.org/)
 
 ## Usage
 
