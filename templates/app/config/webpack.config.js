@@ -189,15 +189,14 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
 			{
 				test: /\.(bmp|gif|png|jpe?g|svg)$/i,
 				exclude: /node_modules/,
-				// More information here https://webpack.js.org/guides/asset-modules/
-				type: 'javascript/auto',
+        // https://webpack.js.org/guides/asset-modules/
+        type: 'asset',
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 8 * 1024, // 8kb
+        //   },
+        // },
 				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							limit: 8192,
-						},
-					},
 					{
 						loader: 'image-webpack-loader',
 						options: {

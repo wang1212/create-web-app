@@ -1,16 +1,17 @@
 /* App entry file */
 
 // enable global async functions
-import 'regenerator-runtime/runtime'
-import './index.scss'
-import view from './components/test-ts/index'
-import * as serviceWorker from './registerServiceWorker'
+import 'regenerator-runtime/runtime';
+import './index.scss';
+import view from './components/test-ts/index';
+import * as serviceWorker from './registerServiceWorker';
 
-window['root'].innerHTML = `
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+window.root.innerHTML = `
 	<h1>App running !</h1>
 	<p>${view}</p>
-`
+`;
 
 // app to work offline and load faster
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register()
+serviceWorker.register();

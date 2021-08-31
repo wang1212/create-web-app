@@ -2,9 +2,9 @@
 
 # prettier config
 printWidth: 160
-tabWidth: 4
-useTabs: true
+tabWidth: 2
+useTabs: false
 singleQuote: true
-semi: false
+semi: true
 jsxBracketSameLine: true
 endOfLine: 'auto'

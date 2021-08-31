@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 /* Component */
 const MorePage: React.FC = () => (
-	<p>
-		this is <b>More</b> page！
-	</p>
-)
+  <p>
+    this is <b>More</b> page！
+  </p>
+);
 
-export default MorePage
+export default MorePage;

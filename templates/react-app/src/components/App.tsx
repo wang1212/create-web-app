@@ -1,49 +1,49 @@
 /**
  * App root Component
  */
-import React, { useEffect } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import { ThemeProvider } from 'react-jss'
-import themeStyles from '../utils/theme.style'
-import { Provider } from 'react-redux'
-import store from '../models'
-import loadable from '@loadable/component'
-import ErrorBoundary from './ErrorBoundary'
+import React, { useEffect } from 'react';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'react-jss';
+import { Provider } from 'react-redux';
+import loadable from '@loadable/component';
+import themeStyles from '../utils/theme.style';
+import store from '../models/index';
+import ErrorBoundary from './ErrorBoundary';
 
 const AsyncSignInPage = loadable(() => import('./auth/SignInPage'), {
-	fallback: <div>Loading...</div>,
-})
+  fallback: <div>Loading...</div>,
+});
 
 const AsyncAuthPageRouter = loadable(() => import('./AuthPageRouter'), {
-	fallback: <div>Loading...</div>,
-})
+  fallback: <div>Loading...</div>,
+});
 
 // Component
 const App: React.FC = () => {
-	// - life cycle
-	useEffect(() => {
-		/**
-		 * - page context menu
-		 */
-		Array.from(document.querySelectorAll('body *')).forEach((el: HTMLElement) => {
-			el.oncontextmenu = function (): boolean {
-				return false
-			}
-		})
+  // - life cycle
+  useEffect(() => {
+    /**
+     * - page context menu
+     */
+    Array.from(document.querySelectorAll('body *')).forEach((el: HTMLElement) => {
+      el.oncontextmenu = function (): boolean {
+        return false;
+      };
+    });
 
-		/**
-		 * - reload page
-		 */
-		window.onbeforeunload = (event: BeforeUnloadEvent): void => {
-			// Cancel the event as stated by the standard.
-			event.preventDefault()
-			// Chrome requires returnValue to be set.
-			event.returnValue = ''
-		}
-	}, [])
+    /**
+     * - reload page
+     */
+    window.onbeforeunload = (event: BeforeUnloadEvent): void => {
+      // Cancel the event as stated by the standard.
+      event.preventDefault();
+      // Chrome requires returnValue to be set.
+      event.returnValue = '';
+    };
+  }, []);
 
-	// prettier-ignore
-	return (
+  // prettier-ignore
+  return (
 		<ErrorBoundary>
 			<Provider store={ store }>
 				<ThemeProvider theme={ themeStyles }>
@@ -65,6 +65,6 @@ const App: React.FC = () => {
 			</Provider>
 		</ErrorBoundary>
 	)
-}
+};
 
-export default App
+export default App;
