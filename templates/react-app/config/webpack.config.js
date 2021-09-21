@@ -36,7 +36,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
   },
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: path.join(SRC_DIR, '/index.jsx'),
+    app: path.join(SRC_DIR, '/index.tsx'),
   },
   output: {
     // The build folder.
@@ -304,7 +304,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
           },
         ],
       }),
-    new BundleAnalyzerPlugin(),
+    isEnvProduction && new BundleAnalyzerPlugin(),
   ].filter(Boolean),
   performance: {
     hints: 'warning',

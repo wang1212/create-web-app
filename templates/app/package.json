@@ -23,10 +23,14 @@
     "*.{css,scss,sass,js,jsx,ts,tsx}": "npm run lint-css"
   },
   "dependencies": {
-    "regenerator-runtime": "^0.13.9"
+    "@babel/runtime": "^7.15.4",
+    "axios": "^0.21.4",
+    "core-js": "^3.17.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-decorators": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-typescript": "^7.15.0",
     "@commitlint/cli": "^13.1.0",
@@ -48,6 +52,7 @@
     "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-formatter-pretty": "^4.1.0",
+    "eslint-plugin-compat": "^3.13.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-sonarjs": "^0.10.0",
@@ -83,5 +88,8 @@
     "webpack-dev-server": "^4.0.0",
     "workbox-webpack-plugin": "^6.2.4",
     "worker-plugin": "^5.0.1"
+  },
+  "resolutions": {
+    "sanitize.css": "12.0.1"
   }
 }

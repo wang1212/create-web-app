@@ -2,7 +2,7 @@
 // docs - https://webpack.js.org/configuration/dev-server/
 
 module.exports = {
-  host: 'local-ip',
+  // host: 'local-ip',
   port: 3000,
   // https: true,
   compress: true,

@@ -1,7 +1,5 @@
 /* App entry file */
-
-// enable async functions support
-import 'regenerator-runtime/runtime';
+import './polyfill';
 import './index.scss';
 import React from 'react';
 import { render } from 'react-dom';

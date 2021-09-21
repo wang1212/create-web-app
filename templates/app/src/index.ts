@@ -1,7 +1,5 @@
 /* App entry file */
-
-// enable global async functions
-import 'regenerator-runtime/runtime';
+import './polyfill';
 import './index.scss';
 import view from './components/test-ts/index';
 import * as serviceWorker from './registerServiceWorker';

@@ -13,7 +13,7 @@ import Auth, { AuthState } from './Auth';
 
 const store = init({
   redux: {
-    middlewares: [logger],
+    middlewares: [process.env.NODE_ENV !== 'production' && logger].filter(Boolean),
   },
   models: {
     App,
