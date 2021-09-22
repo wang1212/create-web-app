@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.6.4(2021-09-22)
+
+- perf(templates): add `web-vitals` to collect performance information :sparkles:  c776958
+
+https://github.com/wang1212/create-web-app/compare/v0.6.3...v0.6.4
+
+## v0.6.3(2021-09-21)
+
+- chore(templates): add a polyfill solution based on `core-js@3` :ambulance:  65e9521
+- build(templates): remove `postcss-safe-parser` :wastebasket:  748882e
+
+https://github.com/wang1212/create-web-app/compare/v0.6.2...v0.6.3
+
 ## v0.6.2 (2021-08-31)
 
 - style(templates): add eslint-plugin-sonarjs ✨
@@ -156,8 +169,8 @@ View all dependent version update information https://github.com/wang1212/create
 
 > **Deprecated [flow.js][0] and use [typescript][1] instead.**
 
-[0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
-[1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
+[0]: https://flow.org/ "Flow: A Static Type Checker for JavaScript"
+[1]: http://www.typescriptlang.org/ "TypeScript is a typed superset of JavaScript that compiles to plain JavaScript"
 
 - Add
   - **@typescript-eslint/parser**
