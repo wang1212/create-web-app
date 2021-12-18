@@ -1,60 +1,60 @@
 {
-	"name": "@wang1212/create-web-app",
-	"version": "0.6.4",
-	"keywords": [
-		"web-app",
-		"SPA",
-		"PWA",
-		"webpack4",
-		"babel7",
-		"jest",
-		"typescript",
-		"eslint",
-		"react.js",
-		"redux.js"
-	],
-	"description": "Create PWA（Progressive Web App） project development environment startup configuration.",
-	"homepage": "https://github.com/wang1212/create-web-app#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/wang1212/create-web-app.git"
-	},
-	"bugs": {
-		"url": "https://github.com/wang1212/create-web-app/issues"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=12"
-	},
-	"author": "wang1212",
-	"bin": {
-		"create-web-app": "index.js",
-		"create-pwa": "index.js",
-		"create-react-app": "index-react.js",
-		"create-rpwa": "index-react.js"
-	},
-	"scripts": {
-		"prepare": "husky install",
-		"release": "np --message='v%s'"
-	},
-	"publishConfig": {
-		"registry": "https://registry.npmjs.org/",
-		"access": "public"
-	},
-	"files": [
-		"bin/",
-		"templates/",
-		"index.js",
-		"index-react.js"
-	],
-	"dependencies": {
-		"chalk": "^4.1.1",
-		"fs-extra": "^10.0.0"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^12.1.4",
-		"@commitlint/config-conventional": "^12.1.4",
-		"husky": "^6.0.0",
-		"np": "*"
-	}
+  "name": "@wang1212/create-web-app",
+  "version": "0.6.4",
+  "keywords": [
+    "web-app",
+    "SPA",
+    "PWA",
+    "webpack4",
+    "babel7",
+    "jest",
+    "typescript",
+    "eslint",
+    "react.js",
+    "redux.js"
+  ],
+  "description": "Create PWA（Progressive Web App） project development environment startup configuration.",
+  "homepage": "https://github.com/wang1212/create-web-app#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wang1212/create-web-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wang1212/create-web-app/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "author": "wang1212",
+  "bin": {
+    "create-web-app": "index.js",
+    "create-pwa": "index.js",
+    "create-react-app": "index-react.js",
+    "create-rpwa": "index-react.js"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "release": "np --message='v%s'"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "files": [
+    "bin/",
+    "templates/",
+    "index.js",
+    "index-react.js"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "fs-extra": "^10.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "husky": "^6.0.0",
+    "np": "*"
+  }
 }

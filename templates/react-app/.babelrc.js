@@ -13,8 +13,8 @@ module.exports = {
       // Latest stable ECMAScript features
       '@babel/preset-env',
       {
-        // Allow importing core-js in entrypoint and use browserlist to select polyfills
-        useBuiltIns: 'entry',
+        // https://babeljs.io/docs/en/babel-preset-env#usebuiltins-usage
+        useBuiltIns: 'usage',
         // Set the corejs version we are using to avoid warnings in console
         corejs: require('core-js/package.json').version,
         // Exclude transforms that make all code slower
