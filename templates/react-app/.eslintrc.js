@@ -13,7 +13,7 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  plugins: [],
+  plugins: ['eslint-plugin-tsdoc'],
   extends: [
     'eslint:recommended',
     'airbnb',
@@ -40,6 +40,7 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
+    'tsdoc/syntax': 'warn',
   },
   globals: {},
 };
