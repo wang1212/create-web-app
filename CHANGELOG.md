@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.7.0(2022-01-02)
+## v0.7.0 (2022-01-02)
 
 **This package is now pure ESM, read https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**
 
@@ -11,13 +11,13 @@
 
 https://github.com/wang1212/create-web-app/compare/v0.6.4...v0.7.0
 
-## v0.6.4(2021-09-22)
+## v0.6.4 (2021-09-22)
 
 - perf(templates): add `web-vitals` to collect performance information :sparkles: c776958
 
 https://github.com/wang1212/create-web-app/compare/v0.6.3...v0.6.4
 
-## v0.6.3(2021-09-21)
+## v0.6.3 (2021-09-21)
 
 - chore(templates): add a polyfill solution based on `core-js@3` :ambulance: 65e9521
 - build(templates): remove `postcss-safe-parser` :wastebasket: 748882e
