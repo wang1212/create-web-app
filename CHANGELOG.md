@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.7.0(2022-01-02)
+
+**This package is now pure ESM, read https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**
+
+- feat: convert command line parameters to interactive command line :recycle: 99a9e5e
+- feat(templates): add `eslint-plugin-tsdoc` plugin :sparkles: e1567f8
+- build(templates): replace polyfill solution with `usage` mode :zap: 1569d00
+- docs: update changelog 8375509
+
+https://github.com/wang1212/create-web-app/compare/v0.6.4...v0.7.0
+
 ## v0.6.4(2021-09-22)
 
 - perf(templates): add `web-vitals` to collect performance information :sparkles: c776958
