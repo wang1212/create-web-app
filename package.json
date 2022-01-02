@@ -23,15 +23,14 @@
     "url": "https://github.com/wang1212/create-web-app/issues"
   },
   "license": "MIT",
+  "type": "module",
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "author": "wang1212",
   "bin": {
     "create-web-app": "index.js",
-    "create-pwa": "index.js",
-    "create-react-app": "index-react.js",
-    "create-rpwa": "index-react.js"
+    "create-pwa": "index.js"
   },
   "scripts": {
     "prepare": "husky install",
@@ -44,17 +43,19 @@
   "files": [
     "bin/",
     "templates/",
-    "index.js",
-    "index-react.js"
+    "index.js"
   ],
   "dependencies": {
-    "chalk": "^4.1.1",
-    "fs-extra": "^10.0.0"
+    "chalk": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "ora": "^6.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "husky": "^6.0.0",
-    "np": "*"
+    "@commitlint/cli": "^16.0.1",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.4",
+    "np": "*",
+    "prettier": "2.5.1"
   }
 }

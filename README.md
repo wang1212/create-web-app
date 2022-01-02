@@ -9,35 +9,31 @@
 
 English | [简体中文](./README.zh-CN.md)
 
+:coffee: Create [PWA（Progressive Web App）](https://web.dev/progressive-web-apps/) project development environment startup configuration.
+
+_**This package is now pure ESM, read https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**_
+
 _**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**_
 
 [0]: https://flow.org/ 'Flow: A Static Type Checker for JavaScript'
 [1]: http://www.typescriptlang.org/ 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript'
 
-:coffee: Create [PWA（Progressive Web App）](https://web.dev/progressive-web-apps/) project development environment startup configuration.
+## Template type
 
-## Content
+Support the following types:
 
-Support the following two：
+- javascript
+- react.js（or [Official](https://create-react-app.dev/)）
 
-- create-web-app
-- create-react-app（or [Official](https://create-react-app.dev/)）
-
-`create-web-app` builds a PWA that doesn't depend on any development framework, while `create-react-app` builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
+`javascript` type builds a PWA that doesn't depend on any development framework, while `react.js` type builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
 
 ## Usage
 
 - You don't need to install the package on your computer, you can use it and run:
 
 ```
-npm init @wang1212/web-app [project_name]
-npx @wang1212/create-web-app [project_name]		// same as the previous line
-```
-
-or
-
-```
-npx --package @wang1212/create-web-app create-react-app [project_name]	// built web app with react.js
+npm init @wang1212/web-app
+npx @wang1212/create-web-app	// same as the previous line
 ```
 
 - You can also install the package on your computer, use it to run:
@@ -47,17 +43,16 @@ npx --package @wang1212/create-web-app create-react-app [project_name]	// built 
 npm install -g @wang1212/create-web-app
 
 // now, use it to create a web app project
-create-web-app [project_name]		// built web app with no framework
-create-react-app [project_name]		// or, built web app with react.js
+create-web-app
 ```
 
-Note: `create-web-app` has an alias `create-pwa`, while `create-react-app` also has an alias `create-rpwa`.
+Note: `create-web-app` has an alias `create-pwa`.
 
-## Information
+## Details
 
 For more information, read `templates/*app/README.md` file contents.
 
-## More
+## Related
 
 If you want to develop a node module package (library), maybe you can take a look:
 
