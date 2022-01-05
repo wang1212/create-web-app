@@ -1,7 +1,7 @@
 // see docs: https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-  ignorePatterns: ['node_modules', 'src/assets/**/*', 'src/vendors/**/*', '**/*.spec.ts', '**/*.test.ts'],
+  ignorePatterns: ['node_modules', 'build', 'docs', 'public', 'src/assets/**/*', 'src/vendors/**/*'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
@@ -32,14 +32,10 @@ module.exports = {
       pragma: 'React',
       version: 'detect',
     },
+    // https://github.com/amilajack/eslint-plugin-compat#adding-polyfills
+    polyfills: ['Promise'],
   },
   rules: {
-    'no-console': [
-      'error',
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
     'tsdoc/syntax': 'warn',
   },
   globals: {},

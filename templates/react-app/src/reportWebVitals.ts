@@ -1,4 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 /**
  * @see https://github.com/GoogleChrome/web-vitals#readme
  * @see https://w3c.github.io/navigation-timing/#the-performancetiming-interface
@@ -269,7 +271,7 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
           if (!isConsoleLog) {
             onPerfEntry(metric);
           }
-        }, true);
+        });
       })
       .catch(() => {});
   }

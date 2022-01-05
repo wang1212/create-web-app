@@ -27,4 +27,4 @@ reportWebVitals(console.log);
 
 // app to work offline and load faster
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+serviceWorker.register(undefined);

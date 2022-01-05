@@ -17,6 +17,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
@@ -231,6 +232,17 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
       manifest: path.join(BUILD_DIR, './vendor-manifest.json'),
     }),
     new WorkerPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        enabled: false,
+      },
+      eslint: {
+        files: './src/**/*.{ts,tsx,js,jsx}', // required - same as command `eslint ./src/**/*.{ts,tsx,js,jsx} --ext .ts,.tsx,.js,.jsx`
+      },
+      issue: {
+        exclude: (issue) => issue.severity === 'warning',
+      },
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

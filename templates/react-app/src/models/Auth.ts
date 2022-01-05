@@ -23,7 +23,7 @@ export default {
     /**
      * get signed user info
      */
-    async getSigned(): void {
+    async getSigned(): Promise<void> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
       const { data, error } = await apiGetSignedUser();
 
@@ -39,7 +39,7 @@ export default {
     /**
      * sign in
      */
-    async signIn(payload: { account: string; password: string }): void {
+    async signIn(payload: { account: string; password: string }): Promise<void> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
       const { error } = await apiSignIn(payload);
 
@@ -64,7 +64,7 @@ export default {
     /**
      * sign out
      */
-    async signOut(): void {
+    async signOut(): Promise<void> {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
       const { error } = await apiSignOut();
 
