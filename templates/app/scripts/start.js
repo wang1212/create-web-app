@@ -21,8 +21,7 @@ const WebpackDevServer = require('webpack-dev-server');
 // first, clean build dir
 del([pathConfig.build], { force: true })
   .then(() => {
-    // eslint-disable-next-line
-    console.log('--------- Clean up the build directory is complete ! -----------\n');
+    console.log('--------- Clean up the build directory completed! -----------\n');
 
     // webpack
     return new Promise((resolve, reject) => {
@@ -54,19 +53,22 @@ del([pathConfig.build], { force: true })
             console.warn(info.warnings);
           }
 
-          // eslint-disable-next-line
           console.log(
             stats.toString({
+              // https://webpack.js.org/configuration/stats/#stats-presets
               colors: true,
-              modules: false,
-              children: false,
+              preset: 'minimal',
             })
           );
+
+          console.log('DLL has been compiled. \n');
 
           resolve(200);
         }
       );
     });
+
+    //
   })
   .then((data) => {
     /* 2. Business code */
@@ -77,10 +79,10 @@ del([pathConfig.build], { force: true })
         NODE_ENV,
         SRC_DIR: pathConfig.src,
         BUILD_DIR: pathConfig.build,
-      })
+      }),
+      () => {}
     );
 
-    // dev server config
     const devServer = new WebpackDevServer(
       {
         ...serverConfig,
@@ -91,32 +93,18 @@ del([pathConfig.build], { force: true })
         devMiddleware: {
           ...(serverConfig.devMiddleware || {}),
           stats: {
+            // https://webpack.js.org/configuration/stats/#stats-presets
             colors: true,
-            assetsSort: 'chunks',
-            modules: false,
-            children: false,
-            excludeAssets: [
-              /vendors/,
-              /assets/,
-              (assetName) => {
-                return ['manifest.json', 'robots.txt', 'favicon.ico', 'logo192.png', 'logo512.png'].includes(assetName);
-              },
-            ],
+            preset: 'minimal',
           },
         },
       },
       compiler
     );
 
-    // * '0.0.0.0' makes all ips accessible
-    devServer.listen(serverConfig.port, '0.0.0.0', (err) => {
-      if (err) throw err;
+    devServer.start();
 
-      console.log('Starting the development server...\n');
-    });
-
-    // exit
-    [('SIGINT', 'SIGTERM')].forEach(function (sig) {
+    ['SIGINT', 'SIGTERM'].forEach(function (sig) {
       process.on(sig, function () {
         devServer.close();
         process.exit();

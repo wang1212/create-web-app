@@ -277,7 +277,7 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
     }),
     isEnvDevelopment && new ReactRefreshWebpackPlugin(),
     // This is necessary to emit hot updates (currently CSS only):
-    isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+    // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     // File systems of different operating systems handle case differently, forcing case sensitivity
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     isEnvProduction &&
