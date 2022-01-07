@@ -24,6 +24,8 @@ const postcssNormalize = require('postcss-normalize');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const babelConfig = require('../.babelrc.js');
+
 module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
   mode: isEnvDevelopment ? 'development' : 'production',
   // Stop compilation early in production
@@ -103,11 +105,20 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
     rules: [
       {
         test: /\.([tj]s|mjs)$/i,
-        exclude: /node_modules/,
+        exclude: (path) => {
+          // * Compile third-party dependencies !~path.search(/(lib1)|(lib2)|(lib3)/)
+          // return ~path.search(/node_modules/) && !~path.search(/(@use-gesture)/);
+          return ~path.search(/node_modules/);
+        },
         use: [
           {
             loader: 'babel-loader',
             options: {
+              // https://github.com/babel/babel-loader/issues/925
+              // https://github.com/babel/babel-loader/issues/823
+              ...babelConfig,
+              babelrc: false,
+              configFile: false,
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
