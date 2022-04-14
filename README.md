@@ -10,7 +10,7 @@ English | [简体中文](./README.zh-CN.md)
 
 :coffee: Create [PWA（Progressive Web App）](https://web.dev/progressive-web-apps/) project development environment startup configuration.
 
-_**This package is now pure ESM, read https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**_
+_**This package is now pure ESM, read [this](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).**_
 
 _**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [typescript][1] will be used instead.**_
 

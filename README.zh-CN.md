@@ -10,7 +10,7 @@
 
 :coffee: 创建 [PWA（Progressive Web App，渐进式 Web 应用）](https://web.dev/progressive-web-apps/) 项目开发环境启动配置。
 
-_**这个包现在是纯 ESM，阅读 https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**_
+_**这个包现在是纯 ESM，查看[这里](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)。**_
 
 _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作为替代。**_
 
