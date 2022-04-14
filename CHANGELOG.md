@@ -1,5 +1,16 @@
 # Changelog
 
+This project adheres to [Semantic Versioning](https://semver.org/).
+
+## v0.7.1 (2022-04-14)
+
+- feat(templates): let `babel-loader` compile third-party dependencies :wrench:  ef54a8c
+- chore(templates): simplify webpack stats output log :art:  b7844e6
+- build(templates): `image-webpack-loader` is not enabled by default :heavy_minus_sign:  4e3ffe9
+- feat(templates): add `fork-ts-checker-webpack-plugin` to do type check :sparkles:  ba21022
+
+https://github.com/wang1212/create-web-app/compare/v0.7.0...v0.7.1
+
 ## v0.7.0 (2022-01-02)
 
 **This package is now pure ESM, read https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c.**
