@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Create Web App
  *
@@ -18,16 +16,29 @@ const APP_TYPE = {
   REACT: { text: 'react.js', value: 'react-app' },
 };
 
-function error_exit(dirname) {
+/**
+ *
+ * @param dirname
+ */
+function errorExit(dirname) {
   fse.removeSync(path.resolve(process.cwd(), dirname));
+  // eslint-disable-next-line n/no-process-exit
   process.exit();
 }
 
-function filter_file(src, dest) {
+/**
+ *
+ * @param src
+ * @param dest
+ */
+function filterFile(src /* dest */) {
   // ! /node_modules/ - only use local test
   return !src.match(/(\.gitkeep$)/);
 }
 
+/**
+ *
+ */
 async function start() {
   const answers = await inquirer
     .prompt([
@@ -47,16 +58,20 @@ async function start() {
         default: 'my-web-app',
       },
     ])
-    .catch((error) => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-      } else {
-        // Something else went wrong
-      }
+    .catch((/* error */) => {
+      // if (error.isTtyError) {
+      //   // Prompt couldn't be rendered in the current environment
+      // } else {
+      //   // Something else went wrong
+      // }
     });
 
-  const shared_template = fileURLToPath(new URL(`../templates/shared`, import.meta.url));
-  const template = fileURLToPath(new URL(`../templates/${answers.type}`, import.meta.url));
+  const sharedTemplate = fileURLToPath(
+    new URL(`../templates/shared`, import.meta.url)
+  );
+  const template = fileURLToPath(
+    new URL(`../templates/${answers.type}`, import.meta.url)
+  );
 
   // ----------------------------------------------------------------
 
@@ -72,40 +87,69 @@ async function start() {
 
     await fse.mkdir(answers.project_name);
 
-    spinner.succeed(`${chalk.green('Successful,')} project directory ${chalk.cyan(answers.project_name)} has been created.`);
+    spinner.succeed(
+      `${chalk.green('Successful,')} project directory ${chalk.cyan(
+        answers.project_name
+      )} has been created.`
+    );
   } catch (err) {
     spinner.fail();
     console.error(chalk.red(err.message));
+    // eslint-disable-next-line n/no-process-exit
     process.exit();
   }
 
   // * STEP 2: Build Project Directory
   try {
-    spinner.start('Build project directory structure and configuration files...');
+    spinner.start(
+      'Build project directory structure and configuration files...'
+    );
 
-    await fse.copy(template, answers.project_name, { filter: filter_file });
-    await fse.copy(path.join(shared_template, '.gitignore.txt'), path.join(answers.project_name, '.gitignore'));
+    await fse.copy(template, answers.project_name, { filter: filterFile });
+    await fse.copy(
+      path.join(sharedTemplate, '.gitignore.txt'),
+      path.join(answers.project_name, '.gitignore')
+    );
 
     // update package name with project name
-    const package_json_file = path.resolve(process.cwd(), answers.project_name, 'package.json');
-    let package_json_file_content = await fse.readFile(package_json_file, 'utf8');
-    package_json_file_content = package_json_file_content.replace(/"name"\s*:\s*".*?"\s*,/, `"name": "${answers.project_name}",`);
+    const packageJsonFile = path.resolve(
+      process.cwd(),
+      answers.project_name,
+      'package.json'
+    );
+    let packageJsonFileContent = await fse.readFile(packageJsonFile, 'utf8');
+    packageJsonFileContent = packageJsonFileContent.replace(
+      /"name"\s*:\s*".*?"\s*,/,
+      `"name": "${answers.project_name}",`
+    );
 
-    await fse.writeFile(package_json_file, package_json_file_content);
+    await fse.writeFile(packageJsonFile, packageJsonFileContent);
 
-    spinner.succeed(`${chalk.green('Successful,')} project directory structure and configuration files are ready.`);
+    spinner.succeed(
+      `${chalk.green(
+        'Successful,'
+      )} project directory structure and configuration files are ready.`
+    );
   } catch (err) {
     spinner.fail();
     console.error(chalk.red(err.message));
-    error_exit(answers.project_name);
+    errorExit(answers.project_name);
   }
 
   // * STEP 3: All Ready
   console.log(chalk.green('Everything is ready! \n'));
 
-  console.log(` For more information, read the ${chalk.cyan('README.md')} file in your project directory. \n`);
+  console.log(
+    ` For more information, read the ${chalk.cyan(
+      'README.md'
+    )} file in your project directory. \n`
+  );
 
-  console.log(chalk.yellow(`Now, run "cd ${answers.project_name} && npm install", \n then run "npm start" to start developing your PWA! Haha...`));
+  console.log(
+    chalk.yellow(
+      `Now, run "cd ${answers.project_name} && npm install", \n then run "npm start" to start developing your PWA! Haha...`
+    )
+  );
 }
 
 start();

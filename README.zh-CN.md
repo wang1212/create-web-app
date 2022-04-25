@@ -5,6 +5,8 @@
 ![DOWNLOAD](https://badgen.net/npm/dt/@wang1212/create-web-app)
 ![LAST COMMIT](https://badgen.net/github/last-commit/wang1212/create-web-app)
 ![GITHUB PACKAGE CI](https://img.shields.io/github/workflow/status/wang1212/create-web-app/Node.js%20Package?label=ci/package%20publish)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7bc62c3b5faa4607a923339003583253)](https://www.codacy.com/gh/wang1212/create-web-app/dashboard?utm_source=github.com&utm_medium=referral&utm_content=wang1212/create-web-app&utm_campaign=Badge_Grade)
 
 [English](./README.md) | 简体中文
 
@@ -30,26 +32,58 @@ _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作�
 
 - 您无需在计算机上安装该软件包就可以使用它，运行:
 
-```
-npm init @wang1212/web-app
-npx @wang1212/create-web-app	// 与上一行相同
-```
+  ```bash
+  npm init @wang1212/web-app
+  npx @wang1212/create-web-app // 与上一行相同
+  ```
 
 - 您也可以在计算机上安装该软件包，然后运行:
 
-```
-// 安装该软件包
-npm install -g @wang1212/create-web-app
+  ```bash
+  // 安装该软件包
+  npm install -g @wang1212/create-web-app
 
-// 现在, 使用它创建一个 Web 应用项目
-create-web-app
-```
+  // 现在, 使用它创建一个 Web 应用项目
+  create-web-app
+  ```
 
 注意: `create-web-app` 有一个别名 `create-pwa`。
 
 ## 详细信息
 
 更多信息, 阅读 `templates/*app/README.zh-CN.md` 文件的内容。
+
+## 开发准则
+
+### Git 提交信息格式
+
+采用[社区提交格式最佳实践](https://www.conventionalcommits.org/)：
+
+```bash
+# 以前
+git commit
+
+# 现在
+npm run commit
+```
+
+_这种约束依赖于社区提供的工具 [commitizen](http://commitizen.github.io/cz-cli/) 和 [commitlint](https://commitlint.js.org/)。_
+
+### npm 发布
+
+该模块的版本管理采用社区推荐的规范[语义化版本控制](https://semver.org/)。跟随版本变动会维护一个**变更日志(CHANGELOG.md)**（[了解为什么这么做](https://keepachangelog.com/)）。
+
+```bash
+# 在发布到 npm 存储库之前更新版本并生成更改日志
+npm run release # npm run release -- --first-release
+# 或者，进行预览
+npm run release -- --dry-run
+
+# 然后发布
+npm publish # npm publish --access public
+```
+
+_这些工作是在社区提供的 [standard-version](https://github.com/conventional-changelog/standard-version) 工具的帮助下完成的。_
 
 ## 相关的
 
