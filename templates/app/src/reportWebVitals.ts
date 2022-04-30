@@ -1,5 +1,4 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* eslint-disable */
 // @ts-nocheck
 /**
  * @see https://github.com/GoogleChrome/web-vitals#readme
@@ -22,7 +21,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: green',
-              [`[Performance] Cumulative Layout Shift(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}(<= 0.1, Good)`].join('')
+              [
+                `[Performance] Cumulative Layout Shift(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}(<= 0.1, Good)`,
+              ].join('')
               // metric
             );
           } else if (metric.value <= 0.25) {
@@ -30,7 +32,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: orange',
-              [`[Performance] Cumulative Layout Shift(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}(0.1 ~ 0.25, Improve)`].join('')
+              [
+                `[Performance] Cumulative Layout Shift(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}(0.1 ~ 0.25, Improve)`,
+              ].join('')
               // metric
             );
           } else {
@@ -38,7 +43,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: red',
-              [`[Performance] Cumulative Layout Shift(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}(> 0.25, Poor)`].join('')
+              [
+                `[Performance] Cumulative Layout Shift(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}(> 0.25, Poor)`,
+              ].join('')
               // metric
             );
           }
@@ -55,7 +63,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: green',
-              [`[Performance] First Input Delay(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(<= 100ms, Good)`].join('')
+              [
+                `[Performance] First Input Delay(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(<= 100ms, Good)`,
+              ].join('')
               // metric
             );
           } else if (metric.value <= 300) {
@@ -63,7 +74,12 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: orange',
-              [`[Performance] First Input Delay(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(100ms ~ 300ms, Improve)`].join('')
+              [
+                `[Performance] First Input Delay(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(
+                  2
+                )}ms(100ms ~ 300ms, Improve)`,
+              ].join('')
               // metric
             );
           } else {
@@ -71,7 +87,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: red',
-              [`[Performance] First Input Delay(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(> 300ms, Poor)`].join('')
+              [
+                `[Performance] First Input Delay(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(> 300ms, Poor)`,
+              ].join('')
               // metric
             );
           }
@@ -88,7 +107,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: green',
-              [`[Performance] First Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(<= 1.8s, Good)`].join('')
+              [
+                `[Performance] First Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(<= 1.8s, Good)`,
+              ].join('')
               // metric
             );
           } else if (metric.value <= 3000) {
@@ -96,7 +118,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: orange',
-              [`[Performance] First Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(1.8s ~ 3s, Improve)`].join('')
+              [
+                `[Performance] First Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(1.8s ~ 3s, Improve)`,
+              ].join('')
               // metric
             );
           } else {
@@ -104,7 +129,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: red',
-              [`[Performance] First Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(> 3s, Poor)`].join('')
+              [
+                `[Performance] First Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(> 3s, Poor)`,
+              ].join('')
               // metric
             );
           }
@@ -121,7 +149,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: green',
-              [`[Performance] Largest Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(<= 2.5s, Good)`].join('')
+              [
+                `[Performance] Largest Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(<= 2.5s, Good)`,
+              ].join('')
               // metric
             );
           } else if (metric.value <= 4000) {
@@ -129,7 +160,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: orange',
-              [`[Performance] Largest Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(2.5s ~ 4s, Improve)`].join('')
+              [
+                `[Performance] Largest Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(2.5s ~ 4s, Improve)`,
+              ].join('')
               // metric
             );
           } else {
@@ -137,7 +171,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             console.log(
               '%c%s',
               'color: red',
-              [`[Performance] Largest Contentful Paint(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms(> 4s, Poor)`].join('')
+              [
+                `[Performance] Largest Contentful Paint(${metric.name}): `,
+                `${parseFloat(metric.value).toFixed(2)}ms(> 4s, Poor)`,
+              ].join('')
               // metric
             );
           }
@@ -158,7 +195,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] Domain Lookup End(DNS): `,
               `${parseFloat(metric.entries[0].domainLookupEnd).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].domainLookupEnd - metric.entries[0].domainLookupStart).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.entries[0].domainLookupEnd -
+                  metric.entries[0].domainLookupStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-connectend
@@ -169,12 +209,21 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] Connect End(TCP/SSL/SOCKS): `,
               `${parseFloat(metric.entries[0].connectEnd).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].connectEnd - metric.entries[0].connectStart).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.entries[0].connectEnd - metric.entries[0].connectStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-requeststart
           // eslint-disable-next-line no-console
-          console.log('%c%s', 'color: green', [`[Performance] Request Start: `, `${parseFloat(metric.entries[0].requestStart).toFixed(2)}ms`].join(''));
+          console.log(
+            '%c%s',
+            'color: green',
+            [
+              `[Performance] Request Start: `,
+              `${parseFloat(metric.entries[0].requestStart).toFixed(2)}ms`,
+            ].join('')
+          );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-responsestart
           // eslint-disable-next-line no-console
           console.log(
@@ -183,7 +232,9 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] Response Start: `,
               `${parseFloat(metric.value).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.value - metric.entries[0].requestStart).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.value - metric.entries[0].requestStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://web.dev/time-to-first-byte/
@@ -191,7 +242,10 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
           console.log(
             '%c%s',
             'color: green',
-            [`[Performance] Time to First Byte(${metric.name}): `, `${parseFloat(metric.value).toFixed(2)}ms`].join('')
+            [
+              `[Performance] Time to First Byte(${metric.name}): `,
+              `${parseFloat(metric.value).toFixed(2)}ms`,
+            ].join('')
             // metric
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-responseend
@@ -202,7 +256,9 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] Response End: `,
               `${parseFloat(metric.entries[0].responseEnd).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].responseEnd - metric.entries[0].requestStart).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.entries[0].responseEnd - metric.entries[0].requestStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-dominteractive
@@ -213,7 +269,11 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] domInteractive: `,
               `${parseFloat(metric.entries[0].domInteractive).toFixed(2)}ms`,
-              metric.entries[0].domLoading && `(take ${parseFloat(metric.entries[0].domInteractive - metric.entries[0].domLoading).toFixed(2)}ms)`,
+              metric.entries[0].domLoading &&
+                `(take ${parseFloat(
+                  metric.entries[0].domInteractive -
+                    metric.entries[0].domLoading
+                ).toFixed(2)}ms)`,
             ]
               .filter(Boolean)
               .join('')
@@ -225,8 +285,13 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             'color: green',
             [
               `[Performance] DOMContentLoaded Event End: `,
-              `${parseFloat(metric.entries[0].domContentLoadedEventEnd).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].domContentLoadedEventEnd - metric.entries[0].domContentLoadedEventStart).toFixed(2)}ms)`,
+              `${parseFloat(metric.entries[0].domContentLoadedEventEnd).toFixed(
+                2
+              )}ms`,
+              `(take ${parseFloat(
+                metric.entries[0].domContentLoadedEventEnd -
+                  metric.entries[0].domContentLoadedEventStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-domcomplete
@@ -237,7 +302,9 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] domComplete: `,
               `${parseFloat(metric.entries[0].domComplete).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].domComplete - metric.entries[0].domInteractive).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.entries[0].domComplete - metric.entries[0].domInteractive
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // * https://w3c.github.io/navigation-timing/#dom-performancetiming-loadeventend
@@ -248,22 +315,34 @@ const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
             [
               `[Performance] Load Event End: `,
               `${parseFloat(metric.entries[0].loadEventEnd).toFixed(2)}ms`,
-              `(take ${parseFloat(metric.entries[0].loadEventEnd - metric.entries[0].loadEventStart).toFixed(2)}ms)`,
+              `(take ${parseFloat(
+                metric.entries[0].loadEventEnd -
+                  metric.entries[0].loadEventStart
+              ).toFixed(2)}ms)`,
             ].join('')
           );
           // eslint-disable-next-line no-console
           console.log(
             '%c%s',
             'color: green',
-            [`[Performance] Blank screen time: `, `${parseFloat(metric.entries[0].domInteractive - metric.entries[0].fetchStart).toFixed(2)}ms`].join('')
+            [
+              `[Performance] Blank screen time: `,
+              `${parseFloat(
+                metric.entries[0].domInteractive - metric.entries[0].fetchStart
+              ).toFixed(2)}ms`,
+            ].join('')
           );
           // eslint-disable-next-line no-console
           console.log(
             '%c%s',
             'color: green',
-            [`[Performance] First screen time: `, `${parseFloat(metric.entries[0].domContentLoadedEventEnd - metric.entries[0].fetchStart).toFixed(2)}ms`].join(
-              ''
-            )
+            [
+              `[Performance] First screen time: `,
+              `${parseFloat(
+                metric.entries[0].domContentLoadedEventEnd -
+                  metric.entries[0].fetchStart
+              ).toFixed(2)}ms`,
+            ].join('')
           );
           // eslint-disable-next-line no-console
           console.log('------------------------');

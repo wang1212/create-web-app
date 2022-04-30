@@ -18,25 +18,30 @@ body {
 	width: 100%;
 	height: 100%;
 
+	/* 背景色  */
+	background-color: white;
+
 	/* 字颜色  */
 	color: black;
 
 	/* 保证字体安全  */
 	font-family:
-		/* Safari for OS X and iOS (San Francisco) */ -apple-system, /* Chrome < 56 for OS X (San Francisco) */ BlinkMacSystemFont, 'Helvetica Neue',
-		Helvetica, /* Windows */ Arial, 'Segoe UI', 'Microsoft Yahei', /* Android */ 'Roboto', /* Basic web fallback */ 'Hiragino Sans GB', 'Heiti SC',
-		'WenQuanYi Micro Hei', sans-serif, /* Emoji fonts */ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+		/* Safari for OS X and iOS (San Francisco) */ -apple-system,
+		 BlinkMacSystemFont,
+    'Helvetica Neue', Helvetica,  Arial, '		e UI',
+    'Microsoft Yahei',  'Roboto',
+     'Hiragino Sans 		 'Heiti SC',
+    'WenQuanYi Micro Hei', san		rif,  'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe U		mbol'		;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
 	/* 统一行高  */
 	line-height: 1.5;
-
-	/* 背景色  */
-	background-color: white;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 * {
 	/* 盒子模型统一   */
@@ -64,8 +69,8 @@ li {
 	/* 整体 */
 	width: 8px;
 	height: 8px;
-	background-color: rgb(204, 204, 204);
 	border-radius: 4px;
+	background-color: rgb(204, 204, 204);
 }
 
 /* ::-webkit-scrollbar:hover {
@@ -87,9 +92,9 @@ li {
 	background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
+	border-radius: 4px;
 	/* 拖动部分 */
 	background-color: rgba(22, 22, 22, 0.75);
-	border-radius: 4px;
 }
 
 /* ::-webkit-scrollbar-thumb:hover {
@@ -109,8 +114,8 @@ li {
  */
 .clear-float::before,
 .clear-float::after {
-	display: table;
 	content: '';
+	display: table;
 }
 .clear-float::after {
 	clear: both;
