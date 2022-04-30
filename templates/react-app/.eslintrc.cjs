@@ -1,6 +1,7 @@
 // see docs: https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
+  extends: ['@wang1212/eslint-config/react-typescript'],
   ignorePatterns: ['node_modules', 'build', 'docs', 'public', 'src/assets/**/*', 'src/vendors/**/*'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -13,19 +14,6 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  plugins: ['eslint-plugin-tsdoc'],
-  extends: [
-    'eslint:recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'airbnb/whitespace',
-    'airbnb-typescript',
-    'plugin:sonarjs/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:prettier/recommended',
-    'plugin:compat/recommended',
-  ],
   settings: {
     react: {
       createClass: 'createReactClass',
@@ -35,8 +23,6 @@ module.exports = {
     // https://github.com/amilajack/eslint-plugin-compat#adding-polyfills
     polyfills: ['Promise'],
   },
-  rules: {
-    'tsdoc/syntax': 'warn',
-  },
+  rules: {},
   globals: {},
 };

@@ -19,17 +19,20 @@ const AsyncAuthPageRouter = loadable(() => import('./AuthPageRouter'), {
 });
 
 // Component
-const App: React.FC = () => {
+function App() {
   // - life cycle
   useEffect(() => {
     /**
      * - page context menu
      */
-    Array.from(document.querySelectorAll('body *')).forEach((el: HTMLElement) => {
-      el.oncontextmenu = function (): boolean {
-        return false;
-      };
-    });
+    Array.from(document.querySelectorAll('body *')).forEach(
+      (el: HTMLElement) => {
+        // eslint-disable-next-line no-param-reassign
+        el.oncontextmenu = function (): boolean {
+          return false;
+        };
+      }
+    );
 
     /**
      * - reload page
@@ -38,6 +41,7 @@ const App: React.FC = () => {
       // Cancel the event as stated by the standard.
       event.preventDefault();
       // Chrome requires returnValue to be set.
+      // eslint-disable-next-line no-param-reassign
       event.returnValue = '';
     };
   }, []);
@@ -53,10 +57,12 @@ const App: React.FC = () => {
 								exact
 								strict
 								path="/sign-in"
+								// eslint-disable-next-line react/jsx-props-no-spreading
 								render={ (props): React.FunctionComponentElement<unknown> => <AsyncSignInPage { ...props } /> }
 							/>
 							<Route
 								path="/"
+								// eslint-disable-next-line react/jsx-props-no-spreading
 								render={ (props): React.FunctionComponentElement<unknown> => <AsyncAuthPageRouter { ...props } /> }
 							/>
 						</Switch>
@@ -65,6 +71,6 @@ const App: React.FC = () => {
 			</Provider>
 		</ErrorBoundary>
 	)
-};
+}
 
 export default App;

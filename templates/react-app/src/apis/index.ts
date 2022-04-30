@@ -69,7 +69,9 @@ http.interceptors.response.use(
         if (status === 401) {
           // alert(status + ' : Please login!')
         } else {
-          alert(`${status} : Client error occurred, please refresh and try again！`);
+          alert(
+            `${status} : Client error occurred, please refresh and try again！`
+          );
         }
       } else if (status >= 500) {
         alert(`${status} : Server Error！`);
