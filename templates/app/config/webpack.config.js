@@ -22,11 +22,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
 const WorkboxPlugin = require('workbox-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const babelConfig = require('../.babelrc.js');
 
-module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV === 'development', isEnvProduction = !isEnvDevelopment }) => ({
+module.exports = ({
+  NODE_ENV,
+  SRC_DIR,
+  BUILD_DIR,
+  isEnvDevelopment = NODE_ENV === 'development',
+  isEnvProduction = !isEnvDevelopment,
+}) => ({
   mode: isEnvDevelopment ? 'development' : 'production',
   // Stop compilation early in production
   bail: isEnvProduction,
@@ -45,13 +52,17 @@ module.exports = ({ NODE_ENV, SRC_DIR, BUILD_DIR, isEnvDevelopment = NODE_ENV ==
     path: BUILD_DIR,
     filename: isEnvDevelopment ? '[name].js' : '[name].[contenthash:8].js',
     // There are also additional JS chunk files if you use code splitting.
-    chunkFilename: isEnvDevelopment ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
+    chunkFilename: isEnvDevelopment
+      ? '[name].chunk.js'
+      : '[name].[chunkhash:8].chunk.js',
     // https://webpack.js.org/configuration/output/#outputpublicpath
     // publicPath: ''
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: isEnvProduction
-      ? (info) => path.relative(SRC_DIR, info.absoluteResourcePath).replace(/\\/g, '/')
-      : isEnvDevelopment && ((info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+      ? (info) =>
+          path.relative(SRC_DIR, info.absoluteResourcePath).replace(/\\/g, '/')
+      : isEnvDevelopment &&
+        ((info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
     // this defaults to 'window', but by setting it to 'this' then
     // module chunks which are built will work in web workers as well.
     globalObject: 'this',
