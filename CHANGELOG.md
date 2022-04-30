@@ -4,23 +4,24 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.7.2](https://github.com/wang1212/create-web-app/compare/v0.7.1...v0.7.2) (2022-04-30)
 
+### Features
+
+- **templates:** upgrade `eslint` to v8
+- **templates:** upgrade `stylelint` to v14
+- **templates:** upgrade `jest` to v28
 
 ### Bug Fixes
 
-* **templates:** downgrade fork-ts-checker plugin version :arrow_down: ([71ab5f3](https://github.com/wang1212/create-web-app/commit/71ab5f331715231b7daff0298f4a99fecaf2f1d2))
-* upgrade inquirer from 8.2.0 to 8.2.2 ([#38](https://github.com/wang1212/create-web-app/issues/38)) ([7cc3796](https://github.com/wang1212/create-web-app/commit/7cc3796cfa45587ff18cc78c19c3fbac534e29bf))
-* upgrade ora from 6.0.1 to 6.1.0 ([#39](https://github.com/wang1212/create-web-app/issues/39)) ([09c7bd8](https://github.com/wang1212/create-web-app/commit/09c7bd8c77efc79c3cc9192e9ee4a952bd69df0e))
+- **templates:** downgrade fork-ts-checker plugin version :arrow_down: ([71ab5f3](https://github.com/wang1212/create-web-app/commit/71ab5f331715231b7daff0298f4a99fecaf2f1d2))
+- upgrade inquirer from 8.2.0 to 8.2.2 ([#38](https://github.com/wang1212/create-web-app/issues/38)) ([7cc3796](https://github.com/wang1212/create-web-app/commit/7cc3796cfa45587ff18cc78c19c3fbac534e29bf))
+- upgrade ora from 6.0.1 to 6.1.0 ([#39](https://github.com/wang1212/create-web-app/issues/39)) ([09c7bd8](https://github.com/wang1212/create-web-app/commit/09c7bd8c77efc79c3cc9192e9ee4a952bd69df0e))
 
-# Changelog
+### v0.7.1 (2022-04-14)
 
-This project adheres to [Semantic Versioning](https://semver.org/).
-
-## v0.7.1 (2022-04-14)
-
-- feat(templates): let `babel-loader` compile third-party dependencies :wrench:  ef54a8c
-- chore(templates): simplify webpack stats output log :art:  b7844e6
-- build(templates): `image-webpack-loader` is not enabled by default :heavy_minus_sign:  4e3ffe9
-- feat(templates): add `fork-ts-checker-webpack-plugin` to do type check :sparkles:  ba21022
+- feat(templates): let `babel-loader` compile third-party dependencies :wrench: ef54a8c
+- chore(templates): simplify webpack stats output log :art: b7844e6
+- build(templates): `image-webpack-loader` is not enabled by default :heavy_minus_sign: 4e3ffe9
+- feat(templates): add `fork-ts-checker-webpack-plugin` to do type check :sparkles: ba21022
 
 https://github.com/wang1212/create-web-app/compare/v0.7.0...v0.7.1
 
