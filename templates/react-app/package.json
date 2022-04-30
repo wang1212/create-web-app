@@ -93,6 +93,6 @@
     "worker-plugin": "^5.0.1"
   },
   "resolutions": {
-    "sanitize.css": "12.0.1"
+    "sanitize.css": "13.0.0"
   }
 }
