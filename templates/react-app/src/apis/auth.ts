@@ -15,15 +15,24 @@ export const apiPathSignIn = `${BASE_NAME}/login`;
  * @param {(AxiosRequestConfig | undefined)} [config]
  * @returns {Promise<Result<unknown>>}
  */
-export async function signIn(params: { account: string; password: string }, config?: AxiosRequestConfig | undefined): Promise<Result<unknown>> {
+export async function signIn(
+  params: { account: string; password: string },
+  config?: AxiosRequestConfig | undefined
+): Promise<Result<unknown>> {
   try {
-    const { data } = await http.post<ResponseData>(apiPathSignIn, params, config);
+    const { data } = await http.post<ResponseData>(
+      apiPathSignIn,
+      params,
+      config
+    );
 
     if (ResponseCode.success !== data.code) throw new Error(data.message);
 
     // * save token
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    http.defaults.headers.common.Authorization = `Bearer ${String(data.data.token)}`;
+    http.defaults.headers.common.Authorization = `Bearer ${String(
+      data.data.token
+    )}`;
     // ! No need to log in again after page refresh
     sessionStorage.setItem('tk', `Bearer ${String(data.data.token)}`);
 
@@ -46,7 +55,9 @@ export const apiPathSignOut = `${BASE_NAME}/logout`;
  * @param {(AxiosRequestConfig | undefined)} [config]
  * @returns {Promise<Result<unknown>>}
  */
-export async function signOut(config?: AxiosRequestConfig | undefined): Promise<Result<unknown>> {
+export async function signOut(
+  config?: AxiosRequestConfig | undefined
+): Promise<Result<unknown>> {
   try {
     const { data } = await http.delete<ResponseData>(apiPathSignOut, config);
 
@@ -77,7 +88,9 @@ export const apiPathSignedUser = `${BASE_NAME}/currentUser`;
  * @param {AxiosRequestConfig} [config]
  * @returns {Promise<Result<unknown>>}
  */
-export async function getSignedUser(config?: AxiosRequestConfig): Promise<Result<unknown>> {
+export async function getSignedUser(
+  config?: AxiosRequestConfig
+): Promise<Result<unknown>> {
   try {
     const tk = sessionStorage.getItem('tk');
 

@@ -3,69 +3,68 @@
  */
 
 /* 公共样式表（全局）  */
+
 html,
 body {
-	/* 最小宽度   */
-	// min-width: 1280px;
+  // min-width: 1280px;
+  // min-height: 768px;
 
-	/* 最小高度 */
-	// min-height: 768px;
+  position: relative;
 
-	/* relative 才能让  absolute 子元素的百分比宽度生效  */
-	position: relative;
+  width: 100%;
+  height: 100%;
 
-	/* 页面占满  */
-	width: 100%;
-	height: 100%;
+  background-color: white;
 
-	/* 字颜色  */
-	color: black;
+  color: black;
 
-	/* 保证字体安全  */
-	font-family:
-		/* Safari for OS X and iOS (San Francisco) */ -apple-system, /* Chrome < 56 for OS X (San Francisco) */ BlinkMacSystemFont, 'Helvetica Neue',
-		Helvetica, /* Windows */ Arial, 'Segoe UI', 'Microsoft Yahei', /* Android */ 'Roboto', /* Basic web fallback */ 'Hiragino Sans GB', 'Heiti SC',
-		'WenQuanYi Micro Hei', sans-serif, /* Emoji fonts */ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Arial, 'Segoe UI', 'Microsoft Yahei', 'Roboto', 'Hiragino Sans GB',
+    'Heiti SC', 'WenQuanYi Micro Hei', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-	/* 统一行高  */
-	line-height: 1.5;
-
-	/* 背景色  */
-	background-color: white;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
+
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
-* {
-	/* 盒子模型统一   */
-	box-sizing: border-box;
-	margin: 0;
 
-	/* 去除边距 */
-	padding: 0;
+* {
+  /* 盒子模型统一   */
+  box-sizing: border-box;
+  margin: 0;
+
+  /* 去除边距 */
+  padding: 0;
 }
+
 :focus {
-	outline: none;
+  outline: none;
 }
+
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
+
 ul,
 li {
-	list-style: none;
+  list-style: none;
 }
 
 /**
  * 滚动条样式 -----------------------------------------------
  */
+
 ::-webkit-scrollbar {
-	/* 整体 */
-	width: 8px;
-	height: 8px;
-	background-color: rgb(204, 204, 204);
-	border-radius: 4px;
+  /* 整体 */
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgb(204, 204, 204);
 }
 
 /* ::-webkit-scrollbar:hover {
@@ -73,48 +72,57 @@ li {
 	height: 16px;
 	border-radius: 8px;
 } */
+
 ::-webkit-scrollbar-button {
-	/* 上下按钮 */
-	display: none;
-	background-color: auto;
+  /* 上下按钮 */
+  display: none;
+  background-color: auto;
 }
+
 ::-webkit-scrollbar-track {
-	/* 外层轨道 */
-	background-color: transparent;
+  /* 外层轨道 */
+  background-color: transparent;
 }
+
 ::-webkit-scrollbar-track-piece {
-	/* 内层轨道 */
-	background-color: transparent;
+  /* 内层轨道 */
+  background-color: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-	/* 拖动部分 */
-	background-color: rgba(22, 22, 22, 0.75);
-	border-radius: 4px;
+  border-radius: 4px;
+  /* 拖动部分 */
+  background-color: rgba(22, 22, 22, 0.75);
 }
 
 /* ::-webkit-scrollbar-thumb:hover {
 	border-radius: 8px;
 } */
+
 ::-webkit-scrollbar-corner {
-	/* 边角 */
-	background-color: auto;
+  /* 边角 */
+  background-color: auto;
 }
+
 ::-webkit-resizer {
-	/* 缩放 */
-	background-color: auto;
+  /* 缩放 */
+  background-color: auto;
 }
 
 /**
  * 清除浮动 ----------------------------------------
  */
+
 .clear-float::before,
 .clear-float::after {
-	display: table;
-	content: '';
+  content: '';
+  display: table;
 }
+
 .clear-float::after {
-	clear: both;
+  clear: both;
 }
+
 .clear-float {
-	zoom: 1;
+  zoom: 1;
 }

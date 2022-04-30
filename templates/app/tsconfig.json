@@ -9,6 +9,6 @@
     "strict": true
     // "noImplicitAny": false
   },
-  "include": ["src", "scripts", ".eslintrc.js"],
+  "include": ["src", "scripts", ".eslintrc.cjs"],
   "exclude": ["src/assets/**/*", "src/vendors/**/*"]
 }

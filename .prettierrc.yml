@@ -6,4 +6,4 @@ tabWidth: 2
 useTabs: false
 singleQuote: true
 semi: true
-endOfLine: 'auto'
+endOfLine: 'lf'

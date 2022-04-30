@@ -24,12 +24,18 @@ interface RouteComponentPropsState {
 }
 
 /* Component */
-const SignInPage: React.FC<RouteComponentProps> = ({ location }: RouteComponentProps) => {
+function SignInPage({
+  location,
+}: RouteComponentProps): React.FunctionComponent<RouteComponentProps> {
   //
   const classes = useStyles();
 
-  const { name: appName, version } = useSelector<RootState, RootState['App']>((state) => state.App);
-  const { user } = useSelector<RootState, RootState['Auth']>((state) => state.Auth);
+  const { name: appName, version } = useSelector<RootState, RootState['App']>(
+    (state) => state.App
+  );
+  const { user } = useSelector<RootState, RootState['Auth']>(
+    (state) => state.Auth
+  );
 
   // - handles
   const handleSignIn = useCallback(() => {
@@ -57,7 +63,8 @@ const SignInPage: React.FC<RouteComponentProps> = ({ location }: RouteComponentP
 
   // signed, redirect to auth content page.
   if (user) {
-    const { from = { pathname: '/' } } = (location.state || {}) as RouteComponentPropsState;
+    const { from = { pathname: '/' } } = (location.state ||
+      {}) as RouteComponentPropsState;
 
     // prettier-ignore
     return <Redirect to={ from } />
@@ -67,9 +74,9 @@ const SignInPage: React.FC<RouteComponentProps> = ({ location }: RouteComponentP
   return (
 		<div className={ classes.root }>
 			<h1>{ `${appName}-v${version}` }</h1>
-			<button onClick={ handleSignIn }>点击登录！</button>
+			<button type="button" onClick={ handleSignIn }>点击登录！</button>
 		</div>
 	)
-};
+}
 
 export default SignInPage;

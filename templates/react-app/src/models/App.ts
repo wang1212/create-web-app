@@ -1,6 +1,8 @@
 /**
  * app info state
  */
+import { createModel } from '@rematch/core';
+import type { RootModel } from './index';
 import appInfo from '../../public/manifest.json';
 
 export interface AppState {
@@ -11,9 +13,12 @@ export interface AppState {
 // init state
 const initialState = (): AppState => ({
   name: appInfo.name,
+  // eslint-disable-next-line no-underscore-dangle
   version: appInfo._version,
 });
 
-export default {
+export const AppModel = createModel<RootModel>()({
   state: initialState(),
-};
+});
+
+export default AppModel;

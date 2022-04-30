@@ -107,7 +107,7 @@ async function start() {
 
     await fse.copy(template, answers.project_name, { filter: filterFile });
     await fse.copy(
-      path.join(sharedTemplate, '.gitignore.txt'),
+      path.join(sharedTemplate, '.gitignore.template'),
       path.join(answers.project_name, '.gitignore')
     );
 
