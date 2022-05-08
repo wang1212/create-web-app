@@ -34,7 +34,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint . --config=.eslintrc.cjs --ext .js,.cjs,.mjs --fix --quiet --cache --cache-location=node_modules/.cache/.eslintcache --format=pretty",
+    "lint": "eslint . --no-eslintrc --config=.eslintrc.cjs --ext .js,.cjs,.mjs --fix --quiet --cache --cache-location=node_modules/.cache/.eslintcache --format=pretty",
     "commit": "cz",
     "release": "standard-version"
   },

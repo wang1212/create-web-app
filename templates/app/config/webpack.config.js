@@ -115,6 +115,11 @@ module.exports = ({
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+      {
         test: /\.([tj]s|mjs)$/i,
         exclude: (path) => {
           // * Compile third-party dependencies !~path.search(/(lib1)|(lib2)|(lib3)/)
