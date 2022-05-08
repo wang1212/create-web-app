@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/wang1212/create-web-app/compare/v0.7.2...v0.7.3) (2022-05-08)
+
+
+### Features
+
+* **templates:** add `source-map-loader` loader to debug third-party libraries :sparkles: ([062fdae](https://github.com/wang1212/create-web-app/commit/062fdae349e8be49e17bfe6f7f8f2637a04e1a98))
+
+
+### Bug Fixes
+
+* upgrade fs-extra from 10.0.0 to 10.1.0 ([d6128ff](https://github.com/wang1212/create-web-app/commit/d6128ff6c5a84b1f4d72a7824849544de228c751))
+
 ### [0.7.2](https://github.com/wang1212/create-web-app/compare/v0.7.1...v0.7.2) (2022-04-30)
 
 ### Features
