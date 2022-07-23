@@ -57,7 +57,7 @@
     "@commitlint/cli": "17.0.0",
     "@commitlint/config-conventional": "17.0.0",
     "@wang1212/eslint-config": "^0.2.1",
-    "commitizen": "^4.2.4",
+    "commitizen": "4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.18.0",
     "eslint-formatter-pretty": "^4.1.0",
