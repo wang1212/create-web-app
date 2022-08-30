@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/wang1212/create-web-app/compare/v0.7.3...v0.7.4) (2022-08-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v9 ([#68](https://github.com/wang1212/create-web-app/issues/68)) ([beadc5a](https://github.com/wang1212/create-web-app/commit/beadc5a90450a4cf14585919c2c0d12f66bc9984))
+
 ### [0.7.3](https://github.com/wang1212/create-web-app/compare/v0.7.2...v0.7.3) (2022-05-08)
 
 
