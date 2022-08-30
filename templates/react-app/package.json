@@ -73,7 +73,7 @@
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.4.4",
     "prettier": "2.7.1",
-    "react-refresh": "^0.13.0",
+    "react-refresh": "0.14.0",
     "redux-logger": "^3.0.6",
     "sass": "^1.51.0",
     "sass-loader": "13.0.2",
