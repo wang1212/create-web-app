@@ -26,7 +26,7 @@ _**Starting with version `0.3.0`, [flow.js][0] will no longer be used, and [type
 Support the following types:
 
 - javascript
-- react.js（or [Official](https://create-react-app.dev/)）
+- react.js（or [Official](https://create-react-app.dev/), :point_right: **now more recommended [next.js](https://nextjs.org/)** :rocket:）
 
 `javascript` type builds a PWA that doesn't depend on any development framework, while `react.js` type builds PWA based on React framework ecosystems such as React.js, Redux.js, and React Router.
 

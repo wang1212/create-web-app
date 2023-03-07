@@ -24,7 +24,7 @@ _**从 `0.3.0` 版本开始, 不再使用 [flow.js][0], 用 [typescript][1] 作�
 支持以下类型：
 
 - javascript
-- react.js（或者 [官方的](https://create-react-app.dev/)）
+- react.js（或者 [官方的](https://create-react-app.dev/)，:point_right: **现在更推荐 [next.js](https://nextjs.org/)** :rocket:）
 
 `javascript` 类型构建 PWA 不依赖于任何开发框架, 而 `react.js` 类型构建 PWA 则是基于 React.js 框架及其生态技术，例如 React.js, Redux.js, and React Router。
 
