@@ -51,7 +51,7 @@
     "chalk": "^5.1.2",
     "fs-extra": "^10.1.0",
     "inquirer": "^9.0.0",
-    "ora": "^6.1.1"
+    "ora": "^6.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
