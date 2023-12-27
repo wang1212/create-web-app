@@ -22,7 +22,7 @@
     "@babel/runtime": "^7.17.9",
     "@loadable/component": "^5.15.2",
     "@rematch/core": "^2.2.0",
-    "axios": "^0.27.2",
+    "axios": "^1.6.3",
     "core-js": "^3.22.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
